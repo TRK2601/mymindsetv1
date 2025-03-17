@@ -1,0 +1,35 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+    <!-- <Page id="activationPage" showHeader="false" busyIndicatorDelay="0" floatingFooter="true"> -->
+    <VBox id="activationPage" busyIndicatorDelay="0" >
+        <form:SimpleForm backgroundDesign="Solid" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3" labelSpanM="4"
+                labelSpanS="4" adjustLabelSpan="false" singleContainerFullSize="false" class="reduceFormTitleHeight">
+            <form:content>
+                <Label design="Bold" text="{i18n>chooseOperation}" />
+                <RadioButtonGroup columns="2" selectedIndex="0" >
+                    <buttons>
+                        <RadioButton text="{i18n>local}"/>
+                        <RadioButton class="sapUiTinyMarginBegin" text="{i18n>remote}"/>
+                    </buttons>
+                </RadioButtonGroup>
+            </form:content>
+        </form:SimpleForm>
+        <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.Activation.Table" type="XML" />
+    </VBox>
+        <!-- <footer>
+            <Toolbar >
+                <Button text="{i18n>previous}" icon="sap-icon://nav-back" type="Reject" press="handleNav"/>
+                <ToolbarSpacer ></ToolbarSpacer>
+                <Button text="{i18n>saveAndProceed}" type="Accept" iconFirst="false" icon="sap-icon://navigation-right-arrow" press="handleNav">
+                    <customData>
+                        <core:CustomData key="target" value="launchpadConfigPage" />
+                    </customData>
+                </Button>
+            </Toolbar>
+        </footer>
+    </Page> -->
+</core:FragmentDefinition>

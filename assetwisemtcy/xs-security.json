@@ -1,0 +1,37 @@
+{
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.mtcallback",
+      "description": "Multi Tenancy Callback Access",
+      "grant-as-authority-to-apps": [
+          "$XSAPPNAME(application, sap-provisioning, tenant-onboarding)"
+      ]
+    },
+    {
+      "name": "$XSAPPNAME.cds.Subscriber",
+      "description": "Subscribe to applications"
+    },
+    {
+      "name": "$XSAPPNAME.mtdeployment",
+      "description": "Scope to trigger a re-deployment of the database artifacts"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+
+  ],
+  "authorities-inheritance": false,
+  "authorities": [
+    "$XSAPPNAME.cds.Subscriber",
+    "$XSAPPNAME.cds.ExtensionDeveloper",
+    "$XSAPPNAME.cds.UIFlexDeveloper",
+    "$XSAPPNAME.mtdeployment",
+    "$ACCEPT_GRANTED_AUTHORITIES"
+  ],
+  "oauth2-configuration": {
+    "token-validity": 3600,
+    "redirect-uris": [
+        "https://*.cfapps.*.hana.ondemand.com/login/callback"
+    ]
+  }
+}

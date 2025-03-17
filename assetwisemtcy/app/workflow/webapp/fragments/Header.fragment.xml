@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"    xmlns:layout="sap.ui.layout"    xmlns:core="sap.ui.core" 
+    displayBlock="true"  xmlns:f="sap.ui.layout.form"   xmlns="sap.m">
+    <f:SimpleForm id="_IDGenSimpleForm1"    editable="true" 	layout="ResponsiveGridLayout"  labelSpanXL="4" 	labelSpanL="4" labelSpanM="4"
+			labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" 	emptySpanM="0"	emptySpanS="0"
+			columnsXL="3" columnsL="2" columnsM="2"	singleContainerFullSize="false">
+        <f:content>
+            <core:Title id="_IDGenTitle1"/>
+             <Label id="_IDGenLabel1" text="Request Type" />
+             <ComboBox id="_IDGenComboBox1" items="{/RequestTypes}" showSecondaryValues="true" selectedKey="{GlobalModel>reqType}" editable="{= !${GlobalModel>ID} ? true :false}" selectionChange="handleRequestTypeChange">
+                <core:ListItem id="_IDGenItem1" key="{code}" additionalText="{code}" text="{name}" />
+             </ComboBox> 
+            
+            <Label id="_IDGenLabel2" text="Assign To" />
+            <Input id="_IDGenInput1"  value="{GlobalModel>assigneeName}"   showValueHelp="true" valueHelpRequest="onAssignToVHelpReqPress" editable="{= !${GlobalModel>ID} || ${GlobalModel>ResubmitReqbyRequester} ? true :false}"/>
+             
+            <core:Title id="_IDGenTitle2"/>
+             <Label id="_IDGenLabel3" text="Assignee Email" />
+            <Input id="_IDGenInput2"   value="{GlobalModel>assigneeID}" editable="false"/>  
+            <Label id="_IDGenLabel4" text="Assignee Team" />
+            <Input id="_IDGenInput3"    value="{GlobalModel>assigneeTeam}" editable="false"/>                           
+        </f:content>
+    </f:SimpleForm>    
+</core:FragmentDefinition>

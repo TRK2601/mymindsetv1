@@ -1,0 +1,42 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified"
+	xmlns="sap.m" >
+    <!-- <Page id="cgrMappingPage" showHeader="false" busyIndicatorDelay="0" floatingFooter="true"> -->
+        <VBox id="reviewPage" class="sapUiSmallMargin" busyIndicatorDelay="0">
+            <!-- <form:SimpleForm title="{i18n>formTitle}" backgroundDesign="Transparent" columnsL="4" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="1" labelSpanM="4"
+                    labelSpanS="4" adjustLabelSpan="false" singleContainerFullSize="false" class="reduceFormTitleHeight" >
+                <form:content>
+                    <core:Title text="Catalog" />
+                    <Select  />
+                    <core:Title text="Group" />
+                    <Select />
+                    <core:Title text="Role" />
+                    <Select />
+                    <core:Title text="Application(s)" />
+                    <Select />                
+                </form:content>
+            </form:SimpleForm>
+            <FlexBox justifyContent="End">
+                <Button class="sapUiSmallMarginEnd" text="Submit" />
+            </FlexBox>
+            <FlexBox class="sapUiSmallMargin customText" justifyContent="Center">
+                <Text text="OR" />
+            </FlexBox> -->
+            <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.Review.Table" type="XML" />
+        </VBox>
+        <!-- <footer>
+            <Toolbar >
+                <Button text="{i18n>previous}" icon="sap-icon://nav-back" type="Reject" press="handleNav"/>
+                <ToolbarSpacer ></ToolbarSpacer>
+                <Button text="{i18n>saveAndProceed}" iconFirst="false" icon="sap-icon://navigation-right-arrow" type="Accept" press="handleNav">
+                    <customData>
+                        <core:CustomData key="target" value="finalPage" />
+                    </customData>
+                </Button>
+            </Toolbar>
+        </footer>
+    </Page> -->
+</core:FragmentDefinition>

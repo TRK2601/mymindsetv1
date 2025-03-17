@@ -1,0 +1,11 @@
+EmpId,Name,PhoneNo,Email,About,Picture,Location,Role,Department,Availability,CurrentProject,Manager,DeleteFlag
+1,Juliette Lelchuk, 4159608948, juliettelelchuk@mindsetconsulting.com, about me, photo, US, Associate Developer, Solutions, Available, Ecolab, Ethan Jewett,false
+2,Juliette Jones, 4159608948, juliettejones@mindsetconsulting.com, about me, photo, US, Associate Developer, Solutions, Available, Ecolab, Ethan Jewett,false
+3,Juliette Xanadu, 4159608948, juliettexanadu@mindsetconsulting.com, about me, photo, India, Associate Developer, Accounting, Available, Ecolab, Ethan Jewett,false
+4,Joe Schmoe, 4159608948, joe@mindsetconsulting.com, about me, photo, US, Accountant, HR, Planned, Ecolab, Ethan Jewett,false
+5,The Hamburglar, 4159608948, hburglar@mindsetconsulting.com, about me, photo, US, Developer, Sales, Partially Available, Ecolab, Ethan Jewett,false
+6,Dwayne Johnson, 4159608948, therock@mindsetconsulting.com, about me, photo, India, Sales, Delivery Lead, Available, Ecolab, Ethan Jewett,false
+7,Sherlock Holmes, 4159608948, sherlock@mindsetconsulting.com, about me, photo, US, Developer, Accounting, Not Available, Ecolab, Ethan Jewett,false
+8,Inigo Montoya, 4159608948, inigo@mindsetconsulting.com, about me, photo, US, Marketing, Solutions, Partially Available, Ecolab, Ethan Jewett,false
+9,David Bowie, 4159608948, starman@mindsetconsulting.com, about me, photo, US, Sales, Solutions, Not Available, Ecolab, Ethan Jewett,false
+10,Red Robin, 4159608948, robin@mindsetconsulting.com, about me, photo, US, Sales, Solutions, Not Available, Ecolab, Ethan Jewett,false

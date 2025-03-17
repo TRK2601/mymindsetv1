@@ -1,0 +1,15 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"    xmlns:layout="sap.ui.layout"    xmlns:core="sap.ui.core" 
+    displayBlock="true"  xmlns:f="sap.ui.layout.form"   xmlns="sap.m">
+    <List
+        showSeparators="Inner"
+        items="{path: 'GlobalModel>comments', sorter : {path : 'createdAt', descending: true }}">
+        <FeedListItem
+            iconDisplayShape="Square" tooltip="{GlobalModel>role}"
+            iconInitials="{= ${GlobalModel>role} === 'Requester' ? 'RQ' : ${GlobalModel>role} === 'Manager' ? 'MG' : 'AS'}"
+            timestamp="{path: 'GlobalModel>createdAt'}"
+            sender="{= ${GlobalModel>email}.split('@')[0]}"
+            info="{= ${GlobalModel>action} === 'A' ? 'Approved' : ${GlobalModel>action} === 'S' ? 'Submitted': ${GlobalModel>action} === 'R' ? 'Rejected' : 'Updated'}"
+            text="{GlobalModel>comment}"
+            convertLinksToAnchorTags="All"/>
+    </List>
+</core:FragmentDefinition>

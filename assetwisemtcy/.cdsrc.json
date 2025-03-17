@@ -1,0 +1,22 @@
+{
+    "requires": {
+      "[production]" : {
+        "multitenancy": true,
+        "toggles": true,
+        "extensibility": false,
+        "db": {
+            "kind": "hana-mt",
+            "pool": {
+              "acquireTimeoutMillis": 5000,
+              "min": 0,
+              "max": 300,
+              "fifo": false
+            },
+            "model": [
+              "db",
+              "srv"
+            ]
+          }
+        }
+    }
+  }

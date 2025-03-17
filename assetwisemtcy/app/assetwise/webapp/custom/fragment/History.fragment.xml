@@ -1,0 +1,218 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.core"
+>
+    <SplitApp
+        id="app"
+        initialMaster="master"
+        c:require="{handler: 'com/mindset/ui/assetwise/ext/controller/HistoryHandler'}"
+    >
+        <masterPages>
+            <List
+                id="masterItem"
+                items="{path: 'localModel>/historyItems',sorter: { path: 'createdAt', descending: true}}"
+            >
+                <ObjectListItem
+                    title="{localModel>createdBy}"
+                    numberUnit="Version: {localModel>version}"
+                    type="Navigation"
+                    press=".extension.com.mindset.ui.assetwise.ext.controller.ObjectPageExt.listItemPressed"
+                >
+                <firstStatus>
+                    <ObjectStatus
+                        text="{= ${localModel>version} === 0 ? 'Created' : 'Updated' }"
+                        state="{= ${localModel>version} === 0 ? 'Success' : 'Warning' }" />
+                </firstStatus>
+                    
+                    <ObjectAttribute
+                        title="Version"
+                        text="{localModel>version}"
+                    />
+                    <ObjectAttribute text="{
+				path: 'localModel>createdAt',
+				type: 'sap.ui.model.type.DateTime',
+				formatOptions: {
+					style: 'medium'
+				}
+			}"  />
+                </ObjectListItem>
+            </List>
+        </masterPages>
+        <detailPages>
+        <Page>
+            <Button visible="{localModel>/isVisible}" icon="sap-icon://excel-attachment" press="handler.onDownloadHistory"></Button>
+            <IconTabBar
+                visible="{localModel>/isVisible}"
+                id="iconBar"
+                expanded="{device>/isNoPhone}"
+                class="sapUiResponsiveContentPadding"
+            >
+                <items>
+                    <IconTabFilter
+                        text="Basic"
+                        key="info"
+                    >
+                        <Table
+                            id="idBasicTable"
+                            inset="false"
+                            items="{localModel>/basicData}"
+                        >
+                            <columns>
+                                <Column width="12em">
+                                    <Text text="Field Name" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="Previous Value" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="New Value" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Text
+                                            text="{localModel>fieldValue}"
+                                        />
+                                        <Text text="{localModel>oldValue}" />
+                                        <Text text="{localModel>newValue}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        text="Procurement"
+                        key="attachments"
+                    >
+                        <Table
+                            id="idProcurementTable"
+                            inset="false"
+                            items="{localModel>/procurementData}"
+                        >
+                            <columns>
+                                <Column width="12em">
+                                    <Text text="Field Name" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="Previous Value" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="New Value" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Text
+                                            text="{localModel>fieldValue}"
+                                        />
+                                        <Text text="{localModel>oldValue}" />
+                                        <Text text="{localModel>newValue}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        key="notes"
+                        text="Owners"
+                    >
+                        <Table
+                            id="idOwnerTable"
+                            inset="false"
+                            items="{localModel>/ownerData}"
+                        >
+                            <columns>
+                                <Column width="12em">
+                                    <Text text="Field Name" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="Previous Value" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="New Value" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Text
+                                            text="{localModel>fieldValue}"
+                                        />
+                                        <Text text="{localModel>oldValue}" />
+                                        <Text text="{localModel>newValue}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter text="Maintenance">
+                        <Table
+                            id="idMaintenanceTable"
+                            inset="false"
+                            items="{localModel>/maintData}"
+                        >
+                            <columns>
+                                <Column width="12em">
+                                    <Text text="Field Name" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="Previous Value" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="New Value" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Text
+                                            text="{localModel>fieldValue}"
+                                        />
+                                        <Text text="{localModel>oldValue}" />
+                                        <Text text="{localModel>newValue}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                    <IconTabFilter text="Scrapping">
+                        <Table
+                            id="idScrappingTable"
+                            inset="false"
+                            items="{localModel>/scrapData}"
+                        >
+                            <columns>
+                                <Column width="12em">
+                                    <Text text="Field Name" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="Previous Value" />
+                                </Column>
+                                <Column width="12em">
+                                    <Text text="New Value" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem vAlign="Middle">
+                                    <cells>
+                                        <Text
+                                            text="{localModel>fieldValue}"
+                                        />
+                                        <Text text="{localModel>oldValue}" />
+                                        <Text text="{localModel>newValue}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+            </Page>
+        </detailPages>
+    </SplitApp>
+</core:FragmentDefinition>

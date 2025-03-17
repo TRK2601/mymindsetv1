@@ -1,0 +1,88 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:viz="sap.viz.ui5.controls"  xmlns:c="sap.suite.ui.commons"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"  xmlns:viz.data="sap.viz.ui5.data"
+    displayBlock="true"
+    xmlns="sap.m">
+
+     <f:Card id="_IDGenCard1AssetGrp">
+        <f:content>
+            <VBox id="_IDGenVBox1_AssetGrp" width="85%">
+              
+                <HBox id="_IDGenHBoxAssetGroup1" >
+                    <form:SimpleForm id="SimpleFormChange354"
+                        editable="true"
+                        layout="ResponsiveGridLayout"
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" >
+                        <form:content>
+                            <Label id="_IDGenLabel1AssetGrp" text="Asset Group"></Label>
+                            <Select id="_IDGenSelect1AssetGrp" selectedKey="{LocalModel>/sSelectedAssetGrp}" change="onAssetGroupChange" items="{LocalModel>/aAssetGroupDropdown}">
+                                <core:Item id="_IDGenItem1AssetGrp" key="{LocalModel>key}" text="{LocalModel>text}"></core:Item>
+                            </Select>
+                            
+                        </form:content>
+                    </form:SimpleForm>
+                </HBox>
+                 <c:ChartContainer  class="sapUiSmallMarginBegin"
+				id="chartContainerAssetGroup"
+				showFullScreen="true"
+				showPersonalization="false"
+				autoAdjustHeight="false"
+				personalizationPress="attachPersonalizationPress"
+				contentChange="attachContentChange">
+				<c:content>
+					<c:ChartContainerContent id="_IDGenChartContainerAsserGrpContent1"
+						icon="sap-icon://line-chart">
+                        <c:content>
+                                <viz:VizFrame id="idVizFrameAssetGroupChart"  uiConfig="{applicationSet:'fiori'}"  width="100%"  vizType="column" vizProperties="{plotArea: { colorPalette :['#002080', '#E8743B'], drawingEffect: 'glossy'}, title:{ text:'',visible:true}, dataLabel:{title:{text:'Groups'},visible:true,showTotal:true},valueAxis:{ title:{text:'Number of Assets &amp; Net value'}}}"> 
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset id="_IDGenFlattenedDataset1Asset" data="{LocalModel>/aAssetGroupChartData}">
+                                            <viz.data:dimensions>
+                                                <viz.data:DimensionDefinition id="_IDGenDimensionDefinition1Asset" name="Sub Group" value="{LocalModel>subGroup}"/>
+                                                <viz.data:DimensionDefinition id="_IDGenDimensioFunLoc" name="Functional Location" value="{LocalModel>funcLocation}"/>
+                                                <viz.data:DimensionDefinition id="_IDGenDimensionBaseLoc112" name="Base Location" value="{LocalModel>baseLocation}"/>
+                                            </viz.data:dimensions>
+                                            <viz.data:measures>
+                                                <viz.data:MeasureDefinition id="_IDGenMeasureDefinition1Asset" name="Asset Netvalue" value="{LocalModel>assetNetValue}"/>
+                                                <viz.data:MeasureDefinition id="_IDGenMeasureDefinition2Asset" name="No.of Assets" value="{LocalModel>noOfAssets}"/>
+                                            </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
+                                    <viz:feeds>
+                                        <viz.feeds:FeedItem id="valueAxisFeed3Asset"  uid="valueAxis" type="Measure" values="No.of Assets"/>
+                                        <viz.feeds:FeedItem id="valueAxisFeed2Asset"  uid="valueAxis" type="Measure" values="Asset Netvalue"/>
+                                        <viz.feeds:FeedItem id="categoryAxisFeed2Asset" uid="categoryAxis" type="Dimension" values="Functional Location,Base Location,Sub Group"/>
+                                    </viz:feeds>
+                                    <viz:dependents>
+                                        <viz:Popover id="idPopOverAssetGroup"></viz:Popover>
+                                    </viz:dependents>
+                                </viz:VizFrame>
+                        </c:content>
+					</c:ChartContainerContent>
+				</c:content>
+			</c:ChartContainer>     
+            
+            
+            </VBox>
+        </f:content>
+    </f:Card>
+
+
+
+</core:FragmentDefinition>

@@ -1,0 +1,119 @@
+<core:FragmentDefinition  xmlns:mvc="sap.ui.core.mvc" xmlns:rowModes="sap.ui.table.rowmodes"  xmlns:core="sap.ui.core"  xmlns="sap.m"  xmlns:ui="sap.ui.table">
+    <ui:Table rows="{GlobalModel>lineitems}"  selectionMode="None">
+        <ui:rowMode>
+            <rowModes:Fixed rowCount="5" rowContentHeight="60"></rowModes:Fixed>
+        </ui:rowMode>
+        <ui:extension>
+            <Toolbar>
+                <ToolbarSpacer/>
+                <Button  text="Add" type="Emphasized" press="onAddLineItemsPress" visible="{parts :['GlobalModel>/request'], formatter: '.formatter.editLineItems'}" />
+            </Toolbar>
+        </ui:extension>
+        <ui:columns>
+            <ui:Column  width="10rem">
+                <Label text="Asset ID" />
+                <ui:template>
+                    <Input  value="{GlobalModel>assetID}"   editable="{GlobalModel>/lineItemFieldEnabled}" />
+                </ui:template>
+			</ui:Column>
+            <ui:Column  width="15rem">
+                <Label text="Asset Name" />
+                <ui:template>
+                    <Input  value="{GlobalModel>assetName}"   editable="{GlobalModel>/lineItemFieldEnabled}"/>
+                </ui:template>
+			</ui:Column>
+            <ui:Column  width="18rem">
+                <Label text="Asset Description 1" />
+                <ui:template>
+                    <Input   value="{GlobalModel>assetDesc1}"   editable="{GlobalModel>/lineItemFieldEnabled}"/>
+                </ui:template>
+			</ui:Column>
+            <ui:Column  width="18rem">
+                <Label text="Asset Description 2" />
+                <ui:template>
+                    <Input  value="{GlobalModel>assetDesc2}"   editable="{GlobalModel>/lineItemFieldEnabled}"/>
+                </ui:template>
+			</ui:Column>
+            <ui:Column   width="18rem">
+                <Label text="Asset Description 3" />
+                <ui:template>
+                    <Input  value="{GlobalModel>assetDesc3}"   editable="{GlobalModel>/lineItemFieldEnabled}"/>
+                </ui:template>
+			</ui:Column>
+            <ui:Column  width="10rem">
+                <Label text="Quantity" />
+                <ui:template>
+                    <Input  value="{GlobalModel>quantity}"  editable="{parts :['GlobalModel>/request'], formatter: '.formatter.editLineItems'}"/>
+                </ui:template>
+			</ui:Column>
+            <ui:Column  width="10rem">
+                <Label text="Base Location" />
+                <ui:template>
+                    <Input  value="{GlobalModel>baseLocation}" showValueHelp="true"  valueHelpRequest="onBaseLocValueHelpRequest"   editable="{parts :['GlobalModel>/request'], formatter: '.formatter.editLineItems'}">
+                        <customData>
+							<core:CustomData key="vhProp" value="baseLocation"/>
+                            <!-- Below value should be maaintained same sequence of localDataProp &  valueListProp-->
+							<core:CustomData key="localDataProp" value="baseLocation"/>
+							<core:CustomData key="valueListProp" value="name,code,email"/>							
+						</customData>
+                    </Input>
+                </ui:template>
+			</ui:Column>
+            <ui:Column   width="10rem">
+                <Label text="Functional Location"  />
+                <ui:template>
+                    <Input  value="{GlobalModel>functionalLocation}"  showValueHelp="true"  valueHelpRequest="onBaseLocValueHelpRequest"   editable="{parts :['GlobalModel>/request'], formatter: '.formatter.editLineItems'}">
+                     <customData>
+							<core:CustomData key="vhProp" value="functionalLocation"/>
+                            <!-- Below value should be maaintained same sequence of localDataProp &  valueListProp-->
+							<core:CustomData key="localDataProp" value="functionalLocation"/>	
+                            <core:CustomData key="localDependDataProp" value="baseLocation"/>													
+						</customData>
+                    </Input>
+                </ui:template>
+			</ui:Column>
+            <ui:Column   width="10rem">
+                <Label text="Barcode Number" />
+                <ui:template>
+                    <Input  value="{GlobalModel>barcode}"  showValueHelp="true" valueHelpRequest="onBaseLocValueHelpRequest"   editable="{parts :['GlobalModel>/request'], formatter: '.formatter.editLineItems'}">
+                        <customData>
+							<core:CustomData key="vhProp" value="barcode"/>
+                            <!-- Below value should be maaintained same sequence of localDataProp &  valueListProp-->
+							<core:CustomData key="localDataProp" value="barcode"/>													
+						</customData>
+                    </Input>
+                </ui:template>
+			</ui:Column>
+            <ui:Column width="10rem">
+                <Label text="Serial Number" />
+                <ui:template>
+                    <Input value="{GlobalModel>serialNo}"  showValueHelp="true"  valueHelpRequest="onBaseLocValueHelpRequest"  editable="{parts :['GlobalModel>/request'], formatter: '.formatter.editLineItems'}" >
+                        <customData>
+                            <core:CustomData key="vhProp" value="serialNo"/>
+                            <!-- Below value should be maaintained same sequence of localDataProp &  valueListProp-->
+                            <core:CustomData key="localDataProp" value="serialNo"/>							
+                        </customData>
+                    </Input>
+                </ui:template>
+			</ui:Column>
+            <ui:Column  width="12rem">
+                <Label text="Expected Date of Delivery" />
+                <ui:template>
+                    <DatePicker  valueFormat="YYYY-MM-dd"  value="{GlobalModel>expectedDate}"  editable="{parts :['GlobalModel>/request'], formatter: '.formatter.editLineItems'}" />
+                </ui:template>
+			</ui:Column>
+            <ui:Column width="18rem">
+                <Label text="Comment" />
+                <ui:template>
+                    <TextArea  value="{GlobalModel>comment}" width="100%"  editable="{parts :['GlobalModel>/request'], formatter: '.formatter.editLineItems'}"/>
+                </ui:template>
+			</ui:Column>
+            <ui:Column width="4rem" visible="{parts :['GlobalModel>/request'], formatter: '.formatter.editLineItems'}">
+                <Label text="Delete" />
+                <ui:template>
+                    <Button icon="sap-icon://delete" type="Reject"  press="onRowDeletepress"  />
+                </ui:template>
+			</ui:Column>
+        </ui:columns>
+    </ui:Table>
+</core:FragmentDefinition>

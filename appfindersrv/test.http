@@ -1,0 +1,120 @@
+### POST
+
+POST http://localhost:4004/api/v2/srv/ZMINDSET_S4APPFINDER_SRV/ShareInfoSet
+Content-Type: application/json
+
+{   "createdBy": "TRavi",
+    "passKey":"123654",
+    "tcodes": [
+        {
+            "tcode": "VA02",
+            "appids": [
+                {
+                    "appid": "AA01"
+                },
+                {
+                    "appid": "AA02"
+                },
+                {
+                    "appid": "AA03"
+                }
+            ]
+        },
+        {
+            "tcode": "VA01",
+            "appids": [
+                {
+                    "appid": "AA101"
+                },
+                {
+                    "appid": "AA102"
+                },
+                {
+                    "appid": "AA103"
+                }
+            ]
+        }
+    ]
+}
+
+#####33
+POST https://mindset-consulting--llc-mindsetbtpdev-btp-dev-merlincapmsrv-srv.cfapps.us10.hana.ondemand.com/api/v2/srv/ZMINDSET_S4APPFINDER_SRV/ShareInfoSet
+Content-Type: application/json
+
+{
+    "tcodes": [
+        {
+            "tcode": "VA02",
+            "appids": [
+                {
+                    "appid": "AA01"
+                },
+                {
+                    "appid": "AA02"
+                },
+                {
+                    "appid": "AA03"
+                }
+            ]
+        },
+        {
+            "tcode": "VA01",
+            "appids": [
+                {
+                    "appid": "AA101"
+                },
+                {
+                    "appid": "AA102"
+                },
+                {
+                    "appid": "AA103"
+                }
+            ]
+        }
+    ]
+}
+
+### DELETE
+DELETE https://mindset-consulting--llc-mindset-software-dev-cf-38dfv4f70edc6b7.cfapps.us10.hana.ondemand.com/api/v2/srv/ZMINDSET_S4APPFINDER_SRV/ShareInfoSet/2b3d5177-7ba3-4081-a1d5-dd33d18fc15f
+#####PATCH
+PATCH https://mindset-consulting--llc-mindset-software-dev-cf-38dfv4f70edc6b7.cfapps.us10.hana.ondemand.com/api/v2/srv/ZMINDSET_S4APPFINDER_SRV/ShareInfoSet/1a1ec121-f31a-41a7-aaec-6ab1353ff9d6
+Content-Type: application/json
+
+{
+    "STO3NRepost" : true
+}
+
+###
+http://localhost:4004/api/v2/srv/ZMINDSET_S4APPFINDER_SRV/onValidatePassKey(passKey='P20240411T153241364Z')
+
+####
+PATCH http://localhost:4004/api/v2/srv/ZMINDSET_S4APPFINDER_SRV/ShareInfoSet/1abc2fd7-5cbf-4128-9efc-ebdb48c071dc
+Content-Type: application/json
+
+{
+    "svariant": "Test varint",
+    "svariant_id" : "8d5e8408-0ef1-4c67-9bae-5dfffc1bd74b"
+}
+
+###
+Post http://localhost:4004/api/v2/srv/ZMINDSET_S4APPFINDER_SRV/VariantSet
+Content-Type: application/json
+
+{
+    "user_id": "1eb89a6b-d634-4c1f-8a45-ef922cb54247",
+    "name": "Test123",
+    "values": [],
+    "owner": "testuser1@mindsetconsulting.com",
+    "email": "testuser1@mindsetconsulting.com",
+    "versionID": "",
+    "versionDesc": ""
+}
+
+###
+
+PATCH http://localhost:4004/api/v2/srv/ZMINDSET_S4APPFINDER_SRV/VariantSet/23ddbe71-b305-4a33-954b-0253f97648be
+Content-Type: application/json
+
+{
+    "shareinfo_id": "1abc2fd7-5cbf-4128-9efc-ebdb48c071dc"
+}

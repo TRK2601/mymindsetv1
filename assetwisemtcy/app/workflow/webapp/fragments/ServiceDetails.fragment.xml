@@ -1,0 +1,40 @@
+<core:FragmentDefinition   xmlns:core="sap.ui.core"   xmlns:f="sap.ui.layout.form"   xmlns="sap.m">
+    <f:SimpleForm    editable="true"	layout="ResponsiveGridLayout"  labelSpanXL="4" 	labelSpanL="4" labelSpanM="4"
+			labelSpanS="12" 	adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" 	emptySpanM="0"	emptySpanS="0"
+			columnsXL="3"	columnsL="2" columnsM="2"	singleContainerFullSize="false">
+        <f:content>
+            <core:Title/>
+            <Label text="Service Complete"  />
+            <ComboBox  items="{/Statuses}" selectedKey="{GlobalModel>seriviceStatus}"  editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}"   >
+                <core:Item key="{code}" text="{name}" />
+            </ComboBox>
+            <Label text="Service Date" />
+            <DateTimePicker value="{parts :['GlobalModel>serviceDate'], formatter: '.formatter.formatDate'}" change="onDateChange" editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}">
+                <customData>
+                    <core:CustomData key="property" value="serviceDate" ></core:CustomData>
+                </customData>
+            </DateTimePicker>
+            <Label text="Service Base Location" />
+            <Input  value="{GlobalModel>serviceBaseLoc}"   editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}">
+                <customData>
+                        <core:CustomData key="vhProp" value="baseLocation"/>
+                        <!-- Below value should be maaintained same sequence of localDataProp &  valueListProp-->
+                        <core:CustomData key="localDataProp" value="serviceBaseLoc"/>
+                        <core:CustomData key="valueListProp" value="code"/>							
+                </customData>
+            </Input>    
+            <core:Title/>
+            <Label text="Service Functional Location" />
+            <Input  value="{GlobalModel>serviceFuncLoc}"  editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}">
+                <customData>
+				    <core:CustomData key="vhProp" value="functionalLocation"/>
+                    <!-- Below value should be maaintained same sequence of localDataProp &  valueListProp-->
+					<core:CustomData key="localDataProp" value="serviceFuncLoc"/>
+					 <core:CustomData key="localDependDataProp" value="serviceBaseLoc"/>					
+				</customData>
+            </Input>
+            <Label text="Comments" />
+            <TextArea   editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}" />                           
+        </f:content>
+    </f:SimpleForm>    
+</core:FragmentDefinition>

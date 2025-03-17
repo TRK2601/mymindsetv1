@@ -1,0 +1,58 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+    <Dialog title ="{i18n>shareVariant}" busyIndicatorDelay="0" class="sapUiSizeCompact" escapeHandler=".handleEscape">
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+			singleContainerFullSize="false" >
+                <f:content>
+                    <Label text="{i18n>userEmailId}:" required="true" ></Label>
+                    <TextArea value="{LocalModel>/EmailIds}" placeholder="{i18n>enterEmailPlchldr}" />
+                </f:content>
+            </f:SimpleForm>
+            <List class="sapUiTinyMarginTop"
+                id="variantList"
+                headerText="{i18n>variants}"
+                mode="MultiSelect"
+                items="{
+                    path: 'S4AppFinder>/VariantSet',
+                    sorter: {
+                        path: 'name'
+                    },
+                    parameters: {
+                        '$select': 'values'
+                    }
+                }">
+                <items>
+                    <StandardListItem
+                        title="{S4AppFinder>name}" />
+                </items>
+            </List>
+        </VBox>
+        <!-- <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="{i18n>selectedVariants}" />
+				<TextArea editable="false" value="{= ${LocalModel>/aSharedVarNames}.join()}" />
+                <Label text="{i18n>selUser}" ></Label>
+                <MultiComboBox showSelectAll="true" selectedKeys="{LocalModel>/SelUsersToShare}"
+                    showSecondaryValues= "true"
+                    items="{
+                        path: 'LocalModel>/UsersToShare',
+                        sorter: { path: 'userName' }
+                    }">
+                    <core:ListItem key="{LocalModel>email}" text="{LocalModel>userName}" additionalText="{LocalModel>email}"/>
+                </MultiComboBox>
+			</f:content>
+		</f:SimpleForm> -->
+        <beginButton>
+            <Button text="{i18n>share}" type="Accept" press="onSharePress" />
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>cancel}" type="Reject" press="onCloseShareVariantDlg" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

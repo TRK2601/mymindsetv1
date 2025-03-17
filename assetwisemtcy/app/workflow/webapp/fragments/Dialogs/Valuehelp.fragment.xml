@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+        class="sapUiSizeCompact"
+		title="{GlobalModel>/valueHelpDlgTtl}"
+		liveChange="onGenricValueHelpSearch"
+		confirm="onGenricValueHelpClose"
+		cancel="onGenricValueHelpClose">
+	</SelectDialog>
+</core:FragmentDefinition>

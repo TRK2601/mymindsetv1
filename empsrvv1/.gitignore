@@ -1,0 +1,40 @@
+# CAP EmpSocialDirectory
+_out
+*.db
+db.sqlite
+connection.properties
+default-*.json
+.cdsrc-private.json
+gen/
+node_modules/
+target/
+resources/
+app/addcertification/dist/
+app/addskills/dist/
+
+# Web IDE, App Studio
+.che/
+.gen/
+
+# Ignore CSV files in the "data" directory
+/data/*.csv
+
+# MTA
+*_mta_build_tmp
+*.mtar
+mta_archives/
+
+# Ignore CSV files in the "data" directory
+/data/*.csv
+
+# Other
+.DS_Store
+*.orig
+*.log
+
+*.iml
+*.flattened-pom.xml
+
+# IDEs
+# .vscode
+# .idea

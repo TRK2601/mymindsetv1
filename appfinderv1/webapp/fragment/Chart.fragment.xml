@@ -1,0 +1,26 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:u="sap.ui.unified"
+     xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"  xmlns:viz.data="sap.viz.ui5.data">
+	
+    <viz:Popover id="idPopOver2"/>
+    <viz:VizFrame id="idVizFrame2"  uiConfig="{applicationSet:'fiori'}"  vizType="bar" > 
+        <viz:dataset>
+            <viz.data:FlattenedDataset data="{LocalModel>/PMTypeWOs}">
+                <viz.data:dimensions>
+                    <viz.data:DimensionDefinition name="Functional Area" value="{LocalModel>Functional Area}"/>
+                </viz.data:dimensions>
+                <viz.data:measures>
+                    <viz.data:MeasureDefinition name="App Count" value="{LocalModel>App Count}"/>
+                </viz.data:measures>
+            </viz.data:FlattenedDataset>
+        </viz:dataset>
+        <viz:feeds>
+            <viz.feeds:FeedItem id="valueAxisFeed2"  uid="valueAxis" type="Measure" values="App Count"/>
+            <viz.feeds:FeedItem id="categoryAxisFeed2" uid="categoryAxis" type="Dimension" values="Functional Area"/>
+        </viz:feeds>
+    </viz:VizFrame>
+									
+							
+</core:FragmentDefinition>

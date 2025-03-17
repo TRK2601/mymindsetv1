@@ -1,0 +1,66 @@
+<core:FragmentDefinition
+    xmlns="sap.m" xmlns:u="sap.ui.unified"
+	xmlns:ui="sap.ui.table"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<VBox>
+		<ui:Table id="CurrencyTbl" rows="{LocalModel>/Currency}" visible="{= ${LocalModel>/SelItem} === 'Currency' ? true : false}">
+			<ui:rowSettingsTemplate>
+				<ui:RowSettings highlight="{= ${LocalModel>type} === 'D' ? 'Error': 'None'}" highlightText="{= ${LocalModel>type} === 'D' ? 'Marked for delete': ''}"/>
+			</ui:rowSettingsTemplate>
+			<ui:extension>
+			<OverflowToolbar style="Clear">
+					<ToolbarSpacer/>
+					<u:FileUploader    id="fileUploader_Currency"  name="myFileUpload"    fileType="csv,xlsx"  sameFilenameAllowed="true"  tooltip="Upload your file to the server"  
+						placeholder="Upload your file here..."  uploadComplete="handleUploadComplete"  change="onFileUploadChange" >
+						<u:customData>
+							<core:CustomData key="Path" value="Currency" ></core:CustomData>
+							<core:CustomData  key="TableColumns" value="Code,Name,Symbol" ></core:CustomData>
+							<core:CustomData  key="TableColumnsProperties" value="name,code,email" ></core:CustomData>
+							<core:CustomData key="ExcelColumns" value="Code,Name,Symbol" ></core:CustomData>
+						</u:customData>
+					</u:FileUploader>
+					<Button  icon="sap-icon://download"   text="Template"   press="handleDownloadTemplate">
+						<customData>
+							<core:CustomData key="Path" value="/Currency" ></core:CustomData>
+							<core:CustomData key="Columns" value="Code/code/str3,Name/name/str,Symbol/symbol/str5" ></core:CustomData>
+						</customData>
+					</Button>
+					<Button  icon="sap-icon://delete" type="Reject" text="Delete" press="onPressDelete">
+					<customData>
+						<core:CustomData key="TblId" value="CurrencyTbl" ></core:CustomData>
+						<core:CustomData key="Path" value="/Currency" ></core:CustomData>
+					</customData>
+				</Button>
+			<Button  icon="sap-icon://add" text="Add" type="Emphasized" press="onPressAddRow">
+				<customData>
+					<core:CustomData key="Path" value="/Currency" ></core:CustomData>
+				</customData>
+			</Button>
+			</OverflowToolbar>
+			</ui:extension>
+			<ui:columns>
+			<!-- key -->
+				<ui:Column >
+					<Label text="Code" />
+					<ui:template>
+						<Input value="{LocalModel>code}" placeholder="Ex: USD" editable="{= !${LocalModel>editable} ? false : true}"  maxLength="3"/>
+					</ui:template>
+				</ui:Column>
+				<ui:Column >
+					<Label text="Name" />
+					<ui:template>
+						<Input value="{LocalModel>name}" change="onChange"/>
+					</ui:template>
+				</ui:Column>	
+				<ui:Column >
+					<Label text="Symbol" />
+					<ui:template>
+						<Input value="{LocalModel>symbol}" change="onChange"/>
+					</ui:template>
+				</ui:Column>	
+				
+			</ui:columns>
+		</ui:Table>
+	</VBox>
+</core:FragmentDefinition>

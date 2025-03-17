@@ -1,0 +1,1 @@
+using assetwise as service from '../../srv/service';

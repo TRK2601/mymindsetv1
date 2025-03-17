@@ -1,0 +1,123 @@
+_schema-version: "3.1"
+ID: erms
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: erms-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: erms-auth
+  - name: erms-db
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm
+- name: erms-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: erms-db
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name}
+  - name: cross-container-service-1
+    group: SERVICE_REPLACEMENTS
+    properties:
+      key: ServiceName_1
+      service: ~{the-service-name}
+  parameters:
+    buildpack: nodejs_buildpack
+- name: erms-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: erms-destination-service
+    parameters:
+      content-target: true
+  - name: erms_html_repo_host
+    parameters:
+      service-key:
+        name: erms_html_repo_host-key
+  - name: erms-auth
+    parameters:
+      service-key:
+        name: erms-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: erms_erms_html_repo_host
+          ServiceInstanceName: erms-html5-app-host-service
+          ServiceKeyName: erms_html_repo_host-key
+          sap.cloud.service: erms
+        - Authentication: OAuth2UserTokenExchange
+          Name: erms_erms_auth
+          ServiceInstanceName: erms-auth
+          ServiceKeyName: erms-auth-key
+          sap.cloud.service: erms
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: erms
+  type: approuter.nodejs
+  path: app/
+  requires:
+  - name: srv-api
+    group: destinations
+    properties:
+      forwardAuthToken: true
+      name: srv-api
+      url: ~{srv-url}
+  - name: erms-auth
+  parameters:
+    disk-quota: 256M
+    keep-existing-routes: true
+    memory: 256M
+resources:
+- name: erms-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: erms
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: erms-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+  properties:
+    hdi-container-name: ${service-name}
+- name: erms-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+    service: destination
+    service-name: erms-destination-service
+    service-plan: lite
+- name: erms_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: erms-html5-app-host-service
+    service-plan: app-host
+- name: cross-container-service-1
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: erms-db
+  properties:
+    the-service-name: ${service-name}
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npx cds build --production

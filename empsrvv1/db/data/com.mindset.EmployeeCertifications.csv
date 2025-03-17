@@ -1,0 +1,14 @@
+employee_ID;certification_ID;date;expiryDate;certificationLink;comments
+1;acb8765a-3239-4d32-b5ec-acbb7a4133e4;2022-01-20;2026-01-20;https://www.credly.com/badges/41802305-7bcd-4c05-ba49-16d877bd6daa/public_url; SAP Certified Development Associate - SAP Fiori Application Developer
+1;acb8765a-3239-4d32-b5ec-acbb7a4133e5;2022-01-21;2025-01-21;https://www.credly.com/badges/49d38c47-0cf5-486d-a3b3-c377b224ec1a/public_url; SAP Certified Development Associate - Programming in SAP S/4HANA for SAP NetWeaver ABAP Programmers
+16a81b46-e881-4f4e-b0a5-5ef44276017c;acb8765a-3239-4d32-b5ec-acbb7a4133e6;2023-01-10;2027-01-10;https://drive.google.com/drive/u/0/folders/1j9UErwrdvV5XSImdaLFTi75Nq_6AVizK; samplecomments
+16a81b46-e881-4f4e-b0a5-5ef44276017c;acb8765a-3239-4d32-b5ec-acbb7a4133e7;2023-04-11;2027-04-11;https://www.youracclaim.com/go/Y6vHlG03X9TqE6SWZaY41g; samplecomments
+16a81b46-e881-4f4e-b0a5-5ef44276017c;acb8765a-3239-4d32-b5ec-acbb7a4133e8;2022-06-25;2023-04-23;https://www.credly.com/go/ispzVnIP/_blank; samplecomments
+4;acb8765a-3239-4d32-b5ec-acbb7a4133e4;2022-01-20;2026-01-20;https://www.credly.com/badges/41802305-7bcd-4c05-ba49-16d877bd6daa/public_url; SAP Certified Development Associate - SAP Fiori Application Developer
+5;acb8765a-3239-4d32-b5ec-acbb7a4133e5;2022-01-21;2025-01-21;https://www.credly.com/badges/49d38c47-0cf5-486d-a3b3-c377b224ec1a/public_url; SAP Certified Development Associate - Programming in SAP S/4HANA for SAP NetWeaver ABAP Programmers
+6;acb8765a-3239-4d32-b5ec-acbb7a4133e6;2023-01-10;2027-01-10;https://drive.google.com/drive/u/0/folders/1j9UErwrdvV5XSImdaLFTi75Nq_6AVizK; samplecomments
+7;acb8765a-3239-4d32-b5ec-acbb7a4133e7;2023-04-11;2027-04-11;https://www.youracclaim.com/go/Y6vHlG03X9TqE6SWZaY41g; samplecomments
+8;acb8765a-3239-4d32-b5ec-acbb7a4133e8;2022-06-25;2023-04-23;https://www.credly.com/go/ispzVnIP/_blank; samplecomments
+16a81b46-e881-4f4e-b0a5-5ef44276017c;acb8765a-3239-4d32-b5ec-acbb7a4133e5;2022-01-21;2025-01-21;https://www.credly.com/badges/49d38c47-0cf5-486d-a3b3-c377b224ec1a/public_url; SAP Certified Development Associate - Programming in SAP S/4HANA for SAP NetWeaver ABAP Programmers
+6;acb8765a-3239-4d32-b5ec-acbb7a4133e5;2022-01-21;2025-01-21;https://www.credly.com/badges/49d38c47-0cf5-486d-a3b3-c377b224ec1a/public_url; SAP Certified Development Associate - Programming in SAP S/4HANA for SAP NetWeaver ABAP Programmers
+8;acb8765a-3239-4d32-b5ec-acbb7a4133e5;2022-01-21;2025-01-21;https://www.credly.com/badges/49d38c47-0cf5-486d-a3b3-c377b224ec1a/public_url; SAP Certified Development Associate - Programming in SAP S/4HANA for SAP NetWeaver ABAP Programmers

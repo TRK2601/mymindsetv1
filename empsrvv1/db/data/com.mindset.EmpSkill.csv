@@ -1,0 +1,16 @@
+ID,Name,Description,Proficiency,Skill_EmpId
+1,UI5,Front End,Beginner,1
+2,UI5,Front End,Intermediate,1
+3,ABAP,Front End,Expert,4
+4,UI5,Front End,Beginner,4
+5,UI5,Front End,Expert,4
+6,ABAP,Front End,Intermediate,5
+7,UI5,Front End,Beginner,5
+8,UI5,Front End,Expert,5
+9,ABAP,Front End,Intermediate,6
+10,UI5,Front End,Beginner,6
+11,UI5,Front End,Expert,7
+12,ABAP,Front End,Beginner,8
+13,UI5,Front End,Intermediate,9
+14,UI5,Front End,Expert,8
+15,ABAP,Front End,Beginner,9

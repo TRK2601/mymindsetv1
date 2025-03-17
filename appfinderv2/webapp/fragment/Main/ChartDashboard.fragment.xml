@@ -1,0 +1,179 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" xmlns:viz="sap.viz.ui5.controls"  xmlns:c="sap.suite.ui.commons"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"  xmlns:viz.data="sap.viz.ui5.data"
+	xmlns:core="sap.ui.core" 
+	xmlns="sap.m" >
+    <VBox justifyContent="Center" visible="{= ${LocalModel>/displaySelect} === 'Chart' ? true: false}" class="sapUiMediumMarginBegin">
+        <l:VerticalLayout id="containerLayout" width="100%" >
+            <l:BlockLayout id="BlockLayout" background="Dashboard">
+                <l:BlockLayoutRow  >
+                    <l:BlockLayoutCell   > 
+                        <c:ChartContainer id="chartContainer1" showFullScreen="true">
+                            <c:dimensionSelectors>
+                                <Label text="Sorting Data:"></Label>
+                                <Select change="onChartSortFunChange" forceSelection="true" selectedKey="{LocalModel>/sFunctionSortKey}" width="15rem">
+                                    <core:Item key="" text="Select Option" />
+                                    <core:Item key="asc" text="Ascending" />
+                                    <core:Item key="desc" text="Descending" />
+                                    <customData>
+                                        <core:CustomData value="aChartDataByFunArea" key="sFunctionSortKey"></core:CustomData>
+                                    </customData>
+                                </Select>
+                            </c:dimensionSelectors>
+                            <c:content>
+                                <c:ChartContainerContent>
+                                    <c:content>
+                                        <viz:VizFrame id="idVizFrame2"  uiConfig="{applicationSet:'fiori'}"  height="500px" width="100%" vizType="bar" vizProperties="{plotArea: { drawingEffect: 'glossy'}, title:{ text:'By Functional Area',visible:true},dataLabel:{visible:true,showTotal:true},valueAxis:{ title:{text:'App Count'}}}"> 
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{LocalModel>/aChartDataByFunArea}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="Functional Area" value="{LocalModel>Functional Area}"/>
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="App Count" value="{LocalModel>App Count}"/>
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem id="valueAxisFeed2"  uid="valueAxis" type="Measure" values="App Count"/>
+                                                <viz.feeds:FeedItem id="categoryAxisFeed2" uid="categoryAxis" type="Dimension" values="Functional Area"/>
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </c:content>
+                                </c:ChartContainerContent>
+                            </c:content>
+                        </c:ChartContainer>
+                    </l:BlockLayoutCell> 
+                    <l:BlockLayoutCell    > 
+                        <c:ChartContainer id="chartContainer2" showFullScreen="true">
+                            <c:content>
+                                <c:ChartContainerContent>
+                                    <c:content>
+                                        <viz:VizFrame id="idVizFrame3"  uiConfig="{applicationSet:'fiori'}"  height="500px" width="100%" vizType="column" vizProperties="{plotArea: { drawingEffect: 'glossy', colorPalette: ['brown']}, title:{ text:'By Application Type',visible:true},dataLabel:{visible:true,showTotal:true},valueAxis:{ title:{text:'App Count'}}}"> 
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{LocalModel>/aChartDataByAppType}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="Application Type" value="{LocalModel>Application Type}"/>
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="App Count" value="{LocalModel>App Count}"/>
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem id="valueAxisFeed3"  uid="valueAxis" type="Measure" values="App Count"/>
+                                                <viz.feeds:FeedItem id="categoryAxisFeed3" uid="categoryAxis" type="Dimension" values="Application Type"/>
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </c:content>
+                                </c:ChartContainerContent>
+                            </c:content>
+                        </c:ChartContainer>
+                    </l:BlockLayoutCell> 
+                </l:BlockLayoutRow >
+                <l:BlockLayoutRow  >
+                    <l:BlockLayoutCell    > 
+                        <c:ChartContainer id="chartContainer3" showFullScreen="true">
+                            <c:content>
+                                <c:ChartContainerContent>
+                                    <c:content>
+                                        <viz:VizFrame id="idVizFrame4"  uiConfig="{applicationSet:'fiori'}"  height="500px" width="100%" vizType="pie"  vizProperties="{plotArea: { drawingEffect: 'glossy'}, title:{ text:'By UI Technology '},dataLabel:{visible:true,showTotal:false,type : 'value'}}" > 
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{LocalModel>/aChartDataByUITech}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="UITechnology" value="{LocalModel>UITechnology}"/>
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="App Count" value="{LocalModel>App Count}"/>
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem id="valueAxisFeed4"  uid="size" type="Measure" values="App Count"/>
+                                                <viz.feeds:FeedItem id="categoryAxisFeed4" uid="color" type="Dimension" values="UITechnology"/>
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </c:content>
+                                </c:ChartContainerContent>
+                            </c:content>
+                        </c:ChartContainer>
+                    </l:BlockLayoutCell> 
+                    <l:BlockLayoutCell> 
+                        <c:ChartContainer id="chartContainer4" showFullScreen="true">
+                            <c:dimensionSelectors>
+                                <Label text="Sorting Data:"></Label>
+                                <Select change="onChartSortFunChange" forceSelection="true" selectedKey="{LocalModel>/sRoleSortKey}" width="15rem">
+                                    <core:Item key="" text="Select Option" />
+                                    <core:Item key="asc" text="Ascending" />
+                                    <core:Item key="desc" text="Descending" />
+                                    <customData>
+                                        <core:CustomData value="aChartDataByJobRole" key="sRoleSortKey"></core:CustomData>
+                                    </customData>
+                                </Select>
+                            </c:dimensionSelectors>
+                            <c:content>
+                                <c:ChartContainerContent>
+                                    <c:content>
+                                        <viz:VizFrame id="idVizFrame5"  uiConfig="{applicationSet:'fiori'}" height='500px' width="100%"  vizType="donut" vizProperties="{plotArea: { drawingEffect: 'glossy'}, title:{ text:'By Job Role '},dataLabel:{visible:true,showTotal:false,type : 'value'}}" > 
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{LocalModel>/aChartDataByJobRole}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="Job Role" value="{LocalModel>Job Role}"/>
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="App Count" value="{LocalModel>App Count}"/>
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem id="valueAxisFeed5"  uid="size" type="Measure" values="App Count"/>
+                                                <viz.feeds:FeedItem id="categoryAxisFeed5" uid="color" type="Dimension" values="Job Role"/>
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </c:content>
+                                </c:ChartContainerContent>
+                            </c:content>
+                        </c:ChartContainer>
+                    </l:BlockLayoutCell> 
+                </l:BlockLayoutRow >
+                <!-- MER -26 -->
+                <l:BlockLayoutRow  visible="{= (${LocalModel>/chooseFromOption} === 'ST') ? true : false}">
+                    <l:BlockLayoutCell> 
+                        <c:ChartContainer id="chartContainer5" showFullScreen="true">
+                            <c:dimensionSelectors>
+                                <Label text="Top 10 Selection :"></Label>
+                                <Select change="onFilterTopTenSelectChange" items= "{LocalModel>/aExcelFinalDataResultKeys}" forceSelection="true" selectedKey="{LocalModel>/aExcelFinalDataResultSelectKeys}" width="15rem">
+                                    <core:Item key="{LocalModel>Key}" text="{LocalModel>Text}" enabled="{LocalModel>enabled}"/>
+                                </Select>
+                            </c:dimensionSelectors>
+                            <c:content>
+                                <c:ChartContainerContent>
+                                    <c:content>
+                                        <viz:VizFrame id="idVizFrame6"  uiConfig="{applicationSet:'fiori'}"  height="500px" width="100%" vizType="pie"  vizProperties="{plotArea: { drawingEffect: 'glossy'}, title:{ text: 'Top 10 Transactions'},dataLabel:{visible:true,showTotal:false,type : 'value'}}" > 
+                                            <viz:dataset>
+                                                <viz.data:FlattenedDataset data="{LocalModel>/aExcelTopSelectedFinalDataResult}">
+                                                    <viz.data:dimensions>
+                                                        <viz.data:DimensionDefinition name="Report_or_Transaction_name" value="{LocalModel>Report_or_Transaction_name}"/>
+                                                    </viz.data:dimensions>
+                                                    <viz.data:measures>
+                                                        <viz.data:MeasureDefinition name="Number_of_Dialog_Steps" value="{LocalModel>Number_of_Dialog_Steps}"/>
+                                                    </viz.data:measures>
+                                                </viz.data:FlattenedDataset>
+                                            </viz:dataset>
+                                            <viz:feeds>
+                                                <viz.feeds:FeedItem id="valueAxisFeed6"  uid="size" type="Measure" values="Number_of_Dialog_Steps"/>
+                                                <viz.feeds:FeedItem id="categoryAxisFeed6" uid="color" type="Dimension" values="Report_or_Transaction_name"/>
+                                            </viz:feeds>
+                                        </viz:VizFrame>
+                                    </c:content>
+                                </c:ChartContainerContent>
+                            </c:content>
+                        </c:ChartContainer>
+                    </l:BlockLayoutCell> 
+                </l:BlockLayoutRow >
+                </l:BlockLayout>
+            </l:VerticalLayout>
+    </VBox>
+</core:FragmentDefinition>

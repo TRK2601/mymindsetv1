@@ -1,0 +1,80 @@
+POST http://localhost:4004/hack2build/AssetMasterInformation
+Content-Type: application/json
+
+{
+"assetName": "Digital ThermometerTEST",
+"manufacturer": "STANLEY_TSFR",
+"barcode": "111123459",
+"serialNumber": "118001238901",
+"baseLocation": "BNG",
+"functionalLocation": "BNG_PLANT_A1",
+"owner": "Plant Operator",
+"user": "Weather Controller",
+"serviceTenure": "24 Months",
+"calibrationTenure": null,
+"latestCalibrationDate": null,
+"latestCalibrationVendor": null,
+"latestCalibrationCertificateNumber": null,
+"latestCalibrationCost": null,
+"futureCalibrationDate": null,
+"calibrationVendor1": null,
+"calibrationVendor2": null,
+"calibrationVendor3": null
+}
+
+
+###Student entity set
+POST http://localhost:4004/hack2build/Student
+Content-Type: application/json
+
+{
+"year": 2024,
+"course": "Computers",
+"semister": 5,
+"studentName": "Test-G",
+"studentNumber": "1199999999"
+}
+
+##### Update
+PATCH http://localhost:4004/hack2build/AssetMasterInformation/20240408-1436-0000-0000-000111123456
+Content-Type: application/json
+
+{
+    "student_id":"20240402-1436-0000-0000-000111123458"
+}
+
+####### 
+
+POST http://localhost:4004/hack2build/LabTestInfobyStudent
+Content-Type: application/json
+
+{
+
+    "typeOfTest"         : "SampleTest123",
+    "asset_assetId"      : "20240408-1436-0000-0000-000111123456",
+    "asset_serialNumber"   : "118001239901",
+    "input"              : "SampleInputs11",
+    "output"             : "SampleOutput111",   
+    "reviewdateandtime"  :  "2024-04-11T11:11:11.000Z",
+    "expectedResults"    : "We got expected results11",
+    "labNumber"          : "1232",    
+    "student_id"         : "20240405-1436-0000-0000-000111123458"
+}
+
+
+###
+GET http://localhost:4004/api/v1/hack2build/AssetInformation()
+
+
+
+
+
+
+
+
+
+
+
+
+
+

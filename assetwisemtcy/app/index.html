@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <script>
+            window['sap-ushell-config'] = {
+                defaultRenderer: 'fiori2',
+                applications: {
+                    "assetwise-manage": {
+                        title: 'AssetWise',
+                        icon: 'sap-icon://work-history',
+                        description: 'Manage',
+                        applicationType: 'URL',
+                        additionalInformation: 'SAPUI5.Component=com.mindset.ui.assetwise',
+                        url: "./assetwise/webapp",
+                        navigationMode: 'embedded'
+                    },
+                    "masterdata-manage": {
+                        title: 'Asset Control',
+                        icon: 'sap-icon://work-history',
+                        description: 'Manage',
+                        applicationType: 'URL',
+                        additionalInformation: 'SAPUI5.Component=com.mindset.ui.masterdata',
+                        url: "./masterdata/webapp",
+                        navigationMode: 'embedded'
+                    },
+                    "dashboard-display": {
+                        title: 'Dashboard',
+                        icon: 'sap-icon://work-history',
+                        description: 'Display',
+                        applicationType: 'URL',
+                        additionalInformation: 'SAPUI5.Component=com.mindset.ui.assetwise.dashboard',
+                        url: "./dashboard/webapp",
+                        navigationMode: 'embedded'
+                    },
+                    "workflow-display": {
+                        title: 'Asset Track',
+                        icon: 'sap-icon://work-history',
+                        description: 'Transactional',
+                        applicationType: 'URL',
+                        additionalInformation: 'SAPUI5.Component=com.mindset.ui.assetwise.workflow',
+                        url: "./workflow/webapp",
+                        navigationMode: 'embedded'
+                    }
+                }
+            };
+        </script>
+
+        <script src="https://ui5.sap.com/1.120.8/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+        <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+        
+        <script
+            src="https://ui5.sap.com/1.120.8/resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.m, sap.ushell, sap.fe.templates"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-theme="sap_horizon"
+            data-sap-ui-frameOptions="allow"
+            data-sap-ui-bindingSyntax="complex"
+        ></script>
+        <script>
+            sap.ui.getCore().attachInit(function() {
+                sap.ushell.Container.createRenderer().placeAt('content');
+            });
+        </script>
+    </head>
+    <body class="sapUiBody" id="content"></body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.vscode": true
+  },
+  "SAP HANA Database Explorer.displaySapWebAnalyticsStartupNotification": false,
+  "files.watcherExclude": {}
+}

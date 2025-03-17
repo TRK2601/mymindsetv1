@@ -1,0 +1,82 @@
+{
+  "xsappname": "com-mindset-empsocialdirectory",
+  "oauth2-configuration": {
+    "credential-types": [
+      "binding-secret",
+      "x509"
+    ],
+    "redirect-uris": [
+      "https://*.applicationstudio.cloud.sap/**"
+    ]
+  },
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.com.mindset.role.resourcemanager",
+      "description": "com.mindset.role.resourcemanager"
+    },
+    {
+      "name": "$XSAPPNAME.com.mindset.role.india.managers",
+      "description": "com.mindset.role.india.managers"
+    },
+    {
+      "name": "$XSAPPNAME.com.mindset.role.us.managers",
+      "description": "com.mindset.role.us.managers"
+    },
+    {
+      "name": "$XSAPPNAME.com.mindset.role.india.employees",
+      "description": "com.mindset.role.india.employees"
+    },
+    {
+      "name": "$XSAPPNAME.com.mindset.role.us.employees",
+      "description": "com.mindset.role.us.employees"
+    },
+    {
+      "name": "$XSAPPNAME.JOBSCHEDULER",
+      "description": "Job Scheduler Scope",
+      "grant-as-authority-to-apps": ["$XSSERVICENAME(emp_portal_slack_notify_job)"]
+      }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "com.mindset.role.resourcemanager",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.com.mindset.role.resourcemanager"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "com.mindset.role.india.managers",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.com.mindset.role.india.managers"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "com.mindset.role.us.managers",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.com.mindset.role.us.managers"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "com.mindset.role.india.employees",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.com.mindset.role.india.employees"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "com.mindset.role.us.employees",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.com.mindset.role.us.employees"
+      ],
+      "attribute-references": []
+    }
+  ]
+}

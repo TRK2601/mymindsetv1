@@ -1,0 +1,272 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form" xmlns:ui="sap.ui.table"
+	xmlns:core="sap.ui.core" xmlns:smartTable="sap.ui.comp.smarttable" xmlns:tnt="sap.tnt"
+	xmlns="sap.m" >
+    <smartTable:SmartTable id="reviewSmartTable" class="sapUiSmallMargin" busyIndicatorDelay="0" entitySet="InputFilterParam" tableBindingPath="LocalModel>/AssignApps" tableType="Table" showTablePersonalisation="true" useVariantManagement="false"
+        header="Results" ignoredFields="InpFilterValue" initialNoDataText="{i18n>initNoData}" persistencyKey="reviewSmartTable" enableAutoBinding="false"
+        showRowCount="true" showFullScreenButton="true" useExportToExcel="false">
+        <!-- <smartTable:customToolbar>
+            <OverflowToolbar>
+                <ToolbarSpacer />
+                <Button icon="sap-icon://excel-attachment" text="{i18n>export}" type="Transparent" tooltip="{i18n>expTltp}" press="onCustomExcelExport">
+                    <customData>
+                        <core:CustomData key="path" value="/AssignApps" />
+                        <core:CustomData key="tableId" value="reviewSmartTable" />
+                    </customData>
+                </Button>
+            </OverflowToolbar>
+        </smartTable:customToolbar> -->
+        <ui:Table selectionMode="None" fixedColumnCount="3" visibleRowCountMode="Auto" >
+            <ui:columns>
+                <ui:Column width="6rem" filterProperty="TCode" sortProperty="TCode">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "TCode", "columnIndex":"0", "filterProperty": "TCode", "sortProperty": "TCode", "type":"string", "leadingProperty": "TCode"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>tCode}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>TCode}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="6rem" filterProperty="appId" sortProperty="appId">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "appId", "columnIndex":"1", "filterProperty": "appId", "sortProperty": "appId", "type":"string", "leadingProperty": "appId"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>appID}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>appId}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="20rem" hAlign="Begin" filterProperty="AppName" sortProperty="AppName">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "AppName", "columnIndex":"2", "filterProperty": "AppName", "sortProperty": "AppName", "type":"string", "leadingProperty": "AppName"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>appName}"/>
+                    <ui:template>
+                        <Link target="_blank" href="{LocalModel>AppLink}" text="{LocalModel>AppName}" tooltip="{LocalModel>AppLink}" />
+                    </ui:template>
+                </ui:Column>
+                <!-- MER-178 -->
+                <!-- <ui:Column width="6em" filterProperty="roleID" sortProperty="roleID">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "roleID", "columnIndex":"3", "filterProperty": "roleID", "sortProperty": "roleID", "type":"string", "leadingProperty": "roleID"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>colRoleID}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>roleID}"/>
+                    </ui:template>
+                </ui:Column> -->
+                <!-- <ui:Column width="12em" filterProperty="roleDesc" sortProperty="roleDesc">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "roleDesc", "columnIndex":"4", "filterProperty": "roleDesc", "sortProperty": "roleDesc", "type":"string", "leadingProperty": "roleDesc"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>colRoleName}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>roleDesc}"/>
+                    </ui:template>
+                </ui:Column> -->
+                <!-- <ui:Column width="6em" filterProperty="catID" sortProperty="catID">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "catID", "columnIndex":"5", "filterProperty": "catID", "sortProperty": "catID", "type":"string", "leadingProperty": "catID"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>colCatID}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>catID}"/>
+                    </ui:template>
+                </ui:Column> -->
+                <!-- <ui:Column width="12em" filterProperty="catDesc" sortProperty="catDesc">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "catDesc", "columnIndex":"6", "filterProperty": "catDesc", "sortProperty": "catDesc", "type":"string", "leadingProperty": "catDesc"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>colCatName}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>catDesc}"/>
+                    </ui:template>
+                </ui:Column> -->
+                <!-- <ui:Column width="6em" filterProperty="groupID" sortProperty="groupID">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "groupID", "columnIndex":"7", "filterProperty": "groupID", "sortProperty": "groupID", "type":"string", "leadingProperty": "groupID"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>colGroupID}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>groupID}"/>
+                    </ui:template>
+                </ui:Column> -->
+                <!-- <ui:Column width="12em" filterProperty="groupDesc" sortProperty="groupDesc">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "groupDesc", "columnIndex":"8", "filterProperty": "groupDesc", "sortProperty": "groupDesc", "type":"string", "leadingProperty": "groupDesc"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>colGroupName}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>groupDesc}"/>
+                    </ui:template>
+                </ui:Column> -->
+                <ui:Column width="15rem" visible="false" hAlign="Center" filterProperty="ApplicationType" sortProperty="ApplicationType">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "ApplicationType", "columnIndex":"9", "filterProperty": "ApplicationType", "sortProperty": "ApplicationType", "type":"string", "leadingProperty": "ApplicationType"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>appType}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>ApplicationType}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="12rem" visible="false" filterProperty="RoleName" sortProperty="RoleName">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "RoleName", "columnIndex":"10", "filterProperty": "RoleName", "sortProperty": "RoleName", "type":"string", "leadingProperty": "RoleName"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>role}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>RoleName}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="6rem" visible="false" hAlign="Center" filterProperty="Lighthouse" >
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "Lighthouse", "columnIndex":"11", "filterProperty": "Lighthouse", "type":"boolean", "leadingProperty": "Lighthouse"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>lighthouse}"/>
+                    <ui:template>
+                        <core:Icon color="{= ${LocalModel>Lighthouse} ? '#168282':'#C14646'}" size="1.4em" src="sap-icon://BusinessSuiteInAppSymbols/icon-lighthouse" tooltip="{= ${LocalModel>Lighthouse} ? 'Yes':'No'}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="45rem" visible="false" hAlign="Center" filterProperty="GTMLoBName" sortProperty="GTMLoBName">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "GTMLoBName", "columnIndex":"12", "filterProperty": "GTMLoBName", "sortProperty": "GTMLoBName", "type":"string", "leadingProperty": "GTMLoBName"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>funcArea}"/>
+                    <ui:template>
+                        <l:HorizontalLayout class="sapUiTinyMarginTop" allowWrapping="true" content="{LocalModel>LoB}">
+                            <tnt:InfoLabel class="sapUiTinyMarginBegin" text="{LocalModel>FA}" colorScheme="7"/>
+                        </l:HorizontalLayout>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="15rem" visible="false" filterProperty="BusinessRole" sortProperty="BusinessRole">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "BusinessRole", "columnIndex":"13", "filterProperty": "BusinessRole", "sortProperty": "BusinessRole", "type":"string", "leadingProperty": "BusinessRole"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>businessRole}"/>
+                    <ui:template>
+                        <!-- <Text text="{LocalModel>BusinessRole}"/> -->
+                        <TextArea rows="1" value="{LocalModel>BusinessRole}" 
+                            wrapping="None" tooltip="{LocalModel>BusinessRole}" 
+                            width="100%" editable="false" visible="{= ${LocalModel>BusinessRole} ? true: false}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="9rem" visible="false" hAlign="Center" filterProperty="FormFactors" sortProperty="FormFactors">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "FormFactors", "columnIndex":"14", "filterProperty": "FormFactors", "sortProperty": "FormFactors", "type":"string", "leadingProperty": "FormFactors"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>deviceTypes}"/>
+                    <ui:template>
+                        <FlexBox alignItems="Center" justifyContent="SpaceAround">
+                            <core:Icon src="sap-icon://laptop" tooltip="Desktop" color="{= ${LocalModel>FormFactors}.indexOf('Desktop') !== -1 ? '#168282':'#C14646'}" />
+                            <core:Icon src="sap-icon://iphone" tooltip="Smartphone" color="{= ${LocalModel>FormFactors}.indexOf('Smartphone') !== -1 ? '#168282':'#C14646'}"/>
+                            <core:Icon src="sap-icon://ipad" tooltip="Tablet" color="{= ${LocalModel>FormFactors}.indexOf('Tablet') !== -1 ? '#168282':'#C14646'}"/>
+                        </FlexBox>
+                        <!-- <Text text="{LocalModel>FormFactors}"/> -->
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="15rem" visible="false" filterProperty="UITechnology" sortProperty="UITechnology">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "UITechnology", "columnIndex":"15", "filterProperty": "UITechnology", "sortProperty": "UITechnology", "type":"string", "leadingProperty": "UITechnology"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>uiTech}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>UITechnology}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="15rem" filterProperty="BSPName" sortProperty="BSPName">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "BSPName", "columnIndex":"16", "filterProperty": "BSPName", "sortProperty": "BSPName", "type":"string", "leadingProperty": "BSPName"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>ui5TechName}"/>
+                    <ui:template>
+                        <Text text="{LocalModel>BSPName}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="40rem" filterProperty="oDataSrv" sortProperty="oDataSrv">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "oDataSrv", "columnIndex":"17", "filterProperty": "oDataSrv", "sortProperty": "oDataSrv", "type":"string", "leadingProperty": "oDataSrv"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>oDataSrvs}"/>
+                    <ui:template>
+                        <!-- <Text text="{LocalModel>oDataSrv}"/> -->
+                        <TextArea rows="1" value="{LocalModel>oDataSrv}" 
+                            wrapping="None" tooltip="{LocalModel>oDataSrv}" 
+                            width="100%" editable="false" visible="{= ${LocalModel>oDataSrv} ? true: false}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="40rem" filterProperty="TargetMapping" sortProperty="TargetMapping">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "TargetMapping", "columnIndex":"18", "filterProperty": "TargetMapping", "sortProperty": "TargetMapping", "type":"string", "leadingProperty": "TargetMapping"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>targetMapping}"/>
+                    <ui:template>
+                        <!-- <Text text="{LocalModel>TargetMapping}"/> -->
+                        <TextArea rows="1" value="{LocalModel>TargetMapping}" 
+                            wrapping="None" tooltip="{LocalModel>TargetMapping}" 
+                            width="100%" editable="false" visible="{= ${LocalModel>TargetMapping} ? true: false}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="20em" visible="false" filterProperty="TechnicalCatalog" sortProperty="TechnicalCatalog">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "TechnicalCatalog", "columnIndex":"19", "filterProperty": "TechnicalCatalog", "sortProperty": "TechnicalCatalog", "type":"string", "leadingProperty": "TechnicalCatalog"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>technicalCatalog}"/>
+                    <ui:template>
+                        <!-- <Text text="{LocalModel>TechnicalCatalog}"/> -->
+                        <TextArea rows="1" value="{LocalModel>TechnicalCatalog}" 
+                            wrapping="None" tooltip="{LocalModel>TechnicalCatalog}" 
+                            width="100%" editable="false" visible="{= ${LocalModel>TechnicalCatalog} ? true: false}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="20em" visible="false" filterProperty="BusinessCatalog" sortProperty="BusinessCatalog">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "BusinessCatalog", "columnIndex":"20", "filterProperty": "BusinessCatalog", "sortProperty": "BusinessCatalog", "type":"string", "leadingProperty": "BusinessCatalog"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>businessCatalog}"/>
+                    <ui:template>
+                        <!-- <Text text="{LocalModel>BusinessCatalog}"/> -->
+                        <TextArea rows="1" value="{LocalModel>BusinessCatalog}" 
+                            wrapping="None" tooltip="{LocalModel>BusinessCatalog}" 
+                            width="100%" editable="false" visible="{= ${LocalModel>BusinessCatalog} ? true: false}"/>
+                    </ui:template>
+                </ui:Column>
+                <ui:Column width="20em" visible="false" filterProperty="BusinessGroup" sortProperty="BusinessGroup">
+                    <ui:customData>
+                        <core:CustomData key="p13nData"
+                            value='\{"columnKey": "BusinessGroup", "columnIndex":"21", "filterProperty": "BusinessGroup", "sortProperty": "BusinessGroup", "type":"string", "leadingProperty": "BusinessGroup"}'/>
+                    </ui:customData>
+                    <Label design="Bold" text="{i18n>businessGroup}"/>
+                    <ui:template>
+                        <!-- <Text text="{LocalModel>BusinessGroup}"/> -->
+                        <TextArea rows="1" value="{LocalModel>BusinessGroup}" 
+                            wrapping="None" tooltip="{LocalModel>BusinessGroup}" 
+                            width="100%" editable="false" visible="{= ${LocalModel>BusinessGroup} ? true: false}"/>
+                    </ui:template>
+                </ui:Column>
+            </ui:columns>
+        </ui:Table>
+    </smartTable:SmartTable>
+</core:FragmentDefinition>

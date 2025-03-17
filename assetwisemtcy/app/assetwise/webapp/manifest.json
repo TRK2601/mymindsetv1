@@ -1,0 +1,232 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "com.mindset.ui.assetwise",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.12.3",
+      "toolsId": "9b9fcffb-bc4d-4b3e-8ab7-ead364cdc218"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/assetwise/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.8",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.ushell": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.mindset.ui.assetwise.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "synchronizationMode": "None",
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      },
+      "jsonModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {},
+        "preload": true
+      },
+      "localModel": {
+        "type": "sap.ui.model.json.JSONModel",
+        "settings": {},
+        "preload": true
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "AssetMasterList",
+          "target": "AssetMasterList"
+        },
+        {
+          "pattern": "AssetMaster({key}):?query:",
+          "name": "AssetMasterObjectPage",
+          "target": "AssetMasterObjectPage"
+        },
+        {
+          "pattern": "MassUpload",
+          "name": "MassUpload",
+          "target": "MassUploadPage"
+        }
+      ],
+      "targets": {
+        "AssetMasterList": {
+          "type": "Component",
+          "id": "AssetMasterList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/AssetMaster",
+              "variantManagement": "Page",
+              "navigation": {
+                "AssetMaster": {
+                  "detail": {
+                    "route": "AssetMasterObjectPage"
+                  }
+                }
+              },
+              "initialLoad": "Enabled",
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "actions": {
+                    "uploadFileAction": {
+                      "press": "com.mindset.ui.assetwise.ext.controller.MassUpload.uploadFileHandler",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Mass Upload"
+                    },
+                    "Dashboard": {
+                      "press": "com.mindset.ui.assetwise.ext.controller.Dashboard.onPressDashboardBtn",
+                      "visible": true,
+                      "enabled": true,
+                      "requiresSelection": false,
+                      "text": "Visualize Data"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "AssetMasterObjectPage": {
+          "type": "Component",
+          "id": "AssetMasterObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navToListOnSave": true,
+              "editableHeaderContent": false,
+              "showHeaderContent": false,
+              "contextPath": "/AssetMaster",
+              "sectionLayout": "Tabs",
+              "content": {
+                "body": {
+                  "sections": {
+                    "customSectionAttachments": {
+                      "template": "com.mindset.ui.assetwise.custom.fragment.Attachments",
+                      "title": "Attachments",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "GeneratedFacet6"
+                      },
+                      "type": "XMLFragment"
+                    },
+                    "customSectionHistory": {
+                      "template": "com.mindset.ui.assetwise.custom.fragment.History",
+                      "title": "Change Log",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "customSectionAttachments"
+                      },
+                      "type": "XMLFragment"
+                    }
+                  }
+                },
+                "header": {
+                  "actions": {
+                    "UploadAssetImgID": {
+                      "press": "com.mindset.ui.assetwise.ext.controller.UploadAssetImg.UploadAssetImgHandler",
+                      "visible": true,
+                      "enabled": true
+                    },
+                    "QRCodeAction": {
+                      "press": "com.mindset.ui.assetwise.ext.controller.QRCodeController.handleQRCode",
+                      "enabled": true,
+                      "visible": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "MassUploadPage": {
+          "type": "Component",
+          "id": "UploadFilePage",
+          "name": "sap.fe.core.fpm",
+          "options": {
+            "settings": {
+              "viewName": "com.mindset.ui.assetwise.ext.view.MassUpload",
+              "contextPath": "/AssetMaster"
+            }
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {
+        "sap.ui.controllerExtensions": {
+          "sap.fe.templates.ObjectPage.ObjectPageController": {
+            "controllerName": "com.mindset.ui.assetwise.ext.controller.ObjectPageExt"
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  }
+}

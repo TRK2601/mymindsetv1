@@ -1,0 +1,52 @@
+<core:FragmentDefinition
+    xmlns="sap.m" xmlns:u="sap.ui.unified"
+	xmlns:ui="sap.ui.table"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<VBox>
+	<ui:Table id="BaseLocTbl" rows="{LocalModel>/BaseLocation}" visible="{= ${LocalModel>/SelItem} === 'BaseLocation' ? true : false}">
+		<ui:rowSettingsTemplate>
+			<ui:RowSettings highlight="{= ${LocalModel>type} === 'D' ? 'Error': 'None'}" highlightText="{= ${LocalModel>type} === 'D' ? 'Marked for delete': ''}"/>
+		</ui:rowSettingsTemplate>
+		<ui:extension>
+		<OverflowToolbar style="Clear">
+			<ToolbarSpacer/>
+			<u:FileUploader    id="fileUploader_BaseLocation"  name="myFileUpload"    fileType="csv,xlsx"  sameFilenameAllowed="true"  tooltip="Upload your file to the server"  
+				placeholder="Upload your file here..."  uploadComplete="handleUploadComplete"  change="onFileUploadChange" >
+				<u:customData>
+					<core:CustomData key="Path" value="BaseLocation" ></core:CustomData>
+					<core:CustomData key="TableColumns" value="Code" ></core:CustomData>
+					<core:CustomData key="TableColumnsProperties" value="code" ></core:CustomData>
+				</u:customData>
+			</u:FileUploader>
+			<Button  icon="sap-icon://download"   text="Template"   press="handleDownloadTemplate">
+				<customData>
+					<core:CustomData key="Path" value="/BaseLocation" ></core:CustomData>
+					<core:CustomData key="Columns" value="Code/code/str" ></core:CustomData>
+				</customData>
+			</Button>
+			<Button  icon="sap-icon://delete" type="Reject" text="Delete" press="onPressDelete">
+				<customData>
+					<core:CustomData key="TblId" value="BaseLocTbl" ></core:CustomData>
+					<core:CustomData key="Path" value="/BaseLocation" ></core:CustomData>
+				</customData>
+			</Button>
+			<Button  icon="sap-icon://add" text="Add" type="Emphasized" press="onPressAddRow">
+				<customData>
+					<core:CustomData key="Path" value="/BaseLocation" ></core:CustomData>
+				</customData>
+			</Button>
+		</OverflowToolbar>
+		</ui:extension>
+		<ui:columns>
+		<!-- key -->
+			<ui:Column >
+				<Label text="Code" />
+				<ui:template>
+					<Input value="{LocalModel>code}" editable="{= !${LocalModel>editable} ? false : true}"/>
+				</ui:template>
+			</ui:Column>
+		</ui:columns>
+	</ui:Table>
+	</VBox>
+</core:FragmentDefinition>

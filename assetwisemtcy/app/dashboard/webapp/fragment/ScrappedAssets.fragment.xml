@@ -1,0 +1,59 @@
+<core:FragmentDefinition  xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:viz="sap.viz.ui5.controls"  xmlns:c="sap.suite.ui.commons"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"  xmlns:viz.data="sap.viz.ui5.data"
+    displayBlock="true"
+    xmlns="sap.m">
+    <f:Card id="_IDGenCard1Scrapped">
+        <f:header>
+            <card:Header id="_IDGenHeaderScrapped" title="Assets to be scrapped by this year end" subtitle="" />
+        </f:header>
+        <f:content>
+            <VBox id="_IDGenVBox1_Scrapped" width="85%">
+                <HBox id="_IDGenHBox1Scrapped"  class="sapUiSmallMarginBegin">
+                    <VBox id="_IDGenVBox10Scrapped" visible="false"> 
+                        <Label id="_IDGenLabel01Scrapped" text="Year"></Label>
+                        <Select id="_IDGenSelect01"    items="{LocalModel>/Years}"   change="onSelectYearChange">
+                            <core:Item id="_IDGenItem201" key="{LocalModel>key}"  text="{LocalModel>value}"></core:Item>
+                         </Select>
+                    </VBox>
+                </HBox>
+                <c:ChartContainer  class="sapUiSmallMarginBegin sapUiLargeMarginTop"	id="chartContainerScrapped"		showFullScreen="true"	showPersonalization="false"
+			    	autoAdjustHeight="false"	personalizationPress="attachPersonalizationPress"	contentChange="attachContentChange">
+                    <c:content>
+                        <c:ChartContainerContent id="_IDGenChartContainerScrapped"  icon="sap-icon://line-chart">
+                            <c:content>
+                                <viz:VizFrame id="idVizdFramesScrappedChart"  uiConfig="{applicationSet:'fiori'}"  width="100%"  vizType="column" vizProperties="{plotArea: {colorPalette :['#2F6497'], drawingEffect: 'glossy'}, title:{ text:'',visible:true}, dataLabel:{title:{text:'Groups'},visible:true,showTotal:true},valueAxis:{ title:{text:'No.of days to be scrapped'}}}"> 
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset id="_IDGenddFlattenedDataset1Scrapped" data="{LocalModel>/ScrappedDataSet}">
+                                            <viz.data:dimensions>
+                                                <viz.data:DimensionDefinition id="_IDGdenDimensionDefinition01" name="Sub Group" value="{LocalModel>subGroup}"/>
+                                                <viz.data:DimensionDefinition id="_IDGdenDimensionSrapped" name="Group" value="{LocalModel>group}"/> 
+                                                <viz.data:DimensionDefinition id="_IDGdsenDimensioScrap" name="Functional Location" value="{LocalModel>funcLocation}"/>
+                                                <viz.data:DimensionDefinition id="_IDGenDddimensionSracp" name="Base Location" value="{LocalModel>baseLocation}"/>
+                                            </viz.data:dimensions>
+                                            <viz.data:measures>
+                                                <viz.data:MeasureDefinition id="_IDGe2nMeasureDefinitionSracpped" name="Days" value="{LocalModel>scrappedtodays}"/>
+                                            </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
+                                    <viz:feeds>
+                                        <viz.feeds:FeedItem id="valueAxisFeed3Scrapped"  uid="valueAxis" type="Measure" values="Days"/>
+                                        <viz.feeds:FeedItem id="categoryA3xisFeed2Scrapped" uid="categoryAxis" type="Dimension" values="Base Location,Functional Location,Group,Sub Group"/>
+                                    </viz:feeds>
+                                    <viz:dependents>
+                                        <viz:Popover id="idPopOverScrapped"></viz:Popover>
+                                    </viz:dependents>
+                                </viz:VizFrame>
+                            </c:content>
+                        </c:ChartContainerContent>
+                    </c:content>
+			    </c:ChartContainer>                
+            </VBox>
+        </f:content>
+    </f:Card>
+</core:FragmentDefinition>

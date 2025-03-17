@@ -1,0 +1,49 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+    <Dialog title ="{i18n>inquiryForm}" contentWidth="22em" busyIndicatorDelay="0" class="sapUiSizeCompact" escapeHandler=".handleEscape">
+        <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="{i18n>name}" required="true" />
+				<Input value="{InquiryFrom>/userName}" valueState="{/NameVS}">
+                    
+                </Input>
+				<Label text="{i18n>email}" />
+				<Input value="{InquiryFrom>/email}" editable="false" >
+                    
+                </Input>
+				<Label text="{i18n>designation}" />
+				<Input value="{InquiryFrom>/designation}" >
+                    
+                </Input>
+				<Label text="{i18n>organization}" />
+				<Input value="{InquiryFrom>/organization}" >
+                    
+                </Input>
+				<Label text="{i18n>contactNo}" />
+				<Input value="{InquiryFrom>/contactNo}" type="Number" >
+                    
+                </Input>
+				<Label text="{i18n>plannedDate}" />
+                <Select forceSelection="false"  selectedKey="{InquiryFrom>/plannedusage}" >
+                    <core:Item key="01 " text="Immediately" />
+                    <core:Item key="02 " text="This Quarter" />
+                    <core:Item key="01 " text="Next Quarter" />
+                    <core:Item key="02 " text="Next Year" />
+                    <core:Item key="01 " text="I do not know yet, but just exploring the tool." />
+                </Select>
+                <Label text="{i18n>comments}" />
+				<TextArea value="{InquiryFrom>/comments}" >
+                    
+                </TextArea>
+			</f:content>
+		</f:SimpleForm>
+        <endButton>
+            <Button text="{i18n>continue}" type="Accept" press="onSubmitInquiryFormInfo" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,167 @@
+_schema-version: "3.1"
+ID: EmpSocialDirectory
+description: A simple CAP project.
+version: 2.3.0
+modules:
+- name: EmpSocialDirectory-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: EmpSocialDirectory-db
+  - name: EmpSocialDirectory-auth
+  - name: emp_portal_slack_notify_job
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm-ci
+    ignore:
+    - .env
+    - ./node_modules
+    - ./default-env.json
+- name: EmpSocialDirectory-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: EmpSocialDirectory-db
+  parameters:
+    buildpack: nodejs_buildpack
+    ignore:
+    - .env
+    - ./node_modules
+    - ./default-env.json
+- name: EmpSocialDirectory-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: EmpSocialDirectory-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - appaddcertification.zip
+      name: appaddcertification
+      target-path: resources/
+    - artifacts:
+      - appaddskills.zip
+      name: appaddskills
+      target-path: resources/
+    - artifacts:
+      - appviewempcertification.zip
+      name: appviewempcertification
+      target-path: resources/
+- name: appaddcertification
+  type: html5
+  path: app/addcertification
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: EmpSocialDirectory-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: EmpSocialDirectory-destination-service
+    parameters:
+      content-target: true
+  - name: EmpSocialDirectory-repo-host
+    parameters:
+      service-key:
+        name: EmpSocialDirectory-repo-host-key
+  - name: EmpSocialDirectory-auth
+    parameters:
+      service-key:
+        name: EmpSocialDirectory-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: com_mindset_empsocialdirectory_apps_EmpSocialDirectory_repo_host
+          ServiceInstanceName: EmpSocialDirectory-html5-srv
+          ServiceKeyName: EmpSocialDirectory-repo-host-key
+          sap.cloud.service: com.mindset.empsocialdirectory.apps
+        - Authentication: OAuth2UserTokenExchange
+          Name: com_mindset_empsocialdirectory_apps_EmpSocialDirectory_auth
+          ServiceInstanceName: EmpSocialDirectory-auth
+          ServiceKeyName: EmpSocialDirectory-auth-key
+          sap.cloud.service: com.mindset.empsocialdirectory.apps
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+- name: appaddskills
+  type: html5
+  path: app/addskills
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: appviewempcertification
+  type: html5
+  path: app/viewempcertification
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: EmpSocialDirectory-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+  properties:
+    hdi-service-name: ${service-name}
+- name: EmpSocialDirectory-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: com-mindset-empsocialdirectory
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: EmpSocialDirectory-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: EmpSocialDirectory-html5-srv
+    service-plan: app-host
+- name: EmpSocialDirectory-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      version: 1.0.0
+    service: destination
+    service-name: EmpSocialDirectory-destination-service
+    service-plan: lite
+- name: emp_portal_slack_notify_job
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: jobscheduler     
+    service-plan: standard  
+    config:
+      enable-xsuaa-support: true   
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm install --production
+    - npm ci
+    - npx -p @sap/cds-dk cds build --production
+    - npx rimraf gen/db/src/gen/data

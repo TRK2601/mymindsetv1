@@ -1,0 +1,90 @@
+_schema-version: '3.1'
+ID: asw
+version: 1.0.0
+description: "A simple CAP project."
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx cds build --production
+modules:
+  - name: asw-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: asw-auth
+      - name: asw-servicemanager
+      - name: asw-registry
+      - name: app-api
+        properties:
+          SUBSCRIPTION_URL: "~{app-protocol}://\\${tenant_subdomain}-~{app-uri}"
+
+  - name: asw
+    type: approuter.nodejs
+    path: app/
+    parameters:
+      stack: cflinuxfs4
+      keep-existing-routes: true
+      disk-quota: 512M
+      memory: 512M    
+    properties:
+      TENANT_HOST_PATTERN: '^(.*)-${default-uri}'
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: '${protocol}'
+          app-uri: '${default-uri}'
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api # must be used in xs-app.json as well
+          url: ~{srv-url}
+          forwardAuthToken: true
+      - name: asw-auth
+
+resources:
+  - name: asw-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: 'assetwise-app01'
+        tenant-mode: shared
+  - name: asw-registry
+    type: org.cloudfoundry.managed-service
+    requires:
+      - name: srv-api
+    parameters:
+      service: saas-registry
+      service-plan: application
+      config:
+        xsappname: 'assetwise-app01'
+        appName: mindset-assetwisesaasapp
+        displayName: Asset Wise
+        description: An admin app to maintain assets
+        category: MINDSET
+        appUrls:
+          getDependencies: ~{srv-api/srv-url}/-/cds/saas-provisioning/dependencies
+          onSubscription: '~{srv-api/srv-url}/-/cds/saas-provisioning/tenant/{tenantId}'
+          onSubscriptionAsync: false
+          onUnSubscriptionAsync: false
+          callbackTimeoutMillis: 100000
+
+  - name: asw-servicemanager
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: service-manager
+      service-plan: container

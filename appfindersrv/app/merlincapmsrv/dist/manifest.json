@@ -1,0 +1,195 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "com.mindset.accelerator.list.merlincapmsrv",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.13.1",
+            "toolsId": "f4c33a10-aa25-40fb-b060-b1cf88deb892"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "api/v2/srv/ZMINDSET_S4APPFINDER_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "merlinlistreport-create": {
+                    "semanticObject": "merlinlistreport",
+                    "action": "create",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": "sap-icon://expense-report",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.122.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.fe.templates": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.mindset.accelerator.list.merlincapmsrv.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "routes": [
+                {
+                    "pattern": ":?query:",
+                    "name": "ShareInfoSetList",
+                    "target": "ShareInfoSetList"
+                },
+                {
+                    "pattern": "ShareInfoSet({key}):?query:",
+                    "name": "ShareInfoSetObjectPage",
+                    "target": "ShareInfoSetObjectPage"
+                }
+            ],
+            "targets": {
+                "ShareInfoSetList": {
+                    "type": "Component",
+                    "id": "ShareInfoSetList",
+                    "name": "sap.fe.templates.ListReport",
+                    "options": {
+                        "settings": {
+                            "contextPath": "/ShareInfoSet",
+                            "variantManagement": "Page",
+                            "initialLoad": true,
+                            "navigation": {
+                                "ShareInfoSet": {
+                                    "detail": {
+                                        "route": "ShareInfoSetObjectPage"
+                                    }
+                                }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "columns": {
+                                        "Copy": {
+                                            "header": "Copy",
+                                            "width": "3.5rem",
+                                            "position": {
+                                                "anchor": "DataField::passKey",
+                                                "placement": "After"
+                                            },
+                                            "template": "com.mindset.accelerator.list.merlincapmsrv.ext.fragment.Copy"
+                                        },
+                                        "DataField::lastAccessDate": {
+                                            "width": "11.5rem"
+                                        },
+                                        "DataField::passKey": {
+                                            "width": "11rem"
+                                        },
+                                        "DataField::customerName": {
+                                            "width": "11.5rem"
+                                        },
+                                        "DataField::createdBy": {
+                                            "width": "14.5rem"
+                                        },
+                                        "DataField::count": {
+                                            "width": "6.5rem"
+                                        },
+                                        "DataField::createdAt": {
+                                            "width": "11.5rem"
+                                        },
+                                        "DataField::modifiedAt": {
+                                            "width": "11.5rem"
+                                        },
+                                        "DataField::selectedVersion": {
+                                            "width": "4rem"
+                                        }
+                                    }
+                                }
+                            },
+                            "defaultTemplateAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionPresentationVariant#table"
+                        }
+                    }
+                },
+                "ShareInfoSetObjectPage": {
+                    "type": "Component",
+                    "id": "ShareInfoSetObjectPage",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "editableHeaderContent": false,
+                            "contextPath": "/ShareInfoSet"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "merlinadminlist"
+    }
+}

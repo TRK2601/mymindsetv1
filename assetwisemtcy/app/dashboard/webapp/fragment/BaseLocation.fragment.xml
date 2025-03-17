@@ -1,0 +1,73 @@
+<core:FragmentDefinition
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:viz="sap.viz.ui5.controls"  xmlns:c="sap.suite.ui.commons"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"  xmlns:viz.data="sap.viz.ui5.data"
+    displayBlock="true"
+    xmlns="sap.m">
+     <f:Card id="_IDGenCard1">
+        <f:content>
+            <VBox id="VboxidFunLocation" width="85%">
+                <HBox id="_IDGenHBox1">
+                    <form:SimpleForm id="SimpleFormChangeBaseLocForm"    editable="true"  layout="ResponsiveGridLayout"   labelSpanXL="3"
+                        labelSpanL="3"  labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false" >
+                        <form:content>
+                            <Label id="_IDGenLabel1" text="Base Location"></Label>
+                            <Select id="_IDGenSelect1" selectedKey="{LocalModel>/sSelectedBaseLocation}" change="onSelectBaseLocationChange" items="{LocalModel>/aBaseLocDropdown}">
+                                <core:Item id="_IDGenItem1" key="{LocalModel>key}" text="{LocalModel>text}"></core:Item>
+                            </Select>
+                        </form:content>
+                    </form:SimpleForm>
+                </HBox>
+                <c:ChartContainer class="sapUiSmallMarginBegin"
+				id="chartContainerBaseLoc"
+				showFullScreen="true"
+				showPersonalization="false"
+				autoAdjustHeight="false"
+				personalizationPress="attachPersonalizationPress"
+				contentChange="attachContentChange">
+				<c:content>
+					<c:ChartContainerContent id="_IDGenChartContainerContent1"
+						icon="sap-icon://line-chart">
+                          	<c:content>
+                                <viz:VizFrame id="BaseLocationIdVizFrame"  uiConfig="{applicationSet:'fiori'}"  width="400px"  vizType="column" vizProperties="{plotArea: {colorPalette :['#002080', '#FFFF00'], drawingEffect: 'glossy'}, title:{ text:'',visible:true},dataLabel:{title:{text:'Functional Locations'},visible:true,showTotal:true},valueAxis:{ title:{text:'Asset NetValue and No.of Assets'}}}"> 
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset id="_IDGenFlattenedDataset1" data="{LocalModel>/aBaseLocChartData}">
+                                            <viz.data:dimensions>
+                                                <viz.data:DimensionDefinition id="_IDGenDimensionDefinition1" name="Functional Location" value="{LocalModel>funcLocation}"/>
+                                                </viz.data:dimensions>
+                                            <viz.data:measures>
+                                                <viz.data:MeasureDefinition id="_IDGenMeasureDefinition1" name="Asset Net value" value="{LocalModel>assetNetValue}"/>
+                                                <viz.data:MeasureDefinition id="_IDGenMeasureDefinition2" name="No.of Assets" value="{LocalModel>noOfAssets}"/>
+                                            </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
+                                    <viz:feeds>
+                                        <viz.feeds:FeedItem id="valueAxisFeed3"  uid="valueAxis" type="Measure" values="No.of Assets"/>
+                                        <viz.feeds:FeedItem id="valueAxisFeed2"  uid="valueAxis" type="Measure" values="Asset Net value"/>
+                                        <viz.feeds:FeedItem id="categoryAxisFeed2" uid="categoryAxis" type="Dimension" values="Functional Location"/>
+                                    </viz:feeds>
+                                </viz:VizFrame>
+                            </c:content>
+					</c:ChartContainerContent>
+				</c:content>
+			</c:ChartContainer>     
+                    
+            </VBox>
+        </f:content>
+    </f:Card>
+</core:FragmentDefinition>

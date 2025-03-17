@@ -1,0 +1,124 @@
+{
+    "name": "EmpSocialDirectory",
+    "version": "2.3.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^6.8.4",
+        "@sap/cds-dk": "^7",
+        "@sap/xsenv": "^5.1.0",
+        "@sap/xssec": "^3.3.4",
+        "@slack/web-api": "^7.0.2",
+        "express": "^4.18.2",
+        "hdb": "^0.19.6",
+        "latest-version": "^7.0.0",
+        "passport": "^0.6.0"
+    },
+    "devDependencies": {
+        "@sap/ux-specification": "^1.108.16",
+        "mbt": "^1.2.25",
+        "rimraf": "^3.0.2",
+        "sqlite3": "^5.1.6"
+    },
+    "scripts": {
+        "start": "cds run",
+        "deploy-local": "cds deploy --to sqlite",
+        "build:mta": "mbt build",
+        "watch-addcertification": "cds watch --open addcertification/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy EmpSocialDirectory --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-addskills": "cds watch --open addskills/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-viewempcertification": "cds watch --open viewempcertification/webapp/index.html?sap-ui-xx-viewCache=false"
+    },
+    "eslintConfig": {
+        "extends": "eslint:recommended",
+        "env": {
+            "es2020": true,
+            "node": true,
+            "jest": true,
+            "mocha": true
+        },
+        "globals": {
+            "SELECT": true,
+            "INSERT": true,
+            "UPDATE": true,
+            "DELETE": true,
+            "CREATE": true,
+            "DROP": true,
+            "CDL": true,
+            "CQL": true,
+            "CXL": true,
+            "cds": true
+        },
+        "rules": {
+            "no-console": "off",
+            "require-atomic-updates": "off"
+        }
+    },
+    "cds": {
+        "requires": {
+            "[production]": {
+                "db": {
+                    "kind": "hana-cloud",
+                    "schema_evolution": "auto",
+                    "credentials": {
+                        "database": "emp-social-db.db"
+                    }
+                },
+                "auth": {
+                    "kind": "xsuaa"
+                }
+            },
+            "db": {
+                "kind": "sqlite",
+                "credentials": {
+                    "database": "db.sqlite"
+                }
+            },
+            "auth": {
+                "kind": "basic",
+                "users": {
+                    "starman@mindsetconsulting.com": {
+                        "password": "initial",
+                        "ID": "starman@mindsetconsulting.com",
+                        "roles": [
+                            "com.mindset.role.resourcemanager"
+                        ]
+                    },
+                    "therock@mindsetconsulting.com": {
+                        "password": "initial",
+                        "ID": "therock@mindsetconsulting.com",
+                        "roles": [
+                            "com.mindset.role.us.employees"
+                        ]
+                    },
+                    "inigo@mindsetconsulting.com": {
+                        "password": "initial",
+                        "ID": "inigo@mindsetconsulting.com",
+                        "roles": [
+                            "com.mindset.role.us.employees"
+                        ]
+                    },
+                    "loveleensaini@mindsetconsulting.com": {
+                        "password": "initial",
+                        "ID": "loveleensaini@mindsetconsulting.com",
+                        "roles": [
+                            "com.mindset.role.us.employees"
+                        ]
+                    }
+                }
+            }
+        },
+        "hana": {
+            "deploy-format": "hdbtable"
+        }
+    },
+    "sapux": [
+        "app/addcertification",
+        "app/addskills",
+        "app/viewempcertification"
+    ]
+}

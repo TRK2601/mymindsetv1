@@ -1,0 +1,86 @@
+<mvc:View
+    controllerName="com.mindset.accelerator.appfinder.v2.controller.Main" xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true" xmlns:core="sap.ui.core" xmlns="sap.m" height="100%" xmlns:f="sap.f">
+        <!-- <Page id="homePage" showHeader="false" busyIndicatorDelay="0" visible="{= ${LocalModel>/showPage}}" enableScrolling="true"> -->
+        <f:DynamicPage
+        id="homePage"
+        class="sapUiNoContentPadding"
+        showFooter="true" busyIndicatorDelay="0" visible="{= ${LocalModel>/showPage}}">
+            <f:content>
+                <Wizard id="s4AppActvtnStpWizard" height="auto" 
+                        showNextButton="false" navigationChange="onTapWizardStep"
+                        renderMode="Page">
+                    <WizardStep id="upload"
+                                icon="sap-icon://upload"
+                                title="Initiate">
+                        <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.Upload.View" type="XML" />
+                    </WizardStep>
+                    <WizardStep id="displayApps"
+                                icon="sap-icon://table-chart"
+                                title="Select"
+                                >
+                        <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.Main.View" type="XML" />
+                    </WizardStep>
+                    <!-- MER-178 -->
+                    <!-- <WizardStep id="appsReadyForActvatn"
+                                icon="sap-icon://activate"
+                                title="Activate"
+                                >
+                        <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.Activation.View" type="XML" />
+                    </WizardStep> -->
+                    <!-- <WizardStep id="createCGR"
+                                icon="sap-icon://create-form"
+                                title="CGR"
+                                >
+                        <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.LPConfig.View" type="XML" />
+                    </WizardStep> -->
+                    <!-- <WizardStep id="mapCGR"
+                                icon="sap-icon://chain-link"
+                                title="Mapping"
+                                >
+                        <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.Mapping.View" type="XML" />
+                    </WizardStep> -->
+                    <WizardStep
+                            id="final"
+                            icon="sap-icon://account"
+                            title="Review">
+                        <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.Review.View" type="XML" />    
+                    </WizardStep>
+                </Wizard>
+            </f:content>
+            <!-- <footer> -->
+            <f:footer>
+                <Toolbar >
+                    <Button text="{i18n>previous}" icon="sap-icon://nav-back" visible="{LocalModel>/previousButtonVisible}" type="Reject" press="onPreviousButtonPress"/>
+                    <ToolbarSpacer ></ToolbarSpacer>
+                    <!-- <Button type="Emphasized" text="{i18n>submit}" visible="{LocalModel>/submitButtonVisible}" press="onNextButtonPress" enabled="{= ${LocalModel>/chooseFromOption} === 0 ? ${LocalModel>/PastedTcodes} ? true : false : ${LocalModel>/File} ? true : false}"/> -->
+                    <Button text="{i18n>next}" iconFirst="false" visible="{LocalModel>/nextButtonVisible}" 
+                        icon="sap-icon://navigation-right-arrow" type="Accept" press="onNextButtonPress"/>
+                    <Button text="{i18n>saveAndProceed}" iconFirst="false" visible="{LocalModel>/saveAndPrcdButtonVisible}" 
+                        icon="sap-icon://navigation-right-arrow" type="Accept" press="onNextButtonPress"/>                            
+                    <!-- MER-177 -->
+                    <Button text="{i18n>reportGenerationData}" icon="sap-icon://settings" press="onReportSave"
+                            ariaLabelledBy="actionButtonLabel" type="Accept" visible="{LocalModel>/reportGenerationData}"
+                            enabled="{LocalModel>/AssignAppsEnable}"/>
+                    <!-- <MessageStrip text="{i18n>messageStrip}" type="Warning"	showIcon="true"	
+                        showCloseButton="false" visible="{LocalModel>/reportUpdateData}" enableFormattedText="true"/> -->
+                    <HBox width="50%" visible="{LocalModel>/reportUpdateData}">
+                        <core:Icon src="sap-icon://warning" color="#f5a442" class="sapUiTinyMarginEnd"></core:Icon>
+                        <Text text="{i18n>messageStrip}" wrapping="true" class="sTextColor"></Text>
+                    </HBox>
+                    <Button text="{i18n>reportUpdateData}" icon="sap-icon://warning" type="Attention" press="onReportSave" 
+                        visible="{LocalModel>/reportUpdateData}" enabled="{LocalModel>/AssignAppsEnable}"/>
+                    <Button icon="sap-icon://excel-attachment" text="{i18n>downloadReport}" 
+                        visible="{LocalModel>/downldRptButtonVisible}" type="Accept" press="onShowFeedbackForm"
+                        enabled="{LocalModel>/AssignAppsEnable}">
+                        <customData>
+                            <core:CustomData key="path" value="/AssignApps" />
+                            <core:CustomData key="tableId" value="reviewSmartTable" />
+                        </customData>
+                    </Button>                            
+                </Toolbar>
+            </f:footer>
+            <!-- </footer> -->
+        </f:DynamicPage>
+        <!-- </Page> -->
+</mvc:View>

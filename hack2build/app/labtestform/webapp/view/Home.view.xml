@@ -1,0 +1,168 @@
+<mvc:View controllerName="com.mindset.labtestform.controller.Home"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" showHeader="false">
+	<subHeader>
+			<OverflowToolbar>
+			<Text id="idTextDate"   class="sapUILargeMarginTop"></Text>
+			</OverflowToolbar>
+		</subHeader>			
+    <content>
+       	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="SimpleFormMain" binding="{labTestModel>/objForm}"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			labelSpanXL="12"
+			labelSpanL="12"
+			labelSpanM="12"
+			labelSpanS="12"
+			adjustLabelSpan="true"
+			emptySpanXL="0"
+			emptySpanL="0"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="2"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<!-- General Information -->
+				<core:Title text="General Information" />
+				<Label text="Lab/Department Name " />
+				<Input value="{labTestModel>labdeptname}" />
+				<Label text="Date" />
+				<!-- Datetime picker -->
+				<!-- <DateTimePicker	id="DTP1" placeholder="Enter Date and Time"	value="{labTestModel>formFilledDate}"/> -->
+				<DatePicker placeholder="Enter Date and Time" 
+				    value="{ labTestModel>formFilledDate}"
+							  change="onDateChange"></DatePicker>
+                <Label text="Name" />
+				<Input value="{labTestModel>labusername}" />
+                <Label text="Role" />
+				<!-- Select Dropdown -->
+				<Select forceSelection="false" 	selectedKey="{labTestModel>role}" change="onHandleRole" >
+					<items>
+							<core:Item key="Lab Technician" text="Lab Technician" />
+							<core:Item key="Student" text="Student" />
+							<core:Item key="Teacher" text="Teacher" />
+							<core:Item key="Researcher" text="Researcher" />
+							<core:Item key="Lab Assistant" text="Lab Assistant" />
+					</items>
+				</Select>
+                <Label text="University Id" />
+				<Input value="{labTestModel>universityid}" placeholder="enter number" type="Number" />
+
+				<!-- Equipment Details -->
+				<core:Title text="Equipment Details" />
+					<Label text="Serial No. " />
+					<Input value="{labTestModel>serialNumber_serialNumber}" />
+					<Label text="Equipment Name" />
+					<Input value="{labTestModel>assetName}" />
+					<Label text="Material Type" />
+					<!-- Select dropdown -->
+					<!-- <Input value="{labTestModel>materialType}" /> -->
+					<Select forceSelection="false" items="{labTestModel>/MaterialType}"	selectedKey="{labTestModel>materialType}">
+							<core:Item key="{labTestModel>name}" text="{labTestModel>name}"></core:Item>
+					</Select>
+					<Label text="Equipment Descripton" />
+					<Input value="{labTestModel>equipmentDescription}" />
+					<Label text="Model" />
+					<Input value="{labTestModel>assetModel}" />
+
+				
+                                     
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+	<Panel expandable="true" width="auto" backgroundDesign="Solid" headerText="Experiment Test Result">
+	<content>
+		<f:SimpleForm id="SimpleFormTestResult" binding="{labTestModel>/objForm}"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanXL="12"
+				labelSpanL="12"
+				labelSpanM="12"
+				labelSpanS="12"
+				adjustLabelSpan="true"
+				emptySpanXL="2"
+				emptySpanL="0"
+				emptySpanM="0"
+				emptySpanS="0"
+				columnsXL="2"
+				columnsL="2"
+				columnsM="1"
+				singleContainerFullSize="false" >
+			<f:content>
+					<Label text="Input Parameters" />
+					 <Input value="{labTestModel>inputParameters}" />
+                  	 <Label text="Output Parameters" />
+					 <Input value="{labTestModel>outputParameters}" />
+                 	 <Label text="Lab Test Result" />
+					 <Input value="{labTestModel>labTestResults}" />
+                	 <Label text="Room Condition (AC Maintained , Temperature etc. )del" />
+					 <TextArea maxLength="50" value="{labTestModel>roomCondition}"/>
+                     <Label text="Observation (Note)" />
+				     <TextArea maxLength="50" value="{labTestModel>testObservationByUser}"/>
+			</f:content>
+		</f:SimpleForm>
+	</content>	
+	</Panel>
+	<Panel expandable="true" width="auto" backgroundDesign="Solid" visible="{labTestModel>/objForm/visiblePanel}" headerText="Equipment Performance">
+	<content>
+		<f:SimpleForm id="SimpleFormEquipment" binding="{labTestModel>/objForm}"
+				editable="true"
+				layout="ResponsiveGridLayout"
+				labelSpanXL="12"
+				labelSpanL="12"
+				labelSpanM="12"
+				labelSpanS="12"
+				adjustLabelSpan="true"
+				emptySpanXL="2"
+				emptySpanL="0"
+				emptySpanM="0"
+				emptySpanS="0"
+				columnsXL="2"
+				columnsL="2"
+				columnsM="1"
+				singleContainerFullSize="false" >
+			<f:content>
+				<!-- <core:Title text="Equipment Performance" /> -->
+						<Label text="Usage Frequency" />
+						<!-- Select Dropdown -->
+						<Select forceSelection="false" 	selectedKey="{labTestModel>assetUsageFrequency}">
+							<items>
+									<core:Item key="Daily" text="Daily" />
+									<core:Item key="Weekly" text="Weekly" />
+									<core:Item key="Monthly" text="Monthly" />
+									<core:Item key="Quarterly" text="Quarterly" />
+									<core:Item key="Twice in Week" text="Twice in Week" />
+									<core:Item key="Twice in Month" text="Twice in Month" />										
+							</items>
+						</Select>
+						<Label text="Any observed deviations or anomalies in performance ?" />
+						<TextArea maxLength="50" value="{labTestModel>observedDeviation}"></TextArea>
+						<Label text="Have there been any changes in operating conditions/environment since the last calibration?" />
+						<TextArea maxLength="50" value="{labTestModel>changesInEnvironment}"></TextArea>
+						<Label text="Are there any regulatory or accreditation requirements affecting calibration?" />
+						<Input value="{labTestModel>regulatoryRequirements}" />
+						<Label text="Additional Comments" />
+						<TextArea maxLength="250" value="{labTestModel>additionalComments}"></TextArea>	
+			</f:content>
+		</f:SimpleForm>
+	</content>	
+	</Panel>
+    </content>
+    <footer>
+        <OverflowToolbar >
+            	<ToolbarSpacer/>
+				<Button type="Accept" text="Save" press="onSave">					
+				</Button>
+				<Button type="Reject" text="Cancel" press="onCancel">				
+				</Button>
+        </OverflowToolbar>
+    </footer>
+    </Page>
+</mvc:View>

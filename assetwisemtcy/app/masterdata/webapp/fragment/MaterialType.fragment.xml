@@ -1,0 +1,154 @@
+<core:FragmentDefinition
+    xmlns="sap.m" xmlns:u="sap.ui.unified"
+    xmlns:ui="sap.ui.table"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+<VBox>
+    <ui:Table id="MaterialTbl"
+        rows="{path: 'LocalModel>/MaterialType',sorter: { path: 'createdAt', descending: false}}"
+        visible="{= ${LocalModel>/SelItem} === 'MaterialType' ? true : false}" >
+        <ui:rowSettingsTemplate>
+            <ui:RowSettings
+                highlight="{= ${LocalModel>type} === 'D' ? 'Error': 'None'}"
+                highlightText="{= ${LocalModel>type} === 'D' ? 'Marked for delete': ''}"
+            />
+        </ui:rowSettingsTemplate>
+        <ui:extension>
+            <OverflowToolbar style="Clear">
+                <ToolbarSpacer />
+                <u:FileUploader    id="fileUploader_MaterialType"  name="myFileUpload"    fileType="csv,xlsx"  sameFilenameAllowed="true"  tooltip="Upload your file to the server"  
+				placeholder="Upload your file here..."  uploadComplete="handleUploadComplete"  change="onFileUploadChange" >
+					<u:customData>
+						<core:CustomData key="Path" value="MaterialType" ></core:CustomData>
+					    <core:CustomData key="TableColumns" value="Name" ></core:CustomData>
+						<core:CustomData key="TableColumnsProperties" value="name,assignedCurrenciesKeys,assignedBaseLocationsKeys,assignedFunctionalLocationsKeys,assignedGroupsKeys,assignedSubGroupsKeys" ></core:CustomData>
+					</u:customData>
+				</u:FileUploader>
+                <Button  icon="sap-icon://download"   text="Template"   press="handleDownloadTemplate">
+				<customData>
+					<core:CustomData key="Path" value="/MaterialType" ></core:CustomData>
+					<core:CustomData key="Columns" value="Name/name/str,Currency/assignedCurrenciesKeys/str,Base Location/assignedBaseLocationsKeys/str,Functional Location/assignedFunctionalLocationsKeys/str,Group/assignedGroupsKeys/str,Sub Group/assignedSubGroupsKeys/str" ></core:CustomData>
+				</customData>
+				</Button>
+                <Button
+                    icon="sap-icon://delete"
+                    type="Reject"
+                    text="Delete"
+                    press="onPressDelete"
+                >
+                    <customData>
+                        <core:CustomData
+                            key="TblId"
+                            value="MaterialTbl"
+                        />
+                        <core:CustomData
+                            key="Path"
+                            value="/MaterialType"
+                        />
+                    </customData>
+                </Button>
+                <Button
+                    icon="sap-icon://add"
+                    text="Add"
+                    type="Emphasized"
+                    press="onPressAddRow"
+                >
+                    <customData>
+                        <core:CustomData
+                            key="Path"
+                            value="/MaterialType"
+                        />
+                    </customData>
+                </Button>
+            </OverflowToolbar>
+        </ui:extension>
+        <ui:columns>
+            <ui:Column>
+                <Label text="Name" />
+                <ui:template>
+                    <Input
+                        value="{LocalModel>name}"
+                        editable="{= !${LocalModel>editable} ? false : true}"
+                    />
+                </ui:template>
+            </ui:Column>
+            <ui:Column>
+                <Label text="Currency" />
+                <ui:template>
+                    <MultiComboBox
+                        items="{LocalModel>/Currency}"
+                        selectedKeys="{LocalModel>assignedCurrenciesKeys}"
+                        selectionFinish="onChange"
+                    >
+                        <core:Item
+                            key="{LocalModel>code}"
+                            text="{LocalModel>code}"
+                        />
+                    </MultiComboBox>
+                </ui:template>
+            </ui:Column>
+            <ui:Column>
+                <Label text="Base Location" />
+                <ui:template>
+                    <MultiComboBox
+                        items="{LocalModel>/BaseLocation}"
+                        selectedKeys="{LocalModel>assignedBaseLocationsKeys}"
+                        selectionFinish="onChange"
+                    >
+                        <core:Item
+                            key="{LocalModel>code}"
+                            text="{LocalModel>code}"
+                        />
+                    </MultiComboBox>
+                </ui:template>
+            </ui:Column>
+            <ui:Column>
+                <Label text="Functional Location" />
+                <ui:template>
+                    <MultiComboBox
+                        items="{LocalModel>/FunctionalLocation}"
+                        selectedKeys="{LocalModel>assignedFunctionalLocationsKeys}"
+                        selectionFinish="onChange"
+                    >
+                        <core:Item
+                            key="{LocalModel>ID}"
+                            text="{LocalModel>code}"
+                        />
+                    </MultiComboBox>
+                </ui:template>
+            </ui:Column>
+            <ui:Column>
+                <Label text="Group" />
+                <ui:template>
+                    <MultiComboBox
+                        items="{LocalModel>/Groups}"
+                        selectedKeys="{LocalModel>assignedGroupsKeys}"
+                        selectionFinish="onChange"
+                    >
+                        <core:Item
+                            key="{LocalModel>name}"
+                            text="{LocalModel>name}"
+                        />
+                    </MultiComboBox>
+                </ui:template>
+            </ui:Column>
+            <ui:Column>
+                <Label text="Sub Group" />
+                <ui:template>
+                    <MultiComboBox
+                        items="{LocalModel>/SubGroup}"
+                        selectedKeys="{LocalModel>assignedSubGroupsKeys}"
+                        selectionFinish="onChange"
+                    >
+                        <core:Item
+                            key="{LocalModel>ID}"
+                            text="{LocalModel>name}"
+                        />
+                    </MultiComboBox>
+                </ui:template>
+            </ui:Column>
+        </ui:columns>
+    </ui:Table>
+    </VBox>
+</core:FragmentDefinition>

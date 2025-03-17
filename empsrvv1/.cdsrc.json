@@ -1,0 +1,39 @@
+{
+    "[development]": {
+      "auth": {
+        "passport": {
+          "users": {
+            "starman@mindsetconsulting.com": {
+              "password": "initial",
+              "ID": "starman@mindsetconsulting.com",
+              "roles": [
+                "com.mindset.role.resourcemanager"
+              ]
+            },
+            "therock@mindsetconsulting.com": {
+                "password": "initial",
+                "ID": "therock@mindsetconsulting.com",
+                "roles": [
+                  "com.mindset.role.us.employees"
+                ]
+              },
+              "inigo@mindsetconsulting.com": {
+                "password": "initial",
+                "ID": "inigo@mindsetconsulting.com",
+                "roles": [
+                  "com.mindset.role.us.employees"
+                ]
+              },
+              "loveleensaini@mindsetconsulting.com": {
+                "password": "initial",
+                "ID": "loveleensaini@mindsetconsulting.com",
+                "roles": [
+                  "com.mindset.role.us.employees"
+                ]
+              }
+          }
+        }
+      }
+    }
+  }
+  

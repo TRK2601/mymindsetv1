@@ -1,0 +1,28 @@
+<mvc:View controllerName="com.mindset.ui.assetwise.dashboard.controller.AssetOverview"
+     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core" 
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    displayBlock="true"
+    xmlns="sap.m">
+    <!-- <ScrollContainer id="_IDGenScrollContainer1" height="100%"	width="100%" vertical="true">
+        <f:GridContainer   id="grid1"   class="sapUiSmallMargin"  snapToRow="true">
+           <core:Fragment  fragmentName="com.mindset.ui.assetwise.dashboard.fragment.Breakdown" type="XML"/>
+        
+        </f:GridContainer>
+    </ScrollContainer> -->
+    <f:DynamicPage id="dynamicPageId">
+        <f:content> 
+            <layout:VerticalLayout id="_IDGenVerticalLayout1"	width="100%"	class="gridWrapper">
+                <layout:Grid id="idHBoxCards"   defaultSpan="XL4 L4 M6 S12">
+                    <core:Fragment  fragmentName="com.mindset.ui.assetwise.dashboard.fragment.Breakdown" type="XML"/>
+                    <core:Fragment  fragmentName="com.mindset.ui.assetwise.dashboard.fragment.BaseLocation" type="XML"/>
+                    <core:Fragment  fragmentName="com.mindset.ui.assetwise.dashboard.fragment.AssetGroup" type="XML"/>
+                    <core:Fragment  fragmentName="com.mindset.ui.assetwise.dashboard.fragment.ProcurementCost" type="XML"/>
+                    <core:Fragment  fragmentName="com.mindset.ui.assetwise.dashboard.fragment.ScrappedAssets" type="XML"/>
+                </layout:Grid>
+            </layout:VerticalLayout>
+        </f:content>
+    </f:DynamicPage>
+ </mvc:View>

@@ -1,0 +1,142 @@
+<mvc:View controllerName="com.mindset.ui.assetwise.workflow.controller.Detail" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" displayBlock="true"   xmlns:uxap="sap.uxap" 
+		  xmlns:core="sap.ui.core"  xmlns:ui="sap.ui.table"   xmlns="sap.m">
+    <uxap:ObjectPageLayout class="customObjStatusMarginCls" enableLazyLoading="true" showHeaderContent="{= ${GlobalModel>ID} ? true : false}" showTitleInHeaderContent="true"  upperCaseAnchorBar="false" showFooter="true">
+        <uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle>
+				<uxap:heading>
+					<Title text="{= ${GlobalModel>ID} ? ${GlobalModel>ID} : 'New Request'}" />
+				</uxap:heading>
+
+				<uxap:expandedContent>
+					<Text text="{= ${GlobalModel>ID} ? ${GlobalModel>reqType} : ''}"/>
+				</uxap:expandedContent>
+
+				<uxap:snappedContent>
+                    <Text text="{= ${GlobalModel>ID} ? ${GlobalModel>reqType} : ''}"/>
+				</uxap:snappedContent>
+
+				<!-- <uxap:actions>
+					<Button type="Transparent" text="Delete"/>
+				</uxap:actions> -->
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+
+		<uxap:headerContent>
+			<FlexBox wrap="Wrap" fitContainer="true">
+				<l:VerticalLayout class="sapUiSmallMarginEnd">
+                    <ObjectStatus title="Requester Name" text="{GlobalModel>requesterName}"/>
+                    <ObjectStatus class="sapUiTinyMarginTop" title="Requester Email" text="{GlobalModel>requesterID}"/>
+				</l:VerticalLayout>
+
+                <l:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <ObjectStatus title="Manager Approval" icon="{= ${GlobalModel>managerApprovalStatus} === 'APRV' ? 'sap-icon://employee-approvals' : ${GlobalModel>managerApprovalStatus} === 'RJCT' ? 'sap-icon://employee-rejections' : 'sap-icon://pending'}" text="{= ${GlobalModel>managerApprovalStatus} === 'APRV' ? 'Approved' : ${GlobalModel>managerApprovalStatus} === 'RJCT' ? 'Rejected' : 'Pending'}" state="{= ${GlobalModel>managerApprovalStatus} === 'APRV' ? 'Success' : ${GlobalModel>managerApprovalStatus} === 'RJCT' ? 'Error' : 'Warning'}"/>
+                    <ObjectStatus class="sapUiTinyMarginTop" title="Assignee Confirmation" icon="{= ${GlobalModel>assigneeAcceptStatus} === 'APRV' ? 'sap-icon://status-completed' : ${GlobalModel>assigneeAcceptStatus} === 'RJCT' ? 'sap-icon://status-error' : 'sap-icon://pending'}" text="{= ${GlobalModel>assigneeAcceptStatus} === 'APRV' ? 'Confirmed' : ${GlobalModel>assigneeAcceptStatus} === 'RJCT' ? 'Not confirmed' : 'Pending'}" state="{= ${GlobalModel>assigneeAcceptStatus} === 'APRV' ? 'Success' : ${GlobalModel>assigneeAcceptStatus} === 'RJCT' ? 'Error' : 'Warning'}"/>
+				</l:VerticalLayout>
+
+                <l:VerticalLayout class="sapUiSmallMarginBeginEnd">
+                    <ObjectStatus title="Handover Complete" icon="{= ${GlobalModel>handOverStatus} === 'CLS' ? 'sap-icon://status-completed' : 'sap-icon://pending'}" text="{= ${GlobalModel>handOverStatus} === 'CLS' ? 'Completed' : 'Pending'}" state="{= ${GlobalModel>handOverStatus} === 'CLS' ? 'Success' : 'Warning'}" visible="{= ${GlobalModel>reqType}  === 'APR' ? true : false }"/>
+                    <ObjectStatus title="Return Complete" icon="{= ${GlobalModel>returnStatus} === 'CLS' ? 'sap-icon://status-completed' : 'sap-icon://pending'}" text="{= ${GlobalModel>returnStatus} === 'CLS' ? 'Completed' : 'Pending'}" state="{= ${GlobalModel>returnStatus} === 'CLS' ? 'Success' : 'Warning'}" visible="{= ${GlobalModel>reqType}  === 'ARR' ? true : false }"/>
+                    <ObjectStatus title="Transfer Complete" icon="{= ${GlobalModel>transferStatus} === 'CLS' ? 'sap-icon://status-completed' : 'sap-icon://pending'}" text="{= ${GlobalModel>transferStatus} === 'CLS' ? 'Completed' : 'Pending'}" state="{= ${GlobalModel>transferStatus} === 'CLS' ? 'Success' : 'Warning'}" visible="{= ${GlobalModel>reqType}  === 'ATR' ? true : false }"/>
+                    <ObjectStatus title="Service Complete" icon="{= ${GlobalModel>seriviceStatus} === 'CLS' ? 'sap-icon://status-completed' : 'sap-icon://pending'}" text="{= ${GlobalModel>seriviceStatus} === 'CLS' ? 'Completed' : 'Pending'}" state="{= ${GlobalModel>seriviceStatus} === 'CLS' ? 'Success' : 'Warning'}" visible="{= ${GlobalModel>reqType}  === 'ASR' ? true : false }"/>
+                    <ObjectStatus class="sapUiTinyMarginTop customObjStatusMarginCls" title="Overall Status" inverted="true" text="{= ${GlobalModel>overallStatus} === 'OPN' ? 'Open' : ${GlobalModel>overallStatus} === 'WIP' ? 'Pending' : 'Closed'}" state="{= ${GlobalModel>overallStatus} === 'OPN' ? 'Error' : ${GlobalModel>overallStatus} === 'WIP' ? 'Warning' : 'Success'}"/>
+                </l:VerticalLayout>
+                
+				<l:HorizontalLayout class="sapUiSmallMarginBeginEnd">
+					<ObjectStatus title="Current Status" text="{parts :['GlobalModel>/SelectedTabKey','GlobalModel>managerApprovalStatus','GlobalModel>assigneeAcceptStatus','GlobalModel>currentStatus'], formatter: '.formatter.setCurrentStatus'}" state="Information"/>
+				</l:HorizontalLayout>
+			</FlexBox>
+		</uxap:headerContent>
+        <uxap:sections>
+            <uxap:ObjectPageSection titleUppercase="false"  title="Header">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection>
+                        <uxap:blocks>
+                            <core:Fragment  fragmentName="com.mindset.ui.assetwise.workflow.fragments.Header" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false"  title="Status" visible="false">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <core:Fragment  fragmentName="com.mindset.ui.assetwise.workflow.fragments.Status" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false"  title="Line Items">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <core:Fragment  fragmentName="com.mindset.ui.assetwise.workflow.fragments.LineItems" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false"  title="Handover Details" visible="{parts :['i18n>apr', 'GlobalModel>/request'], formatter: '.formatter.showSection'}" >
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <core:Fragment  fragmentName="com.mindset.ui.assetwise.workflow.fragments.Handoverdetails" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false"  title="Return Details"  visible="{parts :['i18n>arr', 'GlobalModel>/request'], formatter: '.formatter.showSection'}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <core:Fragment  fragmentName="com.mindset.ui.assetwise.workflow.fragments.ReturnDetail" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+             <uxap:ObjectPageSection titleUppercase="false"  title="Transfer Details"  visible="{parts :['i18n>atr', 'GlobalModel>/request'], formatter: '.formatter.showSection'}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <core:Fragment  fragmentName="com.mindset.ui.assetwise.workflow.fragments.TransferDetails" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false"  title="Service Details"  visible="{parts :['i18n>asr', 'GlobalModel>/request'], formatter: '.formatter.showSection'}">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <core:Fragment  fragmentName="com.mindset.ui.assetwise.workflow.fragments.ServiceDetails" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false"  title="History" visible="{= ${GlobalModel>ID} ? true : false }">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            <core:Fragment  fragmentName="com.mindset.ui.assetwise.workflow.fragments.History" type="XML"/>
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+            <uxap:ObjectPageSection titleUppercase="false"  title="Attachments">
+                <uxap:subSections>
+                    <uxap:ObjectPageSubSection >
+                        <uxap:blocks>
+                            
+                        </uxap:blocks>
+                    </uxap:ObjectPageSubSection>
+                </uxap:subSections>
+            </uxap:ObjectPageSection>
+        </uxap:sections>    
+        <uxap:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer/>
+                <Button text="Approve" type="Accept" press="onPressApprove" visible="{= ${GlobalModel>IsApprover} ? true : false}"/>
+                <Button text="Reject" type="Reject" press="onPressReject" visible="{= ${GlobalModel>IsApprover} ? true : false}"/>
+                <Button text="{parts :['i18n>text','GlobalModel>/request'], formatter: '.formatter.handleSubmitBtn'}" type="Accept" press="onPressSubmit" visible="{parts :['i18n>visible','GlobalModel>/request'], formatter: '.formatter.handleSubmitBtn'}" />
+                <Button text="Close" type="Emphasized" press="onCancelPress"/>
+            </OverflowToolbar>
+        </uxap:footer>
+    </uxap:ObjectPageLayout>
+</mvc:View>

@@ -1,0 +1,11 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog
+        noDataText="{i18n>noItemsFound}"
+        busyIndicatorDelay="0"
+        class="sapUiSizeCompact"
+		title="{LocalModel>/valueHelpDlgTtl}"
+		liveChange="onValueHelpSearch"
+		confirm="onValueHelpClose"
+		cancel="onValueHelpClose">
+	</SelectDialog>
+</core:FragmentDefinition>

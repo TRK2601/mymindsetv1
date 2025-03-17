@@ -1,0 +1,31 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+    <Dialog title ="{i18n>create} {LocalModel>/selCGR}" busyIndicatorDelay="0" class="sapUiSizeCompact" escapeHandler=".handleEscape">
+        <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="{i18n>name}" required="true" />
+				<Input value="{LocalModel>/cgrName}" />
+                <Label text="{i18n>id}" required="true" />
+				<Input value="{LocalModel>/cgrId}" />
+                <Label text="{i18n>type}" required="true" />
+                <RadioButtonGroup columns="2" selectedIndex="{LocalModel>/cgrType}" visible="{= ${LocalModel>/selCGR} === 'Catalog' ? true:false}" >
+                    <RadioButton text="{i18n>busCatalog}" />
+                    <RadioButton text="{i18n>techCatalog}" />
+                </RadioButtonGroup>
+                <Label text="{i18n>createAnother}" />
+                <CheckBox selected="{LocalModel>/createAnother}" ></CheckBox>
+			</f:content>
+		</f:SimpleForm>
+        <beginButton>
+            <Button text="{i18n>submit}" type="Accept" press="onCreateCGR" />
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>cancel}" type="Reject" press="onCloseCreateCGRDlg" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

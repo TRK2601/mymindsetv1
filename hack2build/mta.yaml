@@ -1,0 +1,165 @@
+_schema-version: "3.1"
+ID: hack2build
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: hack2build-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: hack2build-auth
+  - name: hack2build-db
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    readiness-health-check-http-endpoint: /health
+    readiness-health-check-type: http
+  build-parameters:
+    builder: npm
+- name: hack2build-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: hack2build-db
+  parameters:
+    buildpack: nodejs_buildpack
+- name: hack2build-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: hack2build-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - commindsethack2buildcaliberationmaster.zip
+      name: commindsethack2buildcaliberationmaster
+      target-path: resources/
+    - artifacts:
+      - commindsetlabtestform.zip
+      name: commindsetlabtestform
+      target-path: resources/
+- name: commindsethack2buildcaliberationmaster
+  type: html5
+  path: app/caliberationmaster
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: hack2build-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: hack2build-destination-service
+    parameters:
+      content-target: true
+  - name: hack2build-repo-host
+    parameters:
+      service-key:
+        name: hack2build-repo-host-key
+  - name: hack2build-auth
+    parameters:
+      service-key:
+        name: hack2build-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: caliberationmasteruilist_hack2build_repo_host
+          ServiceInstanceName: hack2build-html5-srv
+          ServiceKeyName: hack2build-repo-host-key
+          sap.cloud.service: caliberationmasteruilist
+        - Authentication: OAuth2UserTokenExchange
+          Name: caliberationmasteruilist_hack2build_auth
+          ServiceInstanceName: hack2build-auth
+          ServiceKeyName: hack2build-auth-key
+          sap.cloud.service: caliberationmasteruilist
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: hack2build
+  type: approuter.nodejs
+  path: app/router
+  requires:
+  - name: srv-api
+    group: destinations
+    properties:
+      forwardAuthToken: true
+      name: srv-api
+      url: ~{srv-url}
+  - name: hack2build-auth
+  - name: hack2build-destination-service
+    group: destinations
+    properties:
+      forwardAuthToken: false
+      name: ui5
+      url: https://ui5.sap.com
+  parameters:
+    disk-quota: 256M
+    keep-existing-routes: true
+    memory: 256M
+- name: commindsetlabtestform
+  type: html5
+  path: app/labtestform
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: hack2build-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: hack2build
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: hack2build-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+- name: hack2build-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: hack2build-html5-srv
+    service-plan: app-host
+- name: hack2build-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: hack2build-destination-service
+    service-plan: lite
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production

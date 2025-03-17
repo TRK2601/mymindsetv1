@@ -1,0 +1,19 @@
+/* Enter your custom styles here */
+.customText .sapMText {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.sapUiSizeCompact .sapUiFormContainerTitle>.sapUiFormTitle {
+    height: 0rem ;
+    line-height: 0rem;
+}
+
+.removeColon .sapMLabel .sapMLabelColonAndRequired {
+    display: none !important;
+}
+.sTextColor {
+    color : #f56f42 !important;
+    font-size: 10PX !important;
+    font-weight: bold !important;
+}

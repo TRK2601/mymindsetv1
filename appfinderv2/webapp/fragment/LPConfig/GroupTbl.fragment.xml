@@ -1,0 +1,52 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+    <Table
+		inset="false" sticky="ColumnHeaders,HeaderToolbar"
+		items="{
+			path: 'LocalModel>/Group',
+			sorter: {
+				path: 'name'
+			}
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer />
+					<Button icon="sap-icon://add" text="{i18n>add}" press="onAddLPConfigInfo" type="Emphasized" >
+                        <customData>
+                            <core:CustomData key="category" value="Group" ></core:CustomData>
+                        </customData>
+                    </Button>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>name}" />
+			</Column>
+			<Column hAlign="Center">
+				<Text text="{i18n>id}" />
+			</Column>
+            <Column hAlign="End">
+				<Text text="" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<Text text="{LocalModel>name}" ></Text>
+                    <Text text="{LocalModel>groupID}" ></Text>
+                    <core:Icon src="delete" color="#e31010" press="onDeleteCGR" >
+                        <core:customData>
+                            <core:CustomData key="configType" value="G" ></core:CustomData>
+                        </core:customData>
+                    </core:Icon>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

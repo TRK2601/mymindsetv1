@@ -1,0 +1,154 @@
+<mvc:View
+    height="100%"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:upload="sap.m.upload"
+    xmlns:l="sap.ui.layout"
+    xmlns:table="sap.m.table"
+    controllerName="com.mindset.ui.assetwise.ext.view.MassUpload"
+>
+    <Page
+        id="fileUploadPage"
+        showNavButton="true" showHeader="false"
+        navButtonPress="navToListReport"
+    >
+        <headerContent>
+            <Button
+                text="Download Template"
+                press="handleLinkPress"
+            />
+        </headerContent>
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm
+                id="SimpleFormDisplay354wide"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                title="File Upload"
+                labelSpanXL="4"
+                labelSpanL="3"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="4"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+            >
+                <l:VerticalLayout class="sapUiLargeMarginBegin">
+                    <MessageStrip
+                        text="Please upload an excel file for an asset creation"
+                        type="Information"
+                        showIcon="true"
+                        class="sapUiMediumMarginBottom"
+                    />
+                    <FlexBox >
+                    <u:FileUploader
+                        id="fileUploader"
+                        name="myFileUpload"
+                        fileType="csv,xlsx"
+                        sameFilenameAllowed="true"
+                        tooltip="Upload your file to the server"
+                        placeholder="Upload your file here..."
+                        uploadComplete="handleUploadComplete"
+                        change="onFileUploadChange"
+                    />
+                    <Button class="sapUiSmallMarginBegin"
+                        text="Download Template"
+                        press="handleLinkPress"
+                    />
+                    </FlexBox>
+                </l:VerticalLayout>
+            </f:SimpleForm>
+        </VBox>
+        <VBox class="sapUiSmallMargin">
+            <f:SimpleForm 
+                id="errorlogform"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                title="Error Log"
+                labelSpanXL="4"
+                labelSpanL="3"
+                labelSpanM="4"
+                labelSpanS="12"
+                adjustLabelSpan="false"
+                emptySpanXL="0"
+                emptySpanL="4"
+                emptySpanM="0"
+                emptySpanS="0"
+                columnsXL="2"
+                columnsL="1"
+                columnsM="1"
+                visible="false"
+                singleContainerFullSize="false"
+            >
+                <l:VerticalLayout class="sapUiLargeMarginBegin">
+                    <MessageStrip
+                        text="Errors in your file will appear below. Please review and make changes accordingly"
+                        type="Error"
+                        showIcon="true"
+                        showCloseButton="false"
+                        class="sapUiTinyMarginBottom"
+                    />
+                    <Table fixedLayout="true"
+                        items="{ path: 'newModel>/Errors', sorter: { path: 'Position', descending: false}}"
+                        inset="false"
+                        growing="true"
+                        growingScrollToLoad="true"
+                        id="errorLogTable"
+                        visible="false"
+                    >
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <SearchField
+                                    liveChange="onSearch"
+                                    width="50%"
+                                />
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column mergeDuplicates="true">
+                                <Text text="Row Position" />
+                            </Column>
+                            <Column>
+                                <Text text="Error Description" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <Text text="{newModel>Position}" />
+                                    <Text text="{newModel>Description}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </l:VerticalLayout>
+            </f:SimpleForm>
+        </VBox>
+        <footer>
+            <OverflowToolbar>
+                <Button id="idP2MessagePopoverBtn" icon="{= ${newModel>/ErrorResponses}.length > 0 ? 'sap-icon://message-error':'sap-icon://message-information'}" type="{= ${newModel>/ErrorResponses}.length > 0 ? 'Reject':'Emphasized'}" text="({= ${newModel>/ErrorResponses}.length})"
+					press="handleMessagePopoverPress"/>
+                <ToolbarSpacer />
+                <Button
+                    id="excelFileUploadBtn"
+                    text="Upload"
+                    press="handleUploadPress"
+                    type="Emphasized"
+                    enabled="false"
+                />
+                <Button
+                    id="excelFileCancelBtn"
+                    text="Cancel"
+                    press="handleUploadCancelPress"
+                    type="Reject"
+                />
+            </OverflowToolbar>
+        </footer>
+    </Page>
+</mvc:View>

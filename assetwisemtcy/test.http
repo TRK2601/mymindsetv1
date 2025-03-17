@@ -1,0 +1,88 @@
+# POST http://localhost:4004/odata/v4/assetwise/AssetStatus
+# Content-Type: application/json
+# Authorization: Basic inventoryadmin initial
+# x-qos:0
+
+# {
+#     "name":"Open"
+# }
+
+# 
+# GET http://localhost:4004/odata/v4/assetwise/MaterialType?$expand=assignedAssetStatus
+# Content-Type: application/json
+# Authorization: Basic inventoryadmin initial
+# x-qos:0
+
+# 
+# DELETE http://localhost:4004/odata/v4/assetwise/FunctionalLocation/6342a9cb-71ed-452b-9b0a-b440a6b1b349/b2
+# Content-Type: application/json
+# Authorization: Basic inventoryadmin initial
+# x-qos:0
+
+
+# ###
+# POST http://localhost:4004/odata/v4/assetwise/MaterialType
+# Content-Type: application/json
+# Authorization: Basic inventoryadmin initial
+# x-qos:0
+
+# {
+#     "name": "Asset",
+#     "assignedCurrencies": [{
+#         "currency_code": "USD",
+#         "materialType_name": "Asset"
+#     }]
+# }
+
+# ###
+# PATCH http://localhost:4004/odata/v4/assetwise/MaterialType/Asset
+# Content-Type: application/json
+# Authorization: Basic inventoryadmin initial
+# x-qos:0
+
+# {
+#     "assignedCurrencies": [{
+#         "currency_code": "INR",
+#         "materialType_name": "Asset"
+#     }]
+# }
+
+# ###
+# DELETE http://localhost:4004/odata/v4/assetwise/MaterialType/Asset
+# Content-Type: application/json
+# Authorization: Basic inventoryadmin initial
+# x-qos:0
+
+
+
+# ###
+# POST http://localhost:4004/odata/v4/assetwise/APRequests
+# Content-Type: application/json
+
+# {     
+#       "reqType"               : "APR",
+#       "requesterID"           : "hari@gmail.com", (Logged In User Email)
+#       "requesterName"         : "Hari",  (Logged In User Name)
+#       "currentApproverID"     : "abhilashgampa@mindsetconsulting.com", (Requestor Manager Email)
+#       "currentApproverName"   : "Abhilash", (Requestor Manager Name)
+#       "assigneeID"            : "subbu@gmail.com", (Assign To Drop-down value - Email)
+#       "assigneeName"          : "Venkata Subba Raju Elluru",(Assign To Drop-down value - Name)
+#       "lineitems"             : [{
+#         "assetID": "1",
+#         "assetName": "iPad"
+#       },{
+#         "assetID": "2",
+#         "assetName": "iPhone"
+#       }]
+# }
+
+# ###
+# PATCH http://localhost:4004/odata/v4/assetwise/APRequests/20246600660006
+# Content-Type: application/json
+
+# {                
+#       "lineitems"             : [{
+#         "assetID": "234",
+#         "assetName": "Samsung"
+#       }]
+# }

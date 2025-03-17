@@ -1,0 +1,6 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap">
+	<MessagePopover items="{newModel>/ErrorResponses}">
+		<MessageItem type="{newModel>type}" description="{newModel>description}" title="{newModel>title}"/>
+	</MessagePopover>
+</core:FragmentDefinition>

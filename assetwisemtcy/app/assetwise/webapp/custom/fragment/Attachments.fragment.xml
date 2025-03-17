@@ -1,0 +1,76 @@
+<c:FragmentDefinition
+    id="idFragment1"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:upload="sap.m.upload"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:u="sap.ui.unified"
+>
+    <VBox
+        c:require="{handler: 'com/mindset/ui/assetwise/ext/controller/Attachments'}"
+    >
+        <HBox justifyContent="SpaceBetween">
+            <Title class="sapUiSmallMargin" text="Attachments" wrapping="false" id="productName"/>
+            <HBox
+                alignContent="End"
+                justifyContent="End"
+            >
+            <Button
+                id = "idDownloadBtn"
+                class="sapUiSmallMarginEnd"
+                text="Download Selected"
+                press="handler.onDownloadSelected"
+                enabled="false"
+            />
+
+            <u:FileUploader
+                id="fileUploader"
+                name="myFileUpload"
+                buttonText = "Add"
+                buttonOnly="true"
+                uploadOnChange="false"
+                uploadUrl="upload/"
+                enabled="{localModel>/uploadButtonVisible}"
+                tooltip="Upload your file to the local server"
+                uploadComplete="handler.handleUploadComplete"
+                change="handler.handleValueChange"
+                typeMissmatch="handler.handleTypeMissmatch"
+                fileAllowed="handler.handleFileAllowed"
+                fileEmpty="handler.handleFileEmpty"
+                fileSizeExceed="handler.handleFileSizeExceed"
+                style="Emphasized"
+                fileType="txt,jpg,png,jpeg,csv,xlsx,doc,ppt,pdf"
+                maximumFileSize="900"
+                placeholder="Choose a file for Upload..."
+                class="sapUiSmallMarginEnd"
+            />
+        </HBox>
+        </HBox>
+        <List
+            id="myList"
+            mode="{= ${localModel>/uploadButtonVisible}
+                    ? 'Delete'
+                    : 'MultiSelect'}"
+            items="{
+                path: 'localModel>/items'
+            }"
+            delete="handler.onBeforeItemRemoved"
+            selectionChange="handler.onSelectionChanged"
+            >
+            <items>
+                <StandardListItem
+                    title="{localModel>fileName}"
+                    description="{localModel>mediaType}"
+                    icon = "{localModel>iconUrl}"
+                    iconInset="false"
+                    highlight="{localModel>state}"
+                    info="{localModel>text}"
+                    infoState="{localModel>state}"
+                    infoStateInverted="true"
+                />
+            </items>
+        </List>
+    </VBox>
+</c:FragmentDefinition>

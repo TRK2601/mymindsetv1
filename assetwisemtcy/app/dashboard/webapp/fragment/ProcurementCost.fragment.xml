@@ -1,0 +1,67 @@
+<core:FragmentDefinition   xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:viz="sap.viz.ui5.controls"  xmlns:c="sap.suite.ui.commons"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"  xmlns:viz.data="sap.viz.ui5.data"
+    displayBlock="true"
+    xmlns="sap.m">
+    <f:Card id="_IDGenCard1Procurement">
+        <f:header>
+            <card:Header id="_IDGenHeaderProcureCost" title="Total procurement cost by Year"  />
+        </f:header>
+        <f:content>
+            <VBox id="_IDGenVBox1Procurement" width="85%">
+                <HBox id="_IDGenHBox1Proc"  class="sapUiSmallMarginBegin">
+                    <VBox id="_IDGenVBox1Proc">
+                        <Label id="_IDGenLabel1Scrapped" text="From"></Label>
+                        <DatePicker id="_IDGenDatePicker1" dateValue="{LocalModel>/procFromDate}" width="8rem"></DatePicker>
+                    </VBox>
+                    <VBox id="_IDGenVBox2Proc" class="sapUiTinyMarginBegin">
+                        <Label id="_IDGenLabel1Scrapped12" text="To"></Label>
+                        <DatePicker id="_IDGenDatePicker21" minDate="{LocalModel>/procFromDate}" dateValue="{LocalModel>/procToDate}"  width="8rem" ></DatePicker>
+                    </VBox>
+                    <VBox id="_IDGenVBox3Proc" class="sapUiSmallMarginBegin">
+                        <Label id="_IDGenLabel1Scrapped123" ></Label>
+                        <Button id="_IDGenButton1" text="Go" type="Emphasized" press="onProcurementDatePress"></Button>
+                    </VBox>
+                </HBox>             
+                <c:ChartContainer  class="sapUiMediumMarginBegin sapUiTinyMarginEnd"	id="chartContainerProcurement" width="100%"
+				showFullScreen="true"	showPersonalization="false"	autoAdjustHeight="false" personalizationPress="attachPersonalizationPress"
+				contentChange="attachContentChange">
+                    <c:content>
+                        <c:ChartContainerContent id="_IDGenChartContainerProcrement"	icon="sap-icon://line-chart">
+                            <c:content>
+                                <viz:VizFrame id="idVizFrameProcurement"  uiConfig="{applicationSet:'fiori'}"  width="200%"  vizType="column" vizProperties="{plotArea: { colorPalette :['#596468', '#5899DA'], drawingEffect: 'glossy'}, title:{ text:'',visible:true}, colorPalette:['#000000'],dataLabel:{title:{text:'Groups'},visible:true,showTotal:true},valueAxis:{ title:{text:'Number of Assets &amp; Procurement Cost'}}}"> 
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset id="_IDGenFlattenedDataset_Proc" data="{LocalModel>/procuementDataSet}">
+                                            <viz.data:dimensions>
+                                                <viz.data:DimensionDefinition id="_IDGenDimensionProcurementdate" name="Sub Group" value="{LocalModel>subGroup}"/>
+                                                <viz.data:DimensionDefinition id="_IDGenDimensionSubgroup" name="Procurement Date" value="{LocalModel>procuredDate}"/>
+                                                <viz.data:DimensionDefinition id="_IDGenDimensionAssetGroup" name="Group" value="{LocalModel>group}"/>
+                                            </viz.data:dimensions>
+                                        <viz.data:measures>
+                                        <viz.data:MeasureDefinition id="_IDGenMeasureDefinitionAssetNetProcDate" name="Procurement Cost" value="{LocalModel>procuredCost}"/>
+                                            <viz.data:MeasureDefinition id="_IDGenMeasureDefinitionNoAssetProcDate" name="No.of Assets" value="{LocalModel>noOfAssets}"/>
+                                            </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
+                                    <viz:feeds>
+                                        <viz.feeds:FeedItem id="valueAxisFeed3Proc"  uid="valueAxis" type="Measure" values="No.of Assets"/>
+                                        <viz.feeds:FeedItem id="valueAxisFeed2Proc"  uid="valueAxis" type="Measure" values="Procurement Cost"/>
+                                        <viz.feeds:FeedItem id="categoryAxisFeedProc" uid="categoryAxis" type="Dimension" values="Group,Sub Group,Procurement Date"/>
+                                    </viz:feeds>
+                                    <viz:dependents>
+                                        <viz:Popover id="idPopOverProcuremnt"></viz:Popover>
+                                    </viz:dependents>
+                                </viz:VizFrame>
+                            </c:content>
+                        </c:ChartContainerContent>
+                    </c:content>
+			    </c:ChartContainer>                            
+            </VBox>
+        </f:content>
+    </f:Card>
+</core:FragmentDefinition>

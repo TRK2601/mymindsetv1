@@ -1,0 +1,41 @@
+{
+  "name": "erms",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js-community/odata-v2-adapter": "^1.12.5",
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/xsenv": "^4.2.0",
+    "@sap/xssec": "^3",
+    "axios": "^1.6.7",
+    "btoa": "^1.2.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "passport": "^0"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/ux-specification": "^1.120.1"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "auth": "mocked",
+      "db": "sql",
+      "[production]": {
+        "auth": "mocked",
+        "db": "sql"
+      }
+    },
+    "cov2ap": {
+      "plugin": true
+    }
+  }
+}

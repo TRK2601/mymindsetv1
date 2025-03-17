@@ -1,0 +1,42 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+    <Dialog title ="{i18n>formTitle}" busyIndicatorDelay="0" class="sapUiSizeCompact" escapeHandler=".handleEscape">
+        <f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false"
+			singleContainerFullSize="false" >
+			<f:content>
+                <Label text="{i18n>role}" required="true" />
+                <Input valueHelpRequest="onValueHelpRequest" value="{LocalModel>/AssignedRoleDesc}" showValueHelp="true" valueHelpOnly="true">
+                            <customData>
+                                <core:CustomData key="vhProp" value="role" ></core:CustomData>
+                                <core:CustomData key="init" value="dialog" ></core:CustomData>
+                            </customData>
+                        </Input>
+				<Label text="{i18n>catalog}" required="true" />
+                <Input valueHelpRequest="onValueHelpRequest" value="{LocalModel>/AssignedCatDesc}" editable="{= ${LocalModel>/IsCatEnabled} ? true : false}" showValueHelp="true" valueHelpOnly="true">
+                            <customData>
+                                <core:CustomData key="vhProp" value="catalog" ></core:CustomData>
+                                <core:CustomData key="init" value="dialog" ></core:CustomData>
+                            </customData>
+                        </Input>
+                
+                <Label text="{i18n>group}" required="true" />
+                <Input valueHelpRequest="onValueHelpRequest" value="{LocalModel>/AssignedGrpDesc}" editable="{= ${LocalModel>/IsGrpEnabled} ? true : false}" showValueHelp="true" valueHelpOnly="true">
+                            <customData>
+                                <core:CustomData key="vhProp" value="group" ></core:CustomData>
+                                <core:CustomData key="init" value="dialog" ></core:CustomData>
+                            </customData>
+                        </Input>
+			</f:content>
+		</f:SimpleForm>
+        <beginButton>
+            <Button text="{i18n>apply}" type="Accept" press="onApplyAssignedCGR" />
+        </beginButton>
+        <endButton>
+            <Button text="{i18n>cancel}" type="Reject" press="onCloseAssignCGRDlg" />            
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

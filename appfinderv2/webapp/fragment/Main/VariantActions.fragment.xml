@@ -1,0 +1,41 @@
+<ActionSheet id="actionSheet"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	placement="Bottom">
+	<Button
+		text="{i18n>view}"
+		icon="sap-icon://show"
+		press="onValueHelpRequest">
+        <customData>
+            <core:CustomData key="vhProp" value="DisplayVariant" />
+        </customData>
+    </Button>
+	<Button
+		text="{i18n>save}"
+		icon="sap-icon://save"
+		press="onPressSaveOrUpdateVar" >
+        <customData>
+            <core:CustomData key="variantAction" value="Save" />
+        </customData>
+    </Button>
+	<!-- <Button
+		text="{i18n>update}"
+		icon="sap-icon://synchronize"
+		press="onPressSaveOrUpdateVar" >
+        <customData>
+            <core:CustomData key="variantAction" value="Update" />
+        </customData>
+    </Button>
+	<Button
+		text="{i18n>delete}"
+		icon="sap-icon://delete"
+		press="" /> -->
+    <Button
+		text="{i18n>share}"
+		icon="sap-icon://action"
+		press="_openShareVariantDlg" >
+        <customData>
+            <core:CustomData key="vhProp" value="ShareVariant" />
+        </customData>
+    </Button>
+</ActionSheet>

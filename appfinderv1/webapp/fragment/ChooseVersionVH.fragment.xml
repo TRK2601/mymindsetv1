@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="mySelectDialog"
+		noDataText="No Items Found"
+		title="{i18n>vhTitle}"
+		liveChange=".handleSearch"
+        busyIndicatorDelay="0"
+		confirm="onDialogConfirm"
+		cancel=".onDialogConfirm"
+		items="{path: 'LocalModel>/Releases'}">
+		<StandardListItem
+			title="{LocalModel>releaseName}"
+			description="{LocalModel>externalName}"
+		    info="{LocalModel>releaseId}" />
+	</SelectDialog>
+</core:FragmentDefinition>

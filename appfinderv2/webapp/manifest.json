@@ -1,0 +1,164 @@
+{
+    "_version": "1.40.0",
+    "sap.app": {
+        "id": "com.mindset.accelerator.appfinder.v2",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.7.1",
+            "toolsId": "99c1dd88-70d4-4d3c-a0cf-d134bdcdf06f"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/fix/externalViewer/services/SingleApp.xsodata/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZMINDSET_S4APPFINDER_SRV": {
+                "uri": "/api/v2/srv/ZMINDSET_S4APPFINDER_SRV/",
+                "type": "OData",
+                "settings": {
+                  "odataVersion": "4.0",
+                  "localUri": "localService/metadata.xml"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "com-mindset-accelerator-appfinder-v2-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "appfinderv2",
+                    "action": "experience",
+                    "title": "{{flpTitle}}",
+                    "subTitle": "{{flpSubtitle}}",
+                    "icon": "sap-icon://sys-find"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.119.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {
+                    "lazy": true
+                },
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {
+                    "lazy": true
+                },
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.mindset.accelerator.appfinder.v2.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            },
+            "S4AppFinder": {
+                "dataSource": "ZMINDSET_S4APPFINDER_SRV",
+                "preload": true,
+                "settings": {
+                  "operationMode": "Server",
+                  "groupId": "$direct",
+                  "synchronizationMode": "None",
+                  "autoExpandSelect": true
+                }
+            },
+            "LocalModel": {
+                "type": "sap.ui.model.json.JSONModel"
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.mindset.accelerator.appfinder.v2.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteApp",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetApp"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetApp": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Main"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.mindset.accelerator.appfinder.v2.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "com-mindset-accelerator-appfinder-v2"
+    }
+}

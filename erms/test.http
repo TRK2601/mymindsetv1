@@ -1,0 +1,159 @@
+### POST
+http://localhost:4004/odata/v4/emp-reimbersment/Reimbersments
+
+
+###
+https://mindset-consulting--llc-mindsetbtpdev-btp-dev-erms-srv.cfapps.us10.hana.ondemand.com/odata/v4/emp-reimbersment/Employees
+
+####POST
+PATCH https://mindset-consulting--llc-mindsetbtpdev-btp-dev-erms-srv.cfapps.us10.hana.ondemand.com/odata/v4/emp-data/EmployeeTestData/P-1327670288846
+Content-Type: application/json
+
+{
+    "Manager":	"ravikrishna@mindsetconsulting.com"
+}
+#####POST
+
+POST http://localhost:4004/odata/v4/emp-reimbersment/Reimbersments
+Content-Type: application/json
+
+{    
+    "expense_date":null,
+    "description": "Test",
+    "bill_no": "13324213",
+    "type": "AAddd11",
+    "type_desc": "AAAAA",
+    "status": "pen",
+    "amount": 12652,
+    "day": 3,
+    "reimbersment_Id_ID": "91216ca9-94a8-4dff-bb72-04047cf1430d"
+}
+
+
+### POST
+PATCH   http://localhost:4004/odata/v4/emp-reimbersment/Employees/3679c2e5-0c31-404e-8ae4-c7c5a844d4a1
+Content-Type: application/json
+
+{"EmpId":"AAAA","name":"Ravi Krishna","empEail":"ravikrishna@mindsetconsulting.com","contact":"+91 8179793667","location":"India","department":"Technology","managerEmail":"naveenpunna@mindsetconsulting.com","role":"Sr. Developer","status":"Initial"}
+
+#### POST
+
+POST  http://localhost:4004/odata/v4/emp-data/WfTrigger
+Content-Type: application/json
+
+{
+    "data": [{
+        "reimbersment_Id_ID":"91216ca9-94a8-4dff-bb72-04047cf1430d",
+        "ID":"ac95eae2-dc75-476e-ba69-18f2524425e7"
+    }]
+}
+
+
+
+######
+POST  http://localhost:4004/odata/v4/emp-data/WfTrigger
+Content-Type: application/json
+
+{   
+    "definitionId": "us10.mindsetbtpdev.expensemanagement1.expenseManagement",
+            "context": {
+                "_name": "Test",
+                "email": "ravikrishna@mindsetconsulting.com",
+                "department": "Test",
+                "employeeID": "017",
+                "manager": "ravikrishna@mindsetconsulting.com",
+                "office": "HYD",
+                "data": [
+                    {
+                        "date": "2024-02-28",
+                        "particulars": "AA",
+                        "billNO": "32",
+                        "amount": 32534
+                    }
+                ],
+                "totalAmount": "32534",
+                "isTotalAmountMoreThen10000": "Yes",
+                "upload": "spa-res:cmis:folderid:GAgSH-veVg5z2EKG6D4VzghLkfxyZCm3kZxDO-YJzbo",
+                "userComments": "AAA"
+}
+}
+
+####
+https://mindset-consulting--llc-mindsetbtpdev-btp-dev-erms-srv.cfapps.us10.hana.ondemand.com/odata/v4/emp-reimbersment/getWFInitData(reimbersment_Id_ID='91216ca9-94a8-4dff-bb72-04047cf1430d',ID='cf5088be-1d77-4e71-87d0-8990b96ccb66')
+
+###
+http://localhost:4004/odata/v4/emp-reimbersment/getWFLogsData(wf_instance_id='69abe9f5-da10-11ee-955e-eeee0a914c17')
+
+###
+http://localhost:4004/odata/v4/emp-reimbersment/getWFTaskUpdateData(wf_task_id='f1afeebc-da03-11ee-846b-eeee0a9a882a',type='approve')
+
+###
+POST http://localhost:4004/odata/v4/emp-reimbersment/Files
+Content-Type: application/json
+
+{
+
+  "fileName": "example.txt",
+  "fileSize": 1024, 
+  "fileType": "text/plain",
+  "fileContent": "SGVsbG8gV29ybGQhCg=="
+  
+}
+
+
+### GET TASK {task instance ID}
+
+https://spa-api-gateway-bpi-us-prod.cfapps.us10.hana.ondemand.com/public/workflow/rest/v1/task-instances/6ad72396-da10-11ee-955e-eeee0a914c17
+
+
+### Res
+{
+  "activityId": "form_managerApproval_1",
+  "claimedAt": null,
+  "completedAt": null,
+  "createdAt": "2024-03-04T10:17:34.174Z",
+  "description": null,
+  "id": "6ad72396-da10-11ee-955e-eeee0a914c17",
+  "processor": null,
+  "recipientUsers": [
+    "naveenpunna@mindsetconsulting.com"
+  ],
+  "recipientGroups": [],
+  "status": "READY",
+  "subject": "Approval for , Ravi Krishna",
+  "workflowDefinitionId": "us10.mindsetbtpdev.expensemanagement1.expenseManagement",
+  "workflowInstanceId": "69abe9f5-da10-11ee-955e-eeee0a914c17",
+  "priority": "MEDIUM",
+  "dueDate": null,
+  "createdBy": "sb-clone-390ed564-e379-4dad-9619-bbb81a4d2bfb!b49390|workflow!b1774",
+  "definitionId": "form_managerApproval_1@us10.mindsetbtpdev.expensemanagement1.expenseManagement",
+  "lastChangedAt": null,
+  "applicationScope": "own"
+}
+
+### GET
+https://spa-api-gateway-bpi-us-prod.cfapps.us10.hana.ondemand.com/public/workflow/rest/v1/task-instances/6ad72396-da10-11ee-955e-eeee0a914c17/context
+
+###
+{
+  "totalAmount": "4234",
+  "data": [
+    {
+      "amount": 4234,
+      "date": "2024-03-04",
+      "particulars": "CRT"
+    }
+  ],
+  "isTotalAmountMoreThen10000": "No",
+  "manager": "naveenpunna@mindsetconsulting.com",
+  "_name": "Ravi Krishna",
+  "upload": "spa-res:cmis:folderid:GAgSH-veVg5z2EKG6D4VzghLkfxyZCm3kZxDO-YJzbo",
+  "employeeID": "P-401908481576",
+  "office": "India",
+  "department": "Technology",
+  "userComments": "SAP HANA"
+}
+
+
+############# 
+

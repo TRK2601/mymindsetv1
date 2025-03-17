@@ -1,0 +1,33 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Popover
+		id="myPopover"
+        showHeader="false"
+		contentWidth="320px"
+		placement="Auto">
+		<!-- <footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button
+					id="email"
+					text="Email"
+					press="handleEmailPress" />
+			</OverflowToolbar>
+		</footer> -->
+        <VBox class="sapUiSmallMargin" >
+            <Text text="Enter the Tcodes by comma separated or each tcode in a next line." ></Text>
+            <Label design="Bold" text="Example:" class="sapUiSmallMarginTop" />
+            <Text text="MIGO,MI20,ME9F,VL02N.." />
+            <Text text="OR" class="sapUiTinyMarginTop" />
+            <VBox class="sapUiTinyMarginTop">
+                <Text text="MIGO" />
+                <Text text="MI20" />
+                <Text text="ME9F" />
+                <Text text="VL02N" />
+            </VBox>
+            
+        </VBox>
+		
+	</Popover>
+</core:FragmentDefinition>

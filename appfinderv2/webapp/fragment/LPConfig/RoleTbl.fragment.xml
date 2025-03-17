@@ -1,0 +1,70 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+    <Table
+		inset="false" sticky="ColumnHeaders,HeaderToolbar"
+		items="{
+			path: 'LocalModel>/Role',
+			sorter: {
+				path: 'name'
+			}
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer />
+					<Button icon="sap-icon://add" text="{i18n>add}" press="onAddLPConfigInfo" type="Emphasized" >
+                        <customData>
+                            <core:CustomData key="category" value="Role" ></core:CustomData>
+                        </customData>
+                    </Button>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>name}" />
+			</Column>
+			<Column hAlign="Center">
+				<Text text="{i18n>id}" />
+			</Column>
+            <Column>
+				<Text text="{i18n>catalog}" />
+			</Column>
+            <Column>
+				<Text text="{i18n>group}" />
+			</Column>
+            <Column width="5em" hAlign="End">
+				<Text text="" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<Text text="{LocalModel>name}" ></Text>
+                    <Text text="{LocalModel>roleID}" ></Text>
+                    <MultiComboBox showSelectAll="true" showClearIcon="true" selectionFinish="onFnshMapCatGrpToRole" selectedKeys="{LocalModel>catalog}"  items="{path: 'LocalModel>/Catalog',sorter: {path: 'name'}}">
+                        <core:Item key="{LocalModel>catID}" text="{LocalModel>name}"/>
+                        <customData>
+                            <core:CustomData key="key" value="C"></core:CustomData>
+                        </customData>
+                    </MultiComboBox>
+                    <MultiComboBox showSelectAll="true" showClearIcon="true" selectionFinish="onFnshMapCatGrpToRole" selectedKeys="{LocalModel>group}"  items="{path: 'LocalModel>/Group',sorter: {path: 'name'}}">
+                        <core:Item key="{LocalModel>groupID}" text="{LocalModel>name}"/>
+                        <customData>
+                            <core:CustomData key="key" value="G"></core:CustomData>
+                        </customData>
+                    </MultiComboBox>
+                    <core:Icon src="delete" color="#e31010" press="onDeleteCGR" >
+                        <core:customData>
+                            <core:CustomData key="configType" value="R" ></core:CustomData>
+                        </core:customData>
+                    </core:Icon>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

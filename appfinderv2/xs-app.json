@@ -1,0 +1,38 @@
+{
+  "welcomeFile": "/index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+        "source": "^/api/v2/(.*)$",
+        "target": "/api/v2/$1",
+        "destination": "MINDSET_S4APPFINDERSRV",
+        "authenticationType": "xsuaa",
+        "csrfProtection": false
+    },
+    {
+      "source": "^/sap/fix/(.*)$",
+      "target": "/sap/fix/$1",
+      "destination": "AppFinder",
+      "authenticationType": "none",
+      "csrfProtection": false
+    },
+    {
+      "source": "^/resources/(.*)$",
+      "target": "/resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
+    },
+    {
+      "source": "^/test-resources/(.*)$",
+      "target": "/test-resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
+    },
+    {
+      "source": "^(.*)$",
+      "target": "$1",
+      "service": "html5-apps-repo-rt",
+      "authenticationType": "xsuaa"
+    }
+  ]
+}

@@ -1,0 +1,1202 @@
+POST     http://localhost:4004/srv/EmployeeService/bulkSkills
+Content-Type: application/json
+
+{
+    "recs": [
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "00cdc93e-e207-4d90-b917-bf3789717f26",
+            "name": "BW & BW/4HANA",
+            "description": "BW & BW/4HANA" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "04c8c335-1be1-47d4-9c03-756e9532d82f",
+            "name": "SAP BTP - API Management",
+            "description": "SAP BTP - Integration Suite - API Management" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "04d7b6b1-e157-45de-8337-3b496f751e94",
+            "name": "Certified Scrum Master (CSM)",
+            "description": "Certified Scrum Master (CSM)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "05262c51-2971-4ea8-a9b5-37a81008f464",
+            "name": "Node.js",
+            "description": "Node.js" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "07b1734d-fcaa-4b85-b64e-fc45b25185df",
+            "name": "Customer Relationship Management (CRM)",
+            "description": "Customer Relationship Management (CRM)" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "07cfa587-d2fd-4429-9b15-dbb9a8d19c8e",
+            "name": "AWS Administration and Governance",
+            "description": null 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "084c5c29-97ec-4b80-8935-49d35ca450c8",
+            "name": "Product-Minded Engineering",
+            "description": "Product-Minded Engineering" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "0c2dec16-417b-45f1-9178-96390f0eefe3",
+            "name": "SAP Basis",
+            "description": "SAP Basis" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "0c3ebee1-250d-43fb-8aec-30c24afdc55a",
+            "name": "Kotlin",
+            "description": "Kotlin" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "0cc382b3-ebef-470e-8e72-e55248be0700",
+            "name": "AWS Foundational",
+            "description": "AWS Foundational" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "0d8cdae3-bb1b-4c41-9b9d-cbaa6e0425d1",
+            "name": "Lean Six Sigma (Champion)",
+            "description": "Lean Six Sigma (Champion)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "0dfce3ab-33a3-41ae-ba67-12894af666d8",
+            "name": "SAP BTP - CAP",
+            "description": "CAP Model" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "0e9df326-b7c8-4e77-a387-8c6281e2620e",
+            "name": "SAP BTP - Administration and Governance",
+            "description": "BTP Administration and Governance" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "109971ce-d194-4ec5-90fc-c693b536fec2",
+            "name": "Facilitation",
+            "description": "Agile Facilitation" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "1425d0ac-3a5b-4a8e-90c1-089dd0b6c635",
+            "name": "SAP BTP - Business Rules",
+            "description": "SAP BTP - Business Rules" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "17c7c88a-85ad-464e-814b-1a1ed1b73ca2",
+            "name": "JavaScript",
+            "description": "JavaScript" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "18908cd7-f711-48a8-96a3-f75df67367b1",
+            "name": "SAP Basis",
+            "description": "SAP Basis" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "1950d3e8-a07a-421c-a6ff-b9b0d362d85f",
+            "name": "Procure to Pay (P2P)",
+            "description": "Procure to Pay (P2P)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "1a104399-2911-42ea-98d9-21c9397e000e",
+            "name": "React Native",
+            "description": "React Native" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "1a5e9fba-4e98-4816-8499-7690667f2e97",
+            "name": "Azure - Event Grid",
+            "description": null 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "1caf9c91-9232-43e5-8cb1-7f179bb9ef22",
+            "name": "SAP Signavio",
+            "description": "Signavio" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "1fbd098d-b4e2-46bb-8206-76eb636e8670",
+            "name": "Git",
+            "description": "Git SCM" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "2034c4f2-496d-46b8-9d4a-e73bad862dc7",
+            "name": "Python",
+            "description": "Python" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "26a6d71a-eb33-44f9-89df-44230557df24",
+            "name": "Clean Code - JavaScript",
+            "description": "Clean Code in a JavaScript environment (including UI5)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "271fda39-aee5-4f30-a27e-2f72be94a58c",
+            "name": "SAP BTP - Extension Suite",
+            "description": "SAP BTP - Extension Suite" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "280b13b0-e5e7-4174-a3bf-a1796c243f5f",
+            "name": "SAP BTP - Integration Suite - CPI",
+            "description": "SAP BTP - Integration Suite - CPI" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "2a7ebd6c-8859-4752-b225-808374b95a86",
+            "name": "Business Transformation",
+            "description": "Business Transformation" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "2af9a8de-9c8c-4f78-a3d8-6eda0a40cb79",
+            "name": "Business Analytics",
+            "description": "Business Analytics" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "2cc91c12-5e2a-4793-b0b4-d39278740e66",
+            "name": "Solution Manager (SolMan)",
+            "description": "Solution Manager (SolMan)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "2d937253-0379-414a-acb0-4155f2f12f2a",
+            "name": "Software Development Life Cycle (SDLC)",
+            "description": "Software Development Life Cycle (SDLC)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "310ebd92-073c-4bdc-be60-ead8310fa182",
+            "name": "ABAP CDS",
+            "description": "ABAP CDS" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "31d89a32-413e-45dc-b47e-a03063c3d40a",
+            "name": "Cloud (AWS, Azure)",
+            "description": "Cloud (AWS, Azure)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "333c0225-361b-4bd8-a404-e88bbacc9201",
+            "name": "SAP Basis",
+            "description": "SAP Basis" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "33b0499d-0154-420b-9440-e4d8882452bb",
+            "name": "React",
+            "description": "React.js" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "33c71fb4-3318-4030-b72e-2b85bceab127",
+            "name": "Cordova",
+            "description": "Hybrid mobile application development framework" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "3a4aea8c-24ad-40bc-aeaf-0d9879a60f90",
+            "name": "Mulesoft",
+            "description": "Mulesoft integration platform" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "3ace3c6c-ca0b-496b-8ea5-5b226792e690",
+            "name": "SAP BTP - BPM",
+            "description": "SAP BTP - BPM" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "3b2391ca-600c-4e7c-b714-9e1549696644",
+            "name": "Hybrid App Development",
+            "description": "Hybrid App Development" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "3baa1a89-54a8-4106-be03-3ae1a766102e",
+            "name": "Process Improvement",
+            "description": "Process Improvement" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "3bc083be-992a-4d02-af4b-f9b31783a65c",
+            "name": "Estimation",
+            "description": "Estimation" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "3d2c0dec-7b2f-4c05-81f6-87fc1e3b140c",
+            "name": "Production Planning (PP)",
+            "description": "Production Planning (PP)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "3dc4a2b7-6e05-4ae7-aab1-cd99536c8160",
+            "name": "Lean Six Sigma (Yellow Belt)",
+            "description": "Lean Six Sigma (Yellow Belt)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "3e06aefc-caf5-472e-911d-321821e1fa17",
+            "name": "Human Resources (SHRM-SCP)",
+            "description": "Human Resources (SHRM-SCP)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "3fd2b085-0aa4-40c1-8128-670f0516ddcb",
+            "name": "Human Resources (SHRM-CP)",
+            "description": "Human Resources (SHRM-CP)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "44bba2b6-76ae-4fc6-ac5f-0e06c2db25f2",
+            "name": "SAP BTP - Event Mesh",
+            "description": "Event Mesh" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "4a6dc123-bef3-4a89-bc28-7a83191bac75",
+            "name": "Lean Six Sigma (Master Black Belt)",
+            "description": "Lean Six Sigma (Master Black Belt)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "4a8cd999-12ef-4313-a7ca-a801216e3bcc",
+            "name": "AWS Solutions Architect",
+            "description": "AWS Solutions Architect" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "4ac62c74-398b-4a3d-9f57-ee9cc6495ac0",
+            "name": "UI5",
+            "description": "UI5" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "4be1943f-09d4-4a43-bddc-034275b882f5",
+            "name": "React",
+            "description": "React" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "4caf018e-40d8-4a34-8194-ea9494baad00",
+            "name": "iOS (Swift/SwiftUI)",
+            "description": "iOS App Development" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "4cca8050-0a7a-48ce-87f3-074f42258b94",
+            "name": "Zebra",
+            "description": "Zebra devices" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "4e0ac43b-1e57-425c-932e-3383107c489e",
+            "name": "Celonis",
+            "description": "Celonis" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "50f3fedb-2f5f-448c-946e-4ada31d5020f",
+            "name": "Sales & Distribution (SD)",
+            "description": "Sales & Distribution (SD)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "5124876e-cd4f-4636-bc5a-a4da920da050",
+            "name": "Human Capital Management (HCM)",
+            "description": "Human Capital Management (HCM)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "53fef084-5cb0-46f7-8d9a-dfbdc63d8e09",
+            "name": "Enterprise Architecture",
+            "description": "Enterprise Architecture" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "54567bad-3c3d-4f2d-85c9-c7eed9db1609",
+            "name": "SAP BTP - Fiori SDK for Android",
+            "description": "Fiori SDK for Android" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "54684752-f781-4ae4-a5a7-84fa1277f878",
+            "name": "Product Owner (PSPO)",
+            "description": "Product Owner (PSPO)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "54bfdafb-e47f-4e6d-b081-5adc25e58190",
+            "name": "Agile Practitioner (PMI-ACP)",
+            "description": "Agile Practitioner (PMI-ACP)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "560cd99a-06e7-4853-b2bf-c4422ce0fee7",
+            "name": "Plant Maintenance (PM)",
+            "description": "Plant Maintenance (PM)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "56859030-5e2a-4669-b155-f08a03c007b4",
+            "name": "Suite on HANA",
+            "description": "Suite on HANA" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "57b0dad5-1280-4715-8d86-bcf2210e0fb3",
+            "name": "SAP Security",
+            "description": "SAP Security" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "5d37fa13-493e-41e6-9eb2-eb93b14f42a6",
+            "name": "SAP BTP - Workflow",
+            "description": "SAP BTP - Workflow" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "5e0add02-901e-49c4-b019-6735939b0127",
+            "name": "PI / PO",
+            "description": "PI / PO" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "5eb5c2f7-69cd-4ccf-8c23-91e98bf28eb1",
+            "name": "Scaled Agile Framework (SAFe)",
+            "description": "Scaled Agile Framework (SAFe)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "5fdb5793-427a-4daf-bee3-3ea96067837e",
+            "name": "Human Resources (SPHR)",
+            "description": "Human Resources (SPHR)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "609635d5-9248-47fa-b0a9-3e6196dc9de5",
+            "name": "UX Design",
+            "description": "UX Design" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "6168574f-40dc-4ee3-acbc-20e1151a3f8b",
+            "name": "AWS Foundational",
+            "description": "AWS Foundational" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "641efd83-84cf-4cd3-95ae-969593611d59",
+            "name": "SAP BTP - CAI",
+            "description": "SAP BTP - CAI" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "68d14afd-fcdc-403f-906a-3c5bf5ba291c",
+            "name": "Build Engineer, CICD Pipeline, Deployments",
+            "description": "Build Engineer, CICD Pipeline, Deployments" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "6aeea406-55a0-4c6c-b089-e7f379cb3288",
+            "name": "Gateway",
+            "description": "Gateway" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "6ded9c12-028e-414f-9ed5-01983280a7b8",
+            "name": "Unit Testing & TDD",
+            "description": "Implementing TDD practice" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "6ed32533-5b2d-453f-8d71-dc67ef8c5531",
+            "name": "SAP BTP - Mobile Services",
+            "description": "SAP BTP - Mobile Services" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "7116340c-fd62-4416-a615-7b3a2091ba35",
+            "name": "SAP MDK",
+            "description": "Mobile Development Kit" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "7397fa07-dad0-41d3-b6ec-5aec8f4d1744",
+            "name": "Flutter",
+            "description": "Flutter" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "782f534c-6db8-4dbe-8cf0-185032f2d685",
+            "name": "ABAP",
+            "description": "ABAP" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "796fa2eb-8493-4ecd-9867-e4589cfd0a47",
+            "name": "SAP BTP - Work Zone, Standard Edition",
+            "description": "Build Work Zone, Standard Edition" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "798f9ea3-647c-4090-bc60-aff09ca13352",
+            "name": "Minimum Viable Architecture",
+            "description": "Mindset Minimum Viable Architecture (MVA)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "7ad52a29-21ea-41b6-a3a9-261391def97d",
+            "name": "Requirement Elicitation",
+            "description": "Requirement Elicitation" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "7b456f13-16a3-4e6f-bdbe-f23720939857",
+            "name": "Project Management Professional (PMP)",
+            "description": "Project Management Professional (PMP)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "7bf76e5a-d759-44bc-906e-e305cb5323cf",
+            "name": "Customer Relationship Management (CRM)",
+            "description": "Customer Relationship Management (CRM)" 
+            
+        },
+        {
+            "createdBy": "harikrishnaanantha@mindsetconsulting.com",
+            "modifiedBy": "harikrishnaanantha@mindsetconsulting.com",
+            "ID": "7c8781af-7fb6-4f04-8a85-169973280c68",
+            "name": "SAP AI Launchpad",
+            "description": "SAP AI Launchpad" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "7df9496d-4d51-4616-b2b9-8c82475a14d3",
+            "name": "Topaz",
+            "description": "Topaz devices" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "7f3a332c-c9de-441d-bcd3-aa64e34e1664",
+            "name": "SCM Advanced Planning and Optimization (APO)",
+            "description": "SCM Advanced Planning and Optimization (APO)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "84b95692-5f77-4c97-b2bf-e5971e4eca05",
+            "name": "Document Information Extraction Service",
+            "description": "Document Information Extraction Service" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "84e60fa5-57cd-41a7-b835-361c06af9b8e",
+            "name": "SAP BTP - Work Zone, Advanced Edition",
+            "description": "Build Work Zone, Advanced Edition" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "8657d235-bbf7-43bb-8893-36bff23aa331",
+            "name": "SAP BTP - Fiori SDK for iOS",
+            "description": "Fiori SDK for iOS" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "8ae42f2a-3f17-4ebc-bf11-2c10c1b70d99",
+            "name": "Lean Six Sigma (Black Belt)",
+            "description": "Lean Six Sigma (Black Belt)" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "8b54efac-ed72-4d7b-9c40-c62a9fbfb3fc",
+            "name": "Kafka",
+            "description": "Kafka" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "8b623528-9875-42bd-9b3d-683e16456f7e",
+            "name": "Large Language Models & Generative AI Models",
+            "description": "AI" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "8bc95212-c636-44a2-8dc1-bebf0bf8c65e",
+            "name": "Event Management",
+            "description": "Event Management" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "8c0eafb6-dae9-4117-a9ef-5f3d0a592f82",
+            "name": "Web Service",
+            "description": "Web Service" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "8c0fffca-4b11-4d39-9dae-14fbd6a93ab0",
+            "name": "SAP BTP - Launchpad Services",
+            "description": "SAP BTP - Launchpad Services" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "8cde65af-c6a3-42b7-b2b5-47a9fde28a08",
+            "name": "Fiori (Design System)",
+            "description": "Fiori as a design system" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "9c6d480b-0979-4fa6-8492-bdaa786390c0",
+            "name": "Web Development",
+            "description": "Web Development" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "9f177750-e8c0-484d-bc66-e220d6fa1059",
+            "name": "Lean Six Sigma (White Belt)",
+            "description": "Lean Six Sigma (White Belt)" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "9f269b38-5d5c-42df-98af-a05e8abd5b33",
+            "name": "SAP BTP - Kyma",
+            "description": "Kyma" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "a195f05f-2831-45ff-bfe8-7951393e9bdf",
+            "name": "Presentation / Verbal Communication",
+            "description": "Presentation and communication skills" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "a262eddc-9f80-404c-a26b-5f15f39f0d4a",
+            "name": "Angular",
+            "description": "Angular" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "a435d18b-cf4d-4bd4-a45b-25608a5a3427",
+            "name": "Extended Warehouse Management (EWM)",
+            "description": "Extended Warehouse Management (EWM)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "a607b434-74bd-4c73-b994-16552da70855",
+            "name": "Tech Landscape Roadmapping",
+            "description": "Tech Landscape Roadmapping" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "a74e7f1b-4c3b-43ad-a862-0d8b934b0b70",
+            "name": "ABAP RAP",
+            "description": "ABAP RAP" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "ac03510c-762f-47d7-94d9-08782bf1cd23",
+            "name": "ABAP Objects",
+            "description": "ABAP Objects" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "acb4a97e-4551-4d98-a4fa-2b0abf7c5618",
+            "name": "ABAP on HANA",
+            "description": "ABAP on HANA" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "b1816738-fdf6-4826-8f22-05d773285e1c",
+            "name": "End-User Training",
+            "description": "End-User Training" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "b28c45e5-0363-46ce-8135-775f2c7f1a70",
+            "name": "SAP BTP - Build Apps",
+            "description": "Build Apps" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "b2b6610c-9a90-4715-aaaa-5eff50cdd53e",
+            "name": "Java",
+            "description": "Java" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "b37e6297-24d2-42f4-bdaf-2fd5347cae2b",
+            "name": "S/4HANA Upgrade Process",
+            "description": "S/4HANA Upgrade Process" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "b38652fd-6617-453f-9928-f0cee626e9ef",
+            "name": "Human Resources (PHR)",
+            "description": "Human Resources (PHR)" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "b44403b9-20f7-4880-996a-4b9bf98471fb",
+            "name": "SAP HANA (Modeling)",
+            "description": "Modeling in the HANA database" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "b6c1a54c-fd7a-4221-9c03-b2aed8b1aa9b",
+            "name": "SAP HANA (XSA)",
+            "description": "HANA Enterprise and HANA Cloud (XSJS/XSA)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "c302f5f8-ada8-42a7-a947-fb9efc195c16",
+            "name": "Change Management",
+            "description": "Change Management" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "c4ac9d2e-9e73-4b12-91e9-28058aaeb6b4",
+            "name": "Contract Management",
+            "description": "Contract Management" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "c4fbdd10-357b-4510-90aa-5f79b81c77fe",
+            "name": "SAP Analytics Cloud",
+            "description": "SAP Analytics Cloud (SAC)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "c695a518-7023-4956-b6c2-cb31961457b9",
+            "name": "Financial Accounting & Controlling (FICO)",
+            "description": "Financial Accounting & Controlling (FICO)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "c8cb90e4-d555-4fdd-8022-115615c666cb",
+            "name": "SAP Fiori Launchpad",
+            "description": "Fiori Launchpad" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "c97d301f-100e-4d74-995f-57625811ecd9",
+            "name": "Swift",
+            "description": "Swift" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "ca91dea9-d9c9-48a3-ada4-7361eef8aa21",
+            "name": "SAP HANA Administration",
+            "description": "Provisioning and Administration" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "ced36b21-b4d9-4ccf-aca9-e39c06b37d0b",
+            "name": "DevOps Process",
+            "description": "DevOps Process" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "cf0048a7-eed2-4684-914a-f29a929d1be9",
+            "name": "SAP S/4HANA",
+            "description": "SAP S/4HANA" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "cf6d6a83-2cf3-4b51-bf96-82effbf639a4",
+            "name": "SAP BTP - Advanced Event Mesh",
+            "description": "Advanced Event Mesh (Solace)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "cf9746b0-c03e-4679-9943-61638f83dce6",
+            "name": "Machine Learning",
+            "description": "Machine Learning" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "d5a4817f-d5b9-46e1-ac01-e9a1186e715d",
+            "name": "Neptune",
+            "description": "Neptune platform" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "d918af12-5881-470c-a635-96167a22c46e",
+            "name": "Clean Code - ABAP",
+            "description": "Clean ABAP" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "dfa1d489-3499-4687-8ae0-6600b5d34d5f",
+            "name": "Fiori Elements",
+            "description": "Fiori Elements" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "e29258af-8d80-454b-8baa-a4fa62a217fc",
+            "name": "Business Intelligence (BI)",
+            "description": "Business Intelligence (BI)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "e83f3f04-0422-4c29-9ba3-833f8575052d",
+            "name": "Android (Java/Kotlin)",
+            "description": "Android App Development" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "ec44ef2c-6809-4908-b09c-bfaf2d7e1aa0",
+            "name": "Quality Management (QM)",
+            "description": "Quality Management (QM)" 
+            
+        },
+        {
+            "createdBy": "ethanjewett@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "edf2eb72-e7be-47a4-a267-744935993d25",
+            "name": "SAP Datasphere",
+            "description": "Datasphere" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "eed32b5e-1a34-403e-9173-e93d8b49774a",
+            "name": "Project Management",
+            "description": "Project Management" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "f4b0afad-7d41-4cf2-8367-63fa784bfb56",
+            "name": "Warehouse Management (WM)",
+            "description": "Warehouse Management (WM)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ethanjewett@mindsetconsulting.com",
+            "ID": "f50515cd-493a-4d6a-b372-fb1a12d4765a",
+            "name": "SAP BTP - Build Process Automation",
+            "description": "Build Process Automation - BPA" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "f5f7169b-9baa-4e5d-ba80-4ff35abec09a",
+            "name": "Lean Six Sigma (Green Belt)",
+            "description": "Lean Six Sigma (Green Belt)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "f6f5a25c-c7f6-4f0b-a439-16451785d95c",
+            "name": "Transportation Management (TM)",
+            "description": "Transportation Management (TM)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "fac42c1a-7729-4d13-9917-6b117a2f143b",
+            "name": "Material Management (MM)",
+            "description": "Material Management (MM)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "fbcc1d50-9498-4716-8767-b3947a7362b3",
+            "name": "Product Owner (CSPO)",
+            "description": "Product Owner (CSPO)" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "fbe581e0-f387-4612-8e08-88d91a97bb41",
+            "name": "Fiori",
+            "description": "Fiori" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "fcc5e549-7026-4af9-a83d-24e43df38d1f",
+            "name": "OData",
+            "description": "OData" 
+            
+        },
+        {
+            "createdBy": "ajay.s@mindsetconsulting.com",
+            "modifiedBy": "ajay.s@mindsetconsulting.com",
+            "ID": "fde3b1e3-9ac1-4d41-aeef-0dec058615c8",
+            "name": "SAP BTP - iRPA",
+            "description": "SAP BTP - iRPA" 
+            
+        }
+    ]
+}
+
+
+###
+PATCH  http://localhost:4004/srv/EmployeeService/Employees(ID='10')
+Content-Type: application/json
+
+{
+    "createdAt": "2024-03-19T06:43:34.254Z",
+    "createdBy": "anonymous",
+    "modifiedAt": "2024-03-19T06:43:34.254Z",
+    "modifiedBy": "anonymous",
+    "ID": "10",
+    "name": "Derek Olson",
+    "phoneNo": "6127505846",
+    "email": "testuser@mindsetconsulting.com",
+    "about": "sample about",
+   
+    "availability": "Not Available",
+    "currentProject": null,
+    "manager_ID": "2",
+    "deleteFlag": true,
+    "linkedInId":"test",
+    "manager": {
+        "createdAt": null,
+        "createdBy": null,
+        "modifiedAt": null,
+        "modifiedBy": null,
+        "name": "",
+        "phoneNo": null,
+        "email": null,
+        "about": null,
+        "location_ID": null,
+        "role_ID": null,
+        "department_ID": null,
+        "availability": null,
+        "currentProject": null,
+        "manager_ID": null,
+        "deleteFlag": null
+    },
+    "projects": [],
+    "blogs": [],
+    "skills": [
+        {
+            "createdAt": "2024-03-19T06:43:34.254Z",
+            "createdBy": "anonymous",
+            "modifiedAt": "2024-03-19T06:43:34.254Z",
+            "modifiedBy": "anonymous",
+            "employee_ID": "10",
+            "skill_ID": "16bc3dc1-c69a-4dfc-ad7b-4d6c63a12439",
+            "proficiency_code": "E",
+            "IsActiveEntity": true,
+            "HasActiveEntity": false,
+            "HasDraftEntity": false,
+            "skill": {
+                "createdAt": "2024-03-19T06:43:34.254Z",
+                "createdBy": "anonymous",
+                "modifiedAt": "2024-03-19T06:43:34.254Z",
+                "modifiedBy": "anonymous",
+                "ID": "16bc3dc1-c69a-4dfc-ad7b-4d6c63a12439",
+                "name": "Node.js",
+                "description": "Node.js",
+                "IsActiveEntity": true,
+                "HasActiveEntity": false,
+                "HasDraftEntity": false
+            },
+            "proficiency": {
+                "descr": null,
+                "code": "E",
+                "name": "Expert",
+                "description": "Expert"
+            }
+        },
+        {
+             "employee_ID": "10",
+            "skill_ID": "b1a31169-a9d5-4752-8fa0-72cee129f939",
+            "proficiency_code": "E",
+            "skill": {
+                "name": "mer53",
+                "ID": "b1a31169-a9d5-4752-8fa0-72cee129f939",
+                "description": "mer53"
+            },
+            "proficiency": {
+                "name": "Expert",
+                "code": "E"
+            }
+        }
+    ],
+    "certifications": [],
+    "trainings": [],
+    "events": []
+}

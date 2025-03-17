@@ -1,0 +1,56 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns="sap.m" >
+    <Table
+		inset="false" sticky="ColumnHeaders,HeaderToolbar"
+		items="{
+			path: 'LocalModel>/Catalog',
+			sorter: {
+				path: 'name'
+			}
+		}">
+		<headerToolbar>
+			<OverflowToolbar>
+				<content>
+					<ToolbarSpacer />
+					<Button icon="sap-icon://add" text="{i18n>add}" press="onAddLPConfigInfo" type="Emphasized" >
+                        <customData>
+                            <core:CustomData key="category" value="Catalog" ></core:CustomData>
+                        </customData>
+                    </Button>
+				</content>
+			</OverflowToolbar>
+		</headerToolbar>
+		<columns>
+			<Column>
+				<Text text="{i18n>name}" />
+			</Column>
+			<Column hAlign="Center">
+				<Text text="{i18n>id}" />
+			</Column>
+			<Column hAlign="Center">
+				<Text text="{i18n>type}" />
+			</Column>
+            <Column hAlign="Center">
+				<Text text="" />
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<Text text="{LocalModel>name}" ></Text>
+                    <Text text="{LocalModel>catID}" ></Text>
+                    <Text text="{LocalModel>type}" ></Text>
+                    <core:Icon src="delete" color="#e31010" press="onDeleteCGR" >
+                        <core:customData>
+                            <core:CustomData key="configType" value="C" ></core:CustomData>
+                        </core:customData>
+                    </core:Icon>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

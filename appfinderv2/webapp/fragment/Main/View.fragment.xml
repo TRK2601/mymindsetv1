@@ -1,0 +1,23 @@
+<core:FragmentDefinition 	
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified"
+	xmlns="sap.m" >
+    <VBox id="mainPage" busyIndicatorDelay="0">
+        <Toolbar >
+            <ToolbarSpacer/>
+            <GenericTag text="{i18n>totalTCodes}" design="StatusIconHidden" status="Information">
+                <ObjectNumber state="Information" emphasized="false" number="{LocalModel>/TCodesCount}" />
+            </GenericTag>
+            <SegmentedButton selectedKey="{LocalModel>/displaySelect}" selectionChange="onSelectSegemntBtn">
+                <items>
+                    <SegmentedButtonItem icon="sap-icon://table-view" key="Table"/>
+                    <SegmentedButtonItem icon="sap-icon://bar-chart" key="Chart"/>
+                </items>
+            </SegmentedButton>
+        </Toolbar>
+        <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.Main.Table" type="XML" />
+        <core:Fragment fragmentName="com.mindset.accelerator.appfinder.v2.fragment.Main.ChartDashboard" type="XML" />
+    </VBox>
+</core:FragmentDefinition>

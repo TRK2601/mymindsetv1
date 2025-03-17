@@ -1,0 +1,73 @@
+<core:FragmentDefinition
+    xmlns="sap.m"  xmlns:u="sap.ui.unified"
+	xmlns:ui="sap.ui.table"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<VBox  class="sapUiSmallMarginEnd">
+	<ui:Table id="TeamsTbl" rows="{LocalModel>/Teams}" visible="{= ${LocalModel>/SelItem} === 'Teams' ? true : false}" selectionMode="None">
+		<ui:rowSettingsTemplate>
+			<ui:RowSettings highlight="{= ${LocalModel>type} === 'D' ? 'Error': 'None'}" highlightText="{= ${LocalModel>type} === 'D' ? 'Marked for delete': ''}"/>
+		</ui:rowSettingsTemplate>
+		<ui:extension>
+		<OverflowToolbar style="Clear">
+			<ToolbarSpacer/>
+			<u:FileUploader    id="fileUploader_Teams"  name="myFileUpload"    fileType="csv,xlsx"  sameFilenameAllowed="true"  tooltip="Upload your file to the server"  
+				placeholder="Upload your file here..."  uploadComplete="handleUploadComplete"  change="onFileUploadChange" visible="false">
+				<u:customData>
+					<core:CustomData key="Path" value="Teams" ></core:CustomData>
+					<core:CustomData key="TableColumns" value="Name" ></core:CustomData>
+					<core:CustomData  key="TableColumnsProperties" value="name" ></core:CustomData>
+				</u:customData>
+			</u:FileUploader>
+			<Button  icon="sap-icon://download"    text="Template"   press="handleDownloadTemplate">
+				<customData>
+					<core:CustomData key="Path" value="/Teams" ></core:CustomData>
+					<core:CustomData key="Columns" value="Name/name/str6,Description/description/str" ></core:CustomData>
+				</customData>
+			</Button>
+			<Button  icon="sap-icon://delete" type="Reject" text="Delete" press="onPressDelete" visible="false">
+				<customData>
+					<core:CustomData key="TblId" value="TeamsTbl" ></core:CustomData>
+					<core:CustomData key="Path" value="/Teams" ></core:CustomData>
+				</customData>
+			</Button>
+			<Button  icon="sap-icon://add" text="Add" type="Emphasized" press="onPressAddRow">
+				<customData>
+					<core:CustomData key="Path" value="/Teams" ></core:CustomData>
+				</customData>
+			</Button>
+		</OverflowToolbar>
+		</ui:extension>
+		<ui:columns>
+		<!-- key -->
+			<ui:Column >
+				<Label text="Name" required="true"/>
+				<ui:template>
+					<Input value="{LocalModel>name}" 
+						editable="{= !${LocalModel>editable} ? false : true}" 
+						valueState="{LocalModel>valueStateN}" maxLength="6"/>
+				</ui:template>
+			</ui:Column>
+			<ui:Column >
+				<Label text="Description" required="true" />
+				<ui:template>
+					<Input value="{LocalModel>description}" change="onChange" valueState="{LocalModel>valueStateD}"/>
+				</ui:template>
+			</ui:Column>
+			<!-- New -->
+			<!-- <ui:Column width="4rem">
+				<Label text="" />
+				<ui:template>
+					<Button icon="sap-icon://save" press="onPressSaveTeam"/>
+				</ui:template>
+			</ui:Column> -->
+			<ui:Column width="4rem" class="sapUiTinyMarginEnd">
+				<Label text="" />
+				<ui:template>
+					<Button type="Reject" icon="sap-icon://delete" press="onPressSingleDeleteAllSection"/>
+				</ui:template>
+			</ui:Column>
+		</ui:columns>
+	</ui:Table>
+	</VBox>
+</core:FragmentDefinition>

@@ -1,0 +1,73 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<Dialog  contentHeight="60%" contentWidth="100%" title="MatType" titleAlignment="Center">
+		<VBox class="sapUiSmallMarginBeginEnd">
+		<Table id="idProductsTableMatType" growing="true"
+			items="{path: 'GlobalModel>/AssetMasterMatType'}" alternateRowColors="true">
+			<!-- <headerToolbar>
+				<OverflowToolbar>
+					<Title text="Mat Type" level="H2"/>
+					<ComboBox selectedKey="{GlobalModel>/selectedMatTypeKey}"
+						items="{
+							path: 'GlobalModel>/AssetMasterMatType'
+						}" 
+						change="onComboBoxChange">
+						<core:Item key="{GlobalModel>matType}" text="{GlobalModel>matType}" />
+					</ComboBox>					
+					<ToolbarSpacer/>					
+				</OverflowToolbar>
+			</headerToolbar>
+			<infoToolbar>
+				<OverflowToolbar id="vsdFilterBar" visible="false">
+					<Text id="vsdFilterLabel" />
+				</OverflowToolbar>
+			</infoToolbar> -->
+			<columns>
+				<Column mergeDuplicates="true">
+					<header>
+						<Text text="Mat Type"/>
+					</header>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true">
+					<Text text="Name"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<Text text="Serial No"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<Text text="Barcode No"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<Text text="Desc 1"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<Text text="Desc 2"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+					<Text text="Desc 3"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem vAlign="Middle" press="onMatTableRowPress" type="Active">
+					<cells>
+						<Title text="{GlobalModel>matType}" wrapping="true"/>
+						<Text text="{GlobalModel>name}" wrapping="true"/>
+						<Text text="{GlobalModel>serialNo}" wrapping="true"/>
+						<Text text="{GlobalModel>barcodeNo}" wrapping="true"/>
+						<Text text="{GlobalModel>desc1}" wrapping="true"/>
+						<Text text="{GlobalModel>desc2}" wrapping="true"/>
+						<Text text="{GlobalModel>desc3}" wrapping="true"/>						
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>		
+		</VBox>
+		<footer>
+			<Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Close" press="onCloseMatTypeDialog"></Button>
+			</Toolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>

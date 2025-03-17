@@ -1,0 +1,1 @@
+using assetwise_pg as service from '../../srv/service';

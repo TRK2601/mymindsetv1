@@ -1,0 +1,123 @@
+<mvc:View controllerName="com.mindset.ui.assetwisepg.workflow.controller.Main" xmlns:ui="sap.ui.table"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" 	xmlns:f="sap.f"
+		xmlns:fb="sap.ui.comp.filterbar" 	xmlns:core="sap.ui.core" 	xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns="sap.m">
+    	<f:DynamicPage  id="page" showFooter="true" headerExpanded="true">
+            <f:header>
+				<f:DynamicPageHeader>
+					<f:content>
+                        <VBox >
+                        <FlexBox justifyContent="End" >
+                            <Label design="Bold" text="{GlobalModel>/LoggedInUserID}" /> 
+                        </FlexBox>
+						<fb:FilterBar id="filterbar" persistencyKey="" 
+                            useToolbar="false" search="._onPatternMatch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+							<fb:filterGroupItems>
+								<fb:FilterGroupItem name="reqType" label="Request Type" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<ComboBox  name="reqType" selectedKey="{GlobalModel>/reqTypeFilterVal}" 
+                                            items="{/RequestTypes}" showSecondaryValues="true">
+                                            <core:ListItem   key="{code}" additionalText="{code}" text="{name}" />
+                                        </ComboBox> 
+									</fb:control>
+								</fb:FilterGroupItem>
+								<!-- <fb:FilterGroupItem   name="requesterName" label="Requestor Name" groupName="Group2" visibleInFilterBar="true">
+									<fb:control>
+										<Input name="requesterName" value="{GlobalModel>/reqNameFilterValue}">
+                                        </Input>
+									</fb:control>
+								</fb:FilterGroupItem>								 -->
+							</fb:filterGroupItems>
+						</fb:FilterBar>
+                        </VBox>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+            <f:content>
+                <IconTabBar
+		id="idIconTabBar"
+		select=".onTabSelect" selectedKey="{GlobalModel>/SelectedTabKey}"
+		class="sapUiResponsiveContentPadding">
+		<items>
+			<IconTabFilter
+				showAll="true"
+				count="{= ${GlobalModel>/MyReqCount} || 0}"
+				text="My Requests"
+				key="myReq" />
+			<IconTabSeparator />
+			<IconTabFilter
+				icon="sap-icon://to-be-reviewed"
+				iconColor="Critical"
+                design="Horizontal"
+				count="{= ${GlobalModel>/ToBeReviewedReqCount} || 0}"
+				text="To Be Reviewed"
+				key="toBeReviewed" />
+			<IconTabFilter
+				icon="sap-icon://complete"
+				iconColor="Positive"
+                design="Horizontal"
+				count="{= ${GlobalModel>/ReviewedReqCount} || 0}"
+				text="Reviewed"
+				key="reviewed" />
+		</items>
+		<content>
+                <Table id="RequestorTableId"
+                    items="{
+                        path: 'GlobalModel>/ReadAPRequestsSet',
+                        sorter: {
+                            path: 'modifiedAt'
+                        }
+                    }">
+                    <!-- <headerToolbar>
+                        <OverflowToolbar>
+                            <Title text="Requests ({= ${GlobalModel>/ReadAPRequestsSet}.length})" level="H2"/>
+                        </OverflowToolbar>
+                    </headerToolbar> -->
+                    <columns>
+                        <Column width="8em">
+                            <Text text="Request ID" />
+                        </Column>
+                        <Column hAlign="Center" width="8em">
+                            <Text text="Request Type" />
+                        </Column>
+                        <Column width="22em">
+                            <Text text="Requester" />
+                        </Column>
+                        <Column width="22em" visible="{= ${GlobalModel>/SelectedTabKey} === 'toBeReviewed' ? false : true}">
+                            <Text text="Current Approver" />
+                        </Column>
+                        <Column width="18em" visible="{= ${GlobalModel>/SelectedTabKey} === 'toBeReviewed' ? false : true}">
+                            <Text text="Current Status" />
+                        </Column>
+                        <Column width="8em" hAlign="Center">
+                            <Text text="Overall Status" />
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem highlight="{parts :['GlobalModel>managerApprovalStatus','GlobalModel>assigneeAcceptStatus'], formatter: '.formatter.highlightLineItemStatus'}" vAlign="Middle" type="Navigation" press="onPressLineItem">
+                            <cells>
+                                <Text text="{GlobalModel>ID}" />
+                                <Text text="{GlobalModel>reqType}" />
+                                <Text text="{GlobalModel>requesterID}"/>
+                                <Text text="{GlobalModel>currentApproverID}" />
+                                <ObjectStatus state="Information" text="{parts :['GlobalModel>/SelectedTabKey','GlobalModel>managerApprovalStatus','GlobalModel>assigneeAcceptStatus','GlobalModel>currentStatus'], formatter: '.formatter.setCurrentStatus'}" />
+                                <ObjectStatus inverted="true"
+                                    text="{parts :['i18n>text','GlobalModel>overallStatus'], formatter: '.formatter.setOverallStatus'}"
+                                    state="{parts :['i18n>state','GlobalModel>overallStatus'], formatter: '.formatter.setOverallStatus'}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                </content>
+	</IconTabBar>
+            </f:content>
+            <f:footer>
+                <OverflowToolbar >
+                    <ToolbarSpacer ></ToolbarSpacer>
+                    <Button type="Emphasized" text="Create"  press="onCreatePress" />  
+                </OverflowToolbar>
+            </f:footer>
+        </f:DynamicPage>
+   
+</mvc:View>
+

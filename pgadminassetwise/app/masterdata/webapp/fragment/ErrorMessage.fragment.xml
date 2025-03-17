@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core" xmlns:uxap="sap.uxap">
+	<MessagePopover items="{LocalModel>/ErrorMessags}">
+		<MessageItem type="{LocalModel>type}" subtitle="{LocalModel>subTitle}" description="{LocalModel>error}"
+			title="{LocalModel>title}">
+		</MessageItem>
+	
+	</MessagePopover>
+</core:FragmentDefinition>

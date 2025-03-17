@@ -1,0 +1,40 @@
+<core:FragmentDefinition   xmlns:core="sap.ui.core"   xmlns:f="sap.ui.layout.form"   xmlns="sap.m">
+    <f:SimpleForm    editable="true"	layout="ResponsiveGridLayout"  labelSpanXL="4" 	labelSpanL="4" labelSpanM="4"
+			labelSpanS="12" 	adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" 	emptySpanM="0"	emptySpanS="0"
+			columnsXL="3"	columnsL="2" columnsM="2"	singleContainerFullSize="false">
+        <f:content>
+            <core:Title/>
+            <Label text="Transfer Complete"  />
+            <ComboBox  items="{/Statuses}" selectedKey="{GlobalModel>transferStatus}"  editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}"   >
+                <core:Item key="{code}" text="{name}" />
+            </ComboBox>
+            <Label text="Transfer Date" />
+            <DateTimePicker value="{parts :['GlobalModel>transferDate'], formatter: '.formatter.formatDate'}" change="onDateChange" editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}">
+                <customData>
+                    <core:CustomData key="property" value="transferDate" ></core:CustomData>
+                </customData>
+            </DateTimePicker>
+            <Label text="New Base Location" />
+            <Input  value="{GlobalModel>transferBaseLoc}"  valueHelpRequest="onBaseLocValueHelpRequest"  showValueHelp="true"  editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}">
+              <customData>
+				    <core:CustomData key="vhProp" value="baseLocation"/>
+                    <!-- Below value should be maaintained same sequence of localDataProp &  valueListProp-->
+					<core:CustomData key="localDataProp" value="transferBaseLoc"/>
+					<core:CustomData key="valueListProp" value="code"/>							
+				</customData>
+            </Input>    
+            <core:Title/>
+            <Label text="New Functional Location" />
+            <Input  value="{GlobalModel>transferFuncLoc}" showValueHelp="true"  valueHelpRequest="onBaseLocValueHelpRequest"  editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}">
+                <customData>
+				    <core:CustomData key="vhProp" value="functionalLocation"/>
+                    <!-- Below value should be maaintained same sequence of localDataProp &  valueListProp-->
+					<core:CustomData key="localDataProp" value="transferFuncLoc"/>
+					 <core:CustomData key="localDependDataProp" value="transferBaseLoc"/>					
+				</customData>
+            </Input>
+            <Label text="Comments" />
+            <TextArea   editable="{parts :['GlobalModel>/request'], formatter: '.formatter.updateSrvReqRelatedStatuses'}" />                           
+        </f:content>
+    </f:SimpleForm>    
+</core:FragmentDefinition>

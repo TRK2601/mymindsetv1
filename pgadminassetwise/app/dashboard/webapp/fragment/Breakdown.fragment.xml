@@ -1,0 +1,61 @@
+<core:FragmentDefinition
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core" 
+    xmlns:form="sap.ui.layout.form"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:viz="sap.viz.ui5.controls"  xmlns:c="sap.suite.ui.commons"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"  xmlns:viz.data="sap.viz.ui5.data"
+    displayBlock="true"
+    xmlns="sap.m">
+    <!-- <f:Card id="_IDGe36nCard1" class="sapUiLargeMarginEnd">
+        <f:header>
+            <card:Header id="_IDGenHeaderBreakdown2" title="Breakdown by Location" subtitle="" />
+        </f:header>
+        <f:content>         -->
+            <VBox id="Vboxid3Fu6nLocation" width="100%">                
+                <c:ChartContainer class="sapUiMediumMarginTop"
+                    id="chartContainerBreakDwn"
+                    showFullScreen="true"
+                    showPersonalization="false"
+                    autoAdjustHeight="false"
+                    personalizationPress="attachPersonalizationPress"
+                    contentChange="attachContentChange">
+                    <c:content>
+                        <c:ChartContainerContent id="_IDGenChartContainerDonutContent1"
+                            icon="sap-icon://line-chart">
+                            <c:content>
+                                <viz:VizFrame id="idBreakDownDonutChart"  uiConfig="{applicationSet:'fiori'}"  width="200%"  vizType="donut" vizProperties="{plotArea: { drawingEffect: 'glossy'}, title:{ text:'',visible:true}, colorPalette:['#000000'],dataLabel:{title:{text:'Functional Locations'},visible:true,showTotal:true},valueAxis:{ title:{text:'Net Value and No.of Assets'}}}"> 
+                                    <viz:dataset>
+                                        <viz.data:FlattenedDataset id="_IDGenF6l5attenedDataset1" data="{LocalModel>/AssetDataSet}">
+                                            <viz.data:dimensions>
+                                                <viz.data:DimensionDefinition id="_IDG5enDimensionDefinition1" name="Base Location" value="{LocalModel>baseLocation}"/>
+                                                <viz.data:DimensionDefinition id="_IDG5en6DimenrsionDefinition1" name="Functional Location" value="{LocalModel>funcLocation}"/>
+                                                <viz.data:DimensionDefinition id="_IDG5enD788imensrionDefinition1" name="Group" value="{LocalModel>group}"/>
+                                                <viz.data:DimensionDefinition id="_IDG5enD8imensitonDefinition1" name="Sub Group" value="{LocalModel>subGroup}"/> 
+
+                                            </viz.data:dimensions>
+                                            <viz.data:measures>
+                                                <viz.data:MeasureDefinition id="_IDGe58nMeasureDefinition1" name="No.of Assets" value="{LocalModel>noofAssetcount}"/>
+                                            
+                                            </viz.data:measures>
+                                        </viz.data:FlattenedDataset>
+                                    </viz:dataset>
+                                    <viz:feeds>
+                                        
+                                        <viz.feeds:FeedItem id="valueAxi88s3Feed2"  uid="size" type="Measure" values="No.of Assets"/>
+                                        <viz.feeds:FeedItem id="categoryA4xisFeed2" uid="color" type="Dimension" values="Base Location,Functional Location,Group,Sub Group"/>
+                                    </viz:feeds>
+                                    <viz:dependents>
+                                        <viz:Popover id="breakDownPopoverId"></viz:Popover>
+                                    </viz:dependents>
+                                </viz:VizFrame>
+                            </c:content>
+                        </c:ChartContainerContent>
+                    </c:content>
+                </c:ChartContainer>     
+            </VBox>
+        <!-- </f:content>
+    </f:Card> -->
+</core:FragmentDefinition>

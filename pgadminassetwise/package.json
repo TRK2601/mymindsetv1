@@ -1,0 +1,49 @@
+{
+  "name": "assetwise_pg_db",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@cap-js/postgres": "^1",
+    "@sap-cloud-sdk/http-client": "^3.8.1",
+    "@sap/cds": "^8",
+    "@sap/cds-mtxs": "^1.13.0",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.9.7",
+    "@sap/xsenv": "^5.5.0",
+    "@sap/xssec": "^4",
+    "express": "^4",
+    "mbt": "^1.2.34",
+    "passport": "^0.6.0"
+  },
+  "devDependencies": {
+    "@cap-js/cds-types": "^0.6",
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8",
+    "@sap/eslint-plugin-ui5-jsdocs": "^2.0.5",
+    "@sap/ux-specification": "UI5-1.128",
+    "@sapui5/ts-types": "^1.92.2",
+    "eslint": "^7.32.0",
+    "rimraf": "^5.0.5"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "build:mta": "mbt build",
+    "watch-assetwisepg": "cds watch --open assetwisepg/webapp/index.html?sap-ui-xx-viewCache=false",
+    "undeploy": "cf undeploy assetwise_pg_db --delete-services --delete-service-keys --delete-service-brokers",
+    "build": "rimraf resources mta_archives && mbt build --mtar archive",
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-dashboard": "cds watch --open dashboard/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-masterdata": "cds watch --open masterdata/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-workflow": "cds watch --open workflow/webapp/index.html?sap-ui-xx-viewCache=false"
+  },
+  "cds": {
+    "requires": {
+      "auth": "xsuaa"
+    }
+  },
+  "sapux": [
+    "app/assetwisepg"
+  ]
+}

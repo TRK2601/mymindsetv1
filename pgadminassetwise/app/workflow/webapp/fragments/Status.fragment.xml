@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc"    xmlns:layout="sap.ui.layout"    xmlns:core="sap.ui.core" 
+    displayBlock="true"  xmlns:f="sap.ui.layout.form"   xmlns="sap.m">
+    <VBox>                            
+        <f:SimpleForm    editable="true"	layout="ResponsiveGridLayout"  labelSpanXL="4" 	labelSpanL="4" labelSpanM="4"
+			labelSpanS="12" 	adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" 	emptySpanM="0"	emptySpanS="0"
+			columnsXL="3"	columnsL="2" columnsM="2"	singleContainerFullSize="false" >
+            <f:content>
+                <core:Title />
+                <Label text="Approved by Manager" />
+                <ComboBox  items="{/Actions}" selectedKey="{GlobalModel>managerApprovalStatus}"  editable="{= ${GlobalModel>/sLoginUserRole} === 'Manager' &amp;&amp; ${GlobalModel>/pagemode} !== 'create' ? true : false }">
+                    <core:Item key="{code}" text="{name}" />
+                </ComboBox>
+                <Label text="Approved by Assignee" />
+                <ComboBox  items="{/Actions}" selectedKey="{GlobalModel>assigneeAcceptStatus}"  editable="{= ${GlobalModel>/sLoginUserRole} === 'Assignee' &amp;&amp; ${GlobalModel>/pagemode} !== 'create'  ? true : false }">
+                    <core:Item key="{code}" text="{name}" />                  
+                </ComboBox>   
+                 <!-- <Label text="Comments"/>
+                 <TextArea  value="{GlobalModel>comment}"  editable="{= ${GlobalModel>/sLoginUserRole} !== 'Manager' ? true : false}" />    -->
+                <core:Title />                    
+                <Label text="Handover Complete"  visible="{= ${GlobalModel>reqType}  === 'APR' ? true : false }"/>
+                <ComboBox  items="{/Statuses}" selectedKey="{GlobalModel>handOverStatus}"  editable="{= ${GlobalModel>/sLoginUserRole} !== 'Manager' ? true : false}"  visible="{= ${GlobalModel>reqType}  === 'APR' ? true : false }" >
+                    <core:Item key="{code}" text="{name}" />
+                </ComboBox>
+
+                 <Label text="Return Complete"  visible="{= ${GlobalModel>reqType}  === 'ARR' ? true : false }"/>
+                <ComboBox  items="{/Statuses}" selectedKey="{GlobalModel>returnStatus}"  editable="{= ${GlobalModel>/sLoginUserRole} !== 'Manager' ? true : false}"  visible="{= ${GlobalModel>reqType}  === 'ARR' ? true : false }" >
+                    <core:Item key="{code}" text="{name}" />
+                </ComboBox>
+
+                <Label text="Transfer Complete"  visible="{= ${GlobalModel>reqType}  === 'ATR' ? true : false }"/>
+                <ComboBox  items="{/Statuses}" selectedKey="{GlobalModel>transferStatus}"  editable="{= ${GlobalModel>/sLoginUserRole} !== 'Manager' ? true : false}"  visible="{= ${GlobalModel>reqType}  === 'ATR' ? true : false }" >
+                    <core:Item key="{code}" text="{name}" />
+                </ComboBox>
+
+                <Label text="Service Complete"  visible="{= ${GlobalModel>reqType}  === 'ASR' ? true : false }"/>
+                <ComboBox  items="{/Statuses}" selectedKey="{GlobalModel>seriviceStatus}"  editable="{= ${GlobalModel>/sLoginUserRole} !== 'Manager' ? true : false}"  visible="{= ${GlobalModel>reqType}  === 'ASR' ? true : false }" >
+                    <core:Item key="{code}" text="{name}" />
+                </ComboBox>
+                
+                <Label text="Overall Status" />
+                <Text text="{= ${GlobalModel>overallStatus} === 'OPN' ? 'Open' : ${GlobalModel>overallStatus} === 'CLS' ? 'Closed' : ${GlobalModel>overallStatus} === 'WIP' ? 'In-progress' : '' }">
+                </Text>
+                <!-- <ComboBox  items="{/Statuses}" selectedKey="{GlobalModel>overallStatus}"  editable="{= ${GlobalModel>/sLoginUserRole} !== 'Manager' ? true : false}">
+                   <core:Item key="{code}" text="{name}" />
+                </ComboBox>                 -->
+            
+            </f:content>
+        </f:SimpleForm>
+       
+    </VBox>
+</core:FragmentDefinition>

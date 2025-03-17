@@ -1,0 +1,130 @@
+<core:FragmentDefinition
+    xmlns="sap.m" xmlns:u="sap.ui.unified"
+	xmlns:ui="sap.ui.table"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc">
+	<VBox class="sapUiSmallMarginEnd">
+	<ui:Table id="EmpTbl" rows="{LocalModel>/Employee}" visible="{= ${LocalModel>/SelItem} === 'Employee' ? true : false}" selectionMode="None">
+		<ui:rowSettingsTemplate>
+			<ui:RowSettings highlight="{= ${LocalModel>type} === 'D' ? 'Error': 'None'}" highlightText="{= ${LocalModel>type} === 'D' ? 'Marked for delete': ''}"/>
+		</ui:rowSettingsTemplate>
+		<ui:extension>
+		<OverflowToolbar style="Clear">
+		<ToolbarSpacer/>
+		<u:FileUploader    id="fileUploader_Employee"  name="myFileUpload"    fileType="csv,xlsx"  sameFilenameAllowed="true"  tooltip="Upload your file to the server"  
+			placeholder="Upload your file here..."  uploadComplete="handleUploadComplete"  change="onFileUploadChange" visible="false">
+			<u:customData>
+				<core:CustomData  key="Path" value="Employee" ></core:CustomData>
+				<core:CustomData  key="TableColumns" value="Name,Code,Email" ></core:CustomData>
+				<core:CustomData  key="TableColumnsProperties" value="name,code,email" ></core:CustomData>
+			</u:customData>
+		</u:FileUploader>
+		<Button id="_IDGenButton1Empdownload"  icon="sap-icon://download"   text="Template"   press="handleDownloadTemplate">
+			<customData>
+				<core:CustomData key="Path" value="/Employee" ></core:CustomData>
+				<core:CustomData key="Columns" value="Name/name/str,Code/code/str,Email/email/str,Team/team/str,Reporting Manager/managerName/str,Manager/isManager/bool,Owner/isOwner/bool,User/isUser/bool,Creatable/hasCreatable/bool,Updatable/hasUpdatble/bool" ></core:CustomData>
+
+			</customData>
+		</Button>
+		<Button  icon="sap-icon://delete" text="Delete" type="Reject" press="onPressDelete" visible="false">
+			<customData>
+				<core:CustomData key="TblId" value="EmpTbl" ></core:CustomData>
+				<core:CustomData key="Path" value="/Employee" ></core:CustomData>
+			</customData>
+		</Button>
+		<Button  icon="sap-icon://add" text="Add" type="Emphasized" press="onPressAddRow">
+			<customData>
+				<core:CustomData key="Path" value="/Employee" ></core:CustomData>
+			</customData>
+		</Button>
+		</OverflowToolbar>
+		</ui:extension>
+		<ui:columns>
+		<!-- key -->
+			<ui:Column width="12rem">
+				<Label text="Name" required="true"/>
+				<ui:template>
+					<Input value="{LocalModel>name}" change="onChange" valueState="{LocalModel>valueStateN}"/>
+				</ui:template>
+			</ui:Column>
+			
+			<ui:Column width="4rem">
+				<Label text="Code" />
+				<ui:template>
+					<Input value="{LocalModel>code}" change="onChange"/>
+				</ui:template>
+			</ui:Column>
+
+			<ui:Column width="14rem">
+				<Label text="Email" />
+				<ui:template>
+					<Input value="{LocalModel>email}" change="onChange"/>
+				</ui:template>
+			</ui:Column>
+
+			<ui:Column width="8rem">
+				<Label text="Team" />
+				<ui:template>
+					<ComboBox
+                        items="{LocalModel>/Teams}"
+                        selectedKey="{LocalModel>team}" showSecondaryValues= "true"
+                        change="onChange">
+						<core:ListItem key="{LocalModel>name}" text="{LocalModel>description}" additionalText = "{LocalModel>name}"/>
+                    </ComboBox>
+				</ui:template>
+			</ui:Column>
+
+			<ui:Column width="12rem">
+				<Label text="Reporting Manager" />
+				<ui:template>
+					<Input value="{LocalModel>managerName}" placeholder="Enter manager" showSuggestion="true" showValueHelp="true" valueHelpRequest="onValueHelpRequest" >
+						<customData>
+							<core:CustomData key="vhProp" value="manager"/>
+							<!-- Below value should be maaintained same sequence of localDataProp &  valueListProp-->
+							<core:CustomData key="localDataProp" value="managerName,managerCode,managerEmail"/>
+							<core:CustomData key="valueListProp" value="name,code,email"/>
+						</customData>
+					</Input>
+				</ui:template>
+			</ui:Column>
+			
+			<ui:Column width="4.5rem">
+				<Label text="Manager" />
+				<ui:template>
+					<CheckBox selected="{LocalModel>isManager}" select="onChange" ></CheckBox>
+				</ui:template>
+			</ui:Column>
+			<ui:Column width="4rem">
+				<Label text="Owner" />
+				<ui:template>
+					<CheckBox selected="{LocalModel>isOwner}" select="onChange" ></CheckBox>
+				</ui:template>
+			</ui:Column>
+			<ui:Column width="4rem">
+				<Label text="User" />
+				<ui:template>
+					<CheckBox selected="{LocalModel>isUser}" select="onChange" ></CheckBox>
+				</ui:template>
+			</ui:Column>
+			<ui:Column width="5.5rem">
+				<Label text="Creatable" />
+				<ui:template>
+					<CheckBox selected="{LocalModel>hasCreatable}" select="onChange" ></CheckBox>
+				</ui:template>
+			</ui:Column>
+			<ui:Column width="5.5rem">
+				<Label text="Updatable" />
+				<ui:template>
+					<CheckBox selected="{LocalModel>hasUpdatble}" select="onChange" ></CheckBox>
+				</ui:template>
+			</ui:Column>
+			<ui:Column width="4rem" class="sapUiTinyMarginEnd">
+				<Label text="" />
+				<ui:template>
+					<Button type="Reject" icon="sap-icon://delete" press="onPressSingleDeleteAllSection"/>
+				</ui:template>
+			</ui:Column>
+		</ui:columns>
+	</ui:Table>
+	</VBox>
+</core:FragmentDefinition>

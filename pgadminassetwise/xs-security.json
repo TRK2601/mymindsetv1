@@ -1,0 +1,56 @@
+{
+  "xsappname": "assetwise_pg_db",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [
+    {
+      "name": "uaa.user",
+      "description": "UAA"
+    },
+    {
+      "name": "$XSAPPNAME.AssetWise_Admin",
+      "description": "AssetWise_Admin"
+    },
+    {
+      "name": "$XSAPPNAME.AssetWise_Reports",
+      "description": "AssetWise_Reports"
+    },
+    {
+      "name": "$XSAPPNAME.AssetWise_User",
+      "description": "AssetWise_User"
+    }
+  ],
+  "role-templates": [
+    {
+      "name": "Token_Exchange",
+      "description": "UAA",
+      "scope-references": [
+        "uaa.user"
+      ]
+    },
+    {
+      "name": "AssetWise_User",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.AssetWise_User"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "AssetWise_Reports",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.AssetWise_Reports"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "AssetWise_Admin",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.AssetWise_Admin"
+      ],
+      "attribute-references": []
+    }
+  ]
+}

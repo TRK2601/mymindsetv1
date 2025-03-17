@@ -1,0 +1,17 @@
+<core:FragmentDefinition	xmlns="sap.m"	xmlns:core="sap.ui.core">
+	<SelectDialog	
+		noDataText="No Products Found"
+		title="Select Product"
+		search=".onSearch"
+		confirm=".onBaseLocVHPConfirm"
+		cancel=".onBaseLocVHPCancel"
+		items="{
+			path: '/BaseLocation'
+		}">
+		<StandardListItem
+			title="{code}"			
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

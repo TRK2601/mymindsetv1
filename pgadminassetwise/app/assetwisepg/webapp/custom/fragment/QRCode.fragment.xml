@@ -1,0 +1,28 @@
+<c:FragmentDefinition
+    id="idFragment1"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified"
+	xmlns:mvc="sap.ui.core.mvc"
+>
+    <Dialog title="QR Code" beforeOpen="onBeforeOpen"
+            afterClose="onAfterClose">
+                	<l:VerticalLayout class="sapUiLargeMarginBegin sapUiLargeMarginEnd">
+            <Image id="qrcode" src=""></Image>
+            </l:VerticalLayout>
+                <buttons>
+            <Button
+                text="Close"
+                press="onClose"
+                type="Reject"
+            />
+            <Button visible="false"
+                text="Print"
+                press="onPrint"
+                type="Emphasized"
+            />
+    </buttons>
+    </Dialog>
+</c:FragmentDefinition>

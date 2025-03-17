@@ -1,0 +1,4 @@
+/* Enter your custom styles here */
+.customObjStatusMarginCls .sapMObjStatusInverted .sapMObjStatusWrapper {
+    margin-top: -1em !important;
+}

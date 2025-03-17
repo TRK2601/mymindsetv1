@@ -1,0 +1,37 @@
+<c:FragmentDefinition
+    id="idFragment1"
+    xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+	xmlns:u="sap.ui.unified"
+	xmlns:mvc="sap.ui.core.mvc"
+>
+    <Dialog title="Upload Asset Image" beforeOpen="onBeforeOpen"
+            afterClose="onAfterClose">
+    	<l:VerticalLayout>
+		<u:FileUploader
+			id="fileUploader"
+			name="myFileUpload"
+			uploadUrl="upload/"
+			tooltip="Upload your file to the local server"
+			uploadComplete="handleUploadComplete"
+            fileType="png,jpeg,jpg"
+            class="sapUiSmallMarginBegin"
+            change="validateFile"
+            />
+	</l:VerticalLayout>
+    <buttons>
+            <Button
+                text="Cancel"
+                press="onCancel"
+                type="Reject"
+            />
+            <Button
+                text="Upload"
+                press="onUpload"
+                type="Emphasized"
+            />
+    </buttons>
+    </Dialog>
+</c:FragmentDefinition>

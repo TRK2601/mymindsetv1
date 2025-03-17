@@ -1,0 +1,62 @@
+<mvc:View controllerName="com.mindset.ui.assetwisepg.masterdata.controller.App"
+    xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:custom="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+    <SplitApp
+		id="SplitAppDemo"
+		initialDetail="detail"
+		initialMaster="master">
+		<masterPages>
+			<Page
+				id="master"
+				title="Config Keys"
+				backgroundDesign= "List" class="sapUiSmallMarginBegin">
+				<List itemPress=".onlistItemPress">
+					<items>
+						<StandardListItem title="Teams" type="Active" custom:to="Teams" />
+						<StandardListItem title="Employee" type="Active" custom:to="Employee" />
+						<StandardListItem title="Request Type" type="Active" custom:to="RequestTypes" />
+						<StandardListItem title="Currency" type="Active" custom:to="Currency" />
+						<StandardListItem title="Base Location" type="Active" custom:to="BaseLocation" />
+						<StandardListItem title="Functional Location" type="Active" custom:to="FunctionalLocation" />
+						<StandardListItem title="Group" type="Active" custom:to="Groups" />
+						<StandardListItem title="Sub Group" type="Active" custom:to="SubGroup" />
+						<StandardListItem title="Material Type" type="Active" custom:to= "MaterialType"/>
+						<StandardListItem title="Actions" type="Active" custom:to= "Actions"/>
+						<StandardListItem title="Status" type="Active" custom:to= "Statuses"/>
+						<StandardListItem title="Asset Status" type="Active" custom:to= "AssetStatus"/>
+					</items>
+				</List>
+			</Page>
+			
+		</masterPages>
+		<detailPages>
+			<!-- Table for base location starts here -->
+			<Page id="detailPage" title="{= ${LocalModel>/SelItem} ? ${LocalModel>/sSelItemName} +' ('+${LocalModel>/SelItemDataCount}+')' : ''}" busyIndicatorDelay="0"
+				backgroundDesign= "Solid">
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.Currency" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.BaseLocation" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.FunctionalLocation" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.Groups" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.Employee" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.SubGroup" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.MaterialType" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.RequestTypes" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.Teams" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.Actions" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.Statuses" type="XML"/>
+				<core:Fragment fragmentName="com.mindset.ui.assetwisepg.masterdata.fragment.AssetStatus" type="XML"/>
+			<footer>
+				<OverflowToolbar  class="sapUiSmallMarginEnd">
+					<Button id="messagePopoverBtn" icon="sap-icon://error" type="Negative" text="{=${LocalModel>/ErrorMessags}.length}"
+                        visible="{= ${LocalModel>/ErrorMessags}.length > 0 ? true : false}" press="handleMessagePopoverPress"/>
+					<ToolbarSpacer/>
+					<Button text="Save" enabled="{LocalModel>/saveBtnEnabled}" type="Accept" press="onSaveData" />
+				</OverflowToolbar>
+			</footer>
+			</Page>
+		</detailPages>
+	</SplitApp>
+</mvc:View>
+

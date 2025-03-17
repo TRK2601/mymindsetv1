@@ -1,0 +1,185 @@
+_schema-version: 3.3.0
+ID: assetwise_pg_db
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: assetwise_pg_db-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: assetwise_pg_db-auth
+  - name: assetwise_pg_db-postgres
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    readiness-health-check-http-endpoint: /health
+    readiness-health-check-type: http
+  build-parameters:
+    builder: npm
+- name: assetwise_pg_db-postgres-deployer
+  type: nodejs
+  path: gen/pg
+  requires:
+  - name: assetwise_pg_db-postgres
+  parameters:
+    buildpack: nodejs_buildpack
+    no-route: true
+    no-start: true
+    tasks:
+    - command: npm start
+      name: deploy-to-postgresql
+- name: assetwise_pg_db-destination-content
+  type: com.sap.application.content
+  requires:
+  - name: assetwise_pg_db-destination-service
+    parameters:
+      content-target: true
+  - name: assetwise_pg_db_html_repo_host
+    parameters:
+      service-key:
+        name: assetwise_pg_db_html_repo_host-key
+  - name: assetwise_pg_db-auth
+    parameters:
+      service-key:
+        name: assetwise_pg_db-auth-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: assetwisepg_assetwise_pg_db_html_repo_host
+          ServiceInstanceName: assetwise_pg_db-html5-app-host-service
+          ServiceKeyName: assetwise_pg_db_html_repo_host-key
+          sap.cloud.service: assetwisepg
+        - Authentication: OAuth2UserTokenExchange
+          Name: assetwisepg_assetwise_pg_db_auth
+          ServiceInstanceName: assetwise_pg_db-auth
+          ServiceKeyName: assetwise_pg_db-auth-key
+          sap.cloud.service: assetwisepg
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+- name: assetwise_pg_db-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: assetwise_pg_db_html_repo_host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - commindsetuiassetwisepg.zip
+      name: commindsetuiassetwisepg
+      target-path: resources/
+    - artifacts:
+      - commindsetuiassetwisepgdashboard.zip
+      name: commindsetuiassetwisepgdashboard
+      target-path: resources/
+    - artifacts:
+      - commindsetuiassetwisepgmasterdata.zip
+      name: commindsetuiassetwisepgmasterdata
+      target-path: resources/
+    - artifacts:
+      - commindsetuiassetwisepgworkflow.zip
+      name: commindsetuiassetwisepgworkflow
+      target-path: resources/
+- name: commindsetuiassetwisepg
+  type: html5
+  path: app/assetwisepg
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: commindsetuiassetwisepgdashboard
+  type: html5
+  path: app/dashboard
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: commindsetuiassetwisepgmasterdata
+  type: html5
+  path: app/masterdata
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: commindsetuiassetwisepgworkflow
+  type: html5
+  path: app/workflow
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: assetwise_pg_db-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: assetwise_pg_db
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: assetwise_pg_db-postgres
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service: postgresql-db
+    service-plan: standard
+- name: assetwise_pg_db-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
+            Name: assetwise_pg_db-srv
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-plan: lite
+  requires:
+  - name: srv-api
+- name: assetwise_pg_db_html_repo_host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: assetwise_pg_db-html5-app-host-service
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production

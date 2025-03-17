@@ -1,0 +1,52 @@
+<mvc:View controllerName="com.mindset.ui.assetwisepg.dashboard.controller.AssetOverview"
+     xmlns:mvc="sap.ui.core.mvc"
+    xmlns:layout="sap.ui.layout"
+    xmlns:core="sap.ui.core" 
+    xmlns:f="sap.f"
+    xmlns:form="sap.ui.layout.form"
+    displayBlock="true"
+    xmlns="sap.m">
+    <!-- <ScrollContainer id="_IDGenScrollContainer1" height="100%"	width="100%" vertical="true">
+        <f:GridContainer   id="grid1"   class="sapUiSmallMargin"  snapToRow="true">
+           <core:Fragment  fragmentName="com.mindset.ui.assetwisepg.dashboard.fragment.Breakdown" type="XML"/>
+        
+        </f:GridContainer>
+    </ScrollContainer> -->
+    <f:DynamicPage id="dynamicPageId">
+        <f:content> 
+        <VBox justifyContent="Center" class="sapUiMediumMarginBegin">
+            <layout:VerticalLayout id="_IDGenVerticalLayout1" width="100%">
+                <!-- <layout:Grid id="idHBoxCards"   defaultSpan="XL4 L4 M6 S12"> -->
+                <layout:BlockLayout id="BlockLayout" background="Dashboard">
+                    <layout:BlockLayoutRow>
+                        <layout:BlockLayoutCell title="Breakdown by Location" titleLevel="H6"> 
+                        <core:Fragment  fragmentName="com.mindset.ui.assetwisepg.dashboard.fragment.Breakdown" type="XML"/>
+                        </layout:BlockLayoutCell> 
+                    </layout:BlockLayoutRow>
+                    <layout:BlockLayoutRow>
+                        <layout:BlockLayoutCell> 
+                        <core:Fragment  fragmentName="com.mindset.ui.assetwisepg.dashboard.fragment.BaseLocation" type="XML"/>
+                        </layout:BlockLayoutCell> 
+                    </layout:BlockLayoutRow>
+                    <layout:BlockLayoutRow>
+                        <layout:BlockLayoutCell>
+                        <core:Fragment  fragmentName="com.mindset.ui.assetwisepg.dashboard.fragment.AssetGroup" type="XML"/>
+                        </layout:BlockLayoutCell> 
+                    </layout:BlockLayoutRow>
+                    <layout:BlockLayoutRow>
+                        <layout:BlockLayoutCell title="Total procurement cost by Year" titleLevel="H6">
+                        <core:Fragment  fragmentName="com.mindset.ui.assetwisepg.dashboard.fragment.ProcurementCost" type="XML"/>
+                        </layout:BlockLayoutCell> 
+                    </layout:BlockLayoutRow>
+                    <layout:BlockLayoutRow>
+                        <layout:BlockLayoutCell title="Assets to be scrapped by this year end" titleLevel="H6">
+                        <core:Fragment  fragmentName="com.mindset.ui.assetwisepg.dashboard.fragment.ScrappedAssets" type="XML"/>
+                        </layout:BlockLayoutCell> 
+                    </layout:BlockLayoutRow>
+                </layout:BlockLayout>
+                <!-- </layout:Grid> -->
+            </layout:VerticalLayout>
+        </VBox>
+        </f:content>
+    </f:DynamicPage>
+ </mvc:View>
